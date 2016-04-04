@@ -1,6 +1,18 @@
 public class Hello{
 	public static void main(String[] args){
 		System.out.println("okok");
+		
+
+		System.out.println("okok2");
+		System.out.println("okok3");
+		
+		int a = 0;
+		int b= 3;
+		int c = 14;
+		System.out.println((a+b+c));
+		
+
+		
 		System.out.println("dd");
 		
 		int a = 20;
