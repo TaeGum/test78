@@ -10,6 +10,7 @@ public class Hello{
 		} else {
 			System.out.println("����.....");
 		}
+		
 		System.out.println("�룞�닔�삎 議몄�留덉뀍");
 		
 	}
