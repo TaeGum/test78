@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0">
+<title>면접후기작성란</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />    
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    
+<div data-role="page" id="Main">
+                <div data-role="header" style="overflow:hidden;">
+                    <h1>공통UI</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="./Main/로그인후 메인화면.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+                </div>
+    <div data-role="main" class="ui-content">
+    <div id="middle" style="background-color:#EEEEEE;"> 
+    <br>    
+        
+    <table border="0" cellspacing="0" cellpadding="0">   
+     <tr>
+         <td colspan="9" >&nbsp;&nbsp;&nbsp;제목&nbsp;&nbsp;&nbsp;</td>
+         <td>
+         <input type="text" name="@@@">
+         </td>
+     </tr>      
+
+     <tr>
+         <td colspan="9" >&nbsp;&nbsp;&nbsp;면접일자&nbsp;&nbsp;&nbsp;</td>
+         <td>
+         <input type="text" name="@@@">
+         </td>
+     </tr>
+
+     <tr>
+         <td colspan="9" >&nbsp;&nbsp;&nbsp;면접의 난이도&nbsp;&nbsp;&nbsp;</td>
+         <td> 
+                    <select class="ct_input_g">
+				        <option value="1">예상보다 쉬움</option>
+				        <option value="2">보통</option>
+                        <option value="3">예상보다 어려움</option>
+                    </select>
+         </td>
+     </tr>    
+
+     <tr>
+         <td colspan="9" >&nbsp;&nbsp;&nbsp;질문내용&nbsp;&nbsp;&nbsp;</td>
+         <td>
+             <textarea rows=2 cols=20 colspan="9" wrap=off></textarea>
+         </td>
+     </tr>
+
+     <tr>
+         <td colspan="9" >&nbsp;&nbsp;&nbsp;주의점&nbsp;&nbsp;&nbsp;</td>
+         <td>
+             <textarea rows=2 cols=20 colspan="9" wrap=off></textarea>
+         </td>
+    </tr>    
+
+     </table>    
+
+    <br>
+    
+        <div class="btn-group btn-group-justified" >
+        <a class="btn btn-default btn-lg" href="면접후기보기.html">입력</a>
+        </div>
+
+    </div>
+</body>

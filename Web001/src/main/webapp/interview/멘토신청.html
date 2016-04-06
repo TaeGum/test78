@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />    
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    
+<div data-role="page" id="Main">
+                <div data-role="header" style="overflow:hidden;">
+                    <h1>멘토신청</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="../Main/로그인후 메인화면.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+                </div>
+    <div data-role="main" class="ui-content table-responsive" style="background-color:">
+    <span style="margin-left:50px; font-size:20px">멘토선택</span>
+        <table class="table" style="text-align:center;">
+            <tbody>
+            
+            <tr>
+            <td><img src="../images/kim1.JPG" align="middle" width="150px" height="200px"></td>
+            </tr>
+            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">따라오면 무언가 되어있다</a></td></tr>
+            <tr>
+            <td><img src="../images/jin1.JPG" align="middle" width="150px" height="200px"></td>
+            </tr>
+            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal2">와우</a></td></tr>
+        </table>
+
+    </div>
+    
+    <div data-role="footer">
+        <br>
+    </div>
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
+                                    <h4 class="modal-title" id="myModalLabel">강사 소개</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="../images/kim1.JPG" class="img-responsive">
+                                    주요 약력:
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default">가상모의면접</button>
+                                    <button type="button" class="btn btn-primary">실시간 모의면접</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
+                                    <h4 class="modal-title" id="myModalLabel">강사 소개</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="../images/jin1.JPG" class="img-responsive">
+                                    주요 약력:
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default">가상모의면접</button>
+                                    <button type="button" class="btn btn-primary" onclick="location='./Realtime/1대1면접.html'">실시간 모의면접</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</body>
+</html>
+    

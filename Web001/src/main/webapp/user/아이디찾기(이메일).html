@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아이디찾기(이메일)</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />    
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script language="Javascript">
+
+function checkemailaddy(){
+        if (form.email_select.value == '1') {
+            form.email2.readonly = false;
+            form.email2.value = '';
+            form.email2.focus();
+        }
+        else {
+            form.email2.readonly = true;
+            form.email2.value = form.email_select.value;
+        }
+}
+    
+</script>
+    
+</head>
+    
+<body>
+<div data-role="page" id="Main">
+                <div data-role="header" style="overflow:hidden;">
+                    <h1>아이디찾기</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="./Main/로그인후 메인화면.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+                </div>
+	<div data-role="main" class="ui-content">
+	
+	<div id="menu1" style="background-color:#EEEEEE;">
+    <br>
+	<div class="btn-group btn-group-justified">
+	<a class="btn btn-default" style="font-size:20px" href="아이디찾기(이메일).html" >아이디찾기</a>
+	<a class="btn btn-default" style="font-size:20px" href="비밀번호찾기(이메일).html" >비밀번호찾기</a>
+    </div>
+	</div>	
+
+	<div id="menu2" style="background-color:#EEEEEE;" align = "center" >
+        <div class="btn-group">
+	    <a class="btn btn-default btn-xs" href="아이디찾기(이메일).html" >이메일로찾기</a>
+	    <a class="btn btn-default btn-xs" href="아이디찾기(핸드폰).html" >핸드폰으로찾기</a>
+        </div>
+	</div>
+
+    <div id="middle" style="background-color:#EEEEEE;" align="center"> 
+         <br>
+         <table>
+			
+		    <tr>
+			<td>이름</td>
+			<td><input type="text"  name="name" size="15" id = "name"></td>        <!-- 아이디 -->		
+			</tr>
+			<tr>
+			<td>이메일</td>
+			<td><input type="text"  name="email" size="15" id = "email">
+            <select>
+            <option value="" selected>선택하세요</option>
+            <option value="naver.com">@naver.com</option>
+            <option value="hotmail.com">@hotmail.com</option>
+            <option value="hanmail.com">@hanmail.com</option>
+            <option value="yahoo.co.kr">@yahoo.co.kr</option>
+            <option value="1">직접입력</option>
+            </select> 
+            </td>
+			</tr><!-- 패스워드 -->
+		</table>
+		<br>
+		<br>
+    </div>
+   
+    <div class="btn-group btn-group-justified" >
+  
+	<a class = "btn btn-default btn-lg" >취소</a>
+	<a class = "btn btn-default btn-lg"  href="###" data-toggle="modal" data-target="#myModal">아이디찾기</a>
+    
+    </div>
+	
+</div>
+</div>
+
+</body>
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
+                                    <h4 class="modal-title" id="myModalLabel">아이디 찾기</h4>
+                                </div>
+                                <div class="modal-body">
+                                   고객님 이메일로 아이디를 전송하였습니다.
+                                </div>
+                                <div class="modal-footer">
+                                    
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+                                </div>
+                            </div>
+                        </div>
+    </div>
+    
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />    
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    
+<div data-role="page" id="Main">
+                <div data-role="header" style="overflow:hidden;">
+                    <h1>면접후기리스트</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="../Main/로그인후 메인화면.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+                </div>
+    <div data-role="main" class="ui-content">
+
+    <div id="middle" style="background-color:#EEEEEE;"> 
+	
+    <p></p>
+	    <div class="btn-group btn-group-justified">
+        <a class="btn btn-default" href="스타일코칭리스트.html">스타일 코칭</a>
+        <a class="btn btn-default" href="스타일정보리스트.html">스타일 정보</a>
+        <a class="btn btn-default" href="면접후기리스트.html">면접 후기</a>
+        </div>
+        <p></p>
+          <div align="right">
+        <input type="text" size=10 colspan="5" name="search">
+            <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+        </div>
+    
+         <table class="table">
+            <thead>
+                <th>No</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>작성자</th>
+            </thead>
+    
+            <tbody>
+            <tr>
+                    <td>1</td>
+                    <td><a href="면접후기보기.html">현대오토에버 면접 후기입니다.</td></a>
+                    <td>16.05.28</td>
+                    <td>가나다</td>
+            </tr>
+            <tr>
+                    <td>2</td>
+                    <td>롯데정보통신 면접 후기입니다.</td>
+                    <td>16.04.29</td>
+                    <td>마바사</td>
+            </tr>
+            <tr>
+                    <td>3</td>
+                    <td>SK C&C SW개발 면접 보고 왔어요</td>
+                    <td>16.05.03</td>
+                    <td>아자카</td>
+            </tr>
+            <tr>
+                    <td>4</td>
+                    <td>삼성전자 소프트웨어 멤버쉽 면접 후기입니다.</td>
+                    <td>16.04.26</td>
+                    <td>하하하</td> 
+            </tr>
+        
+            </tbody>
+        </table>
+		
+        <div id="bottom" data-role="footer" style="background-color:default;" align = "center">
+		
+		<div class="btn-group">
+		<button class="btn btn-info" ><i class="glyphicon glyphicon-chevron-left"></i></button> 		
+		<button class="btn btn-info" ><i class="glyphicon glyphicon-chevron-right"></i></button>
+		</div>
+
+        </div>
+    
+    </body>
+    </html>
