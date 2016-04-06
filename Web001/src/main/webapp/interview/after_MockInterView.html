@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=0">
-<title>Insert title here</title>
+<title>모의면접후</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -13,16 +12,14 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
-    
 <div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden;">
-                    <h1>동영상면접글쓰기</h1>
+                    <h1>모의면접</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
 					<ul>
 						<li>
-                            <a href="./Main/로그인후 메인화면.html"><i class="fa fa-home fa-5x"></i></a>
+                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
                         </li>
 						<li>
                             <a href="#"><i class="fa fa-microphone fa-5x"></i></a>
@@ -36,36 +33,29 @@
 					</ul>
 				</div>
                 </div>
-    <div data-role="main" class="ui-content" align="center">
-    
-      <br>
-    <div>
-        기업명<input type="text" data-mini="true" size ="5">
-  
-   
-        직무<input type="text" data-mini="true" size="5">
-      
+	<div data-role="main" class="ui-content">
+    <div id="middle" style="background-color:#EEEEEE;" align="center"> 
         <br>
-      
-         
+        <br>
+        <img src="../images/interviewer.jpg" class="img-responsive"><br>
+        <button class="btn btn-default btn-lg" >FeedBack</button>
+        <br>
+        <br>
+        <button class="btn btn-default btn-lg" >My Record</button>
+        <br>
+        <br>
+        <button class="btn btn-default btn-lg">Styling</button>
+        <br>
+        <br>
         
-    <tr>
-    <textarea rows=20 cols=10 colspan="9" wrap=off style="line-height:100%;
-                                                          
- width:100%;"></textarea>      
+    </div>
+   <div id="bottom" style="background-color:#FFA500;" >
+        <div class="btn-group btn-group-justified" >
+           <a class="btn btn-default btn-lg">뒤로가기</a>
         </div>
-    </tr>
-        
-        
     </div>
-    
-    <div data-role="footer" class="btn-group btn-group-justified">
-  
-<a class="btn btn-info " href="영상선택하기.html">파일올리기</a>
-        <a class="btn btn-info" href="수정하기 삭제하기.html">확인</a>
-    </div>
-
-    </div>
-    
+</div>
+</div>
 </body>
 </html>
+    
