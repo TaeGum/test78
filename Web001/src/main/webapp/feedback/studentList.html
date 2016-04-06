@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>피드백</title>
+<meta name="viewport" content="width=device-width, initial-scale=0">
+<title>Insert title here</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -12,14 +13,16 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+    
+    
 <div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden;">
-                    <h1>피드</h1>
+                    <h1>학생리스</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
 					<ul>
 						<li>
-                            <a href="./Main/로그인후 메인화면.html"><i class="fa fa-home fa-5x"></i></a>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
                         </li>
 						<li>
                             <a href="#"><i class="fa fa-microphone fa-5x"></i></a>
@@ -33,33 +36,51 @@
 					</ul>
 				</div>
                 </div>
-	<div data-role="main" class="ui-content">
+    <div data-role="main" class="ui-content" align="center">
     
-    <div id="middle" style="background-color:#EEEEEE;" align="center"> 
-    <br>
-    <br>
-        <img src="면접장면.jpg" align = "center"/>
-    <br>
-    <br>
-        
-        <div align = "center">
-        요청사항 <br/>
-        저는 이런 부분이 부족한 것 같습니다<br/>
-        조언 부탁드립니다 
-        </div>
+      <div class="btn-group">        
+        <a class="btn btn-default" >가상모의면접</a>
+          <a class="btn btn-default" >실시간모의면접</a>
+</div>
 
+	        <table class="table">
+            <thead>
+                <th>No</th>
+                <th>회사명</th>
+                <th>직무</th>
+                <th>작성일</th>
+                <th>작성자</th>
+				<th>확인여부</th>
+            </thead>
+    
+            <tbody align="center">
+            <tr>
+                    <td>1</td>
+                    <td>현대오토에버</td></a>
+                    <td>SW개발</td>
+                    <td>16.05.28</td>
+        <td><a  href="../interview/modify_delete.html" >김다혜</a></td>
+					<td>O</td>
+            </tr>
+
+        
+            </tbody>
+        </table>
+    <br>
     <br>
     <br>
         
     </div>
     
-    <div id="bottom" style="background-color:#FFA500;" >
-        <div class="btn-group btn-group-justified" >
-		<a class="btn btn-default btn-lg" href="피드백주기.html" >피드백주기</a>
-        </div>
+    <div data-role="footer" class="btn-group btn-group-justified">
+            <a class="btn btn-info btn-lg glyphicon glyphicon-chevron-left "></a>       
+            <a class="btn btn-info btn-lg glyphicon glyphicon-chevron-right"></a>
+    </div>
+        
+        
+    </div>
+
     </div>
     
-</div>
-</div>
 </body>
 </html>
