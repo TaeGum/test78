@@ -19,7 +19,8 @@
     "bootstrap": "~3.3.6",
     "jquery": "1.12.2",
     "blueimp-file-upload": "jquery-file-upload#^9.11.2",
-    "jquery-mobile":"1.4.5"
+    "jquery-mobile":"1.4.5",
+    "font-awesome":"4.2.0"
   },
 
   "install": {
