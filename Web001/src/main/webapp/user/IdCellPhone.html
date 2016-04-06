@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디찾기(이메일)</title>
+<title>아이디찾기(핸드폰)</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -10,25 +10,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<script language="Javascript">
-
-function checkemailaddy(){
-        if (form.email_select.value == '1') {
-            form.email2.readonly = false;
-            form.email2.value = '';
-            form.email2.focus();
-        }
-        else {
-            form.email2.readonly = true;
-            form.email2.value = form.email_select.value;
-        }
-}
-    
-</script>
-    
 </head>
-    
 <body>
 <div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden;">
@@ -54,56 +36,45 @@ function checkemailaddy(){
 	<div data-role="main" class="ui-content">
 	
 	<div id="menu1" style="background-color:#EEEEEE;">
-    <br>
+        <br>
 	<div class="btn-group btn-group-justified">
-	<a class="btn btn-default" style="font-size:20px" href="아이디찾기(이메일).html" >아이디찾기</a>
-	<a class="btn btn-default" style="font-size:20px" href="비밀번호찾기(이메일).html" >비밀번호찾기</a>
+	<a class="btn btn-default" style="font-size:20px" href=".\IdEmail.html" >아이디찾기</a>
+	<a class="btn btn-default" style="font-size:20px" href=".\PasswordEmail.html" >비밀번호찾기</a>
     </div>
 	</div>	
 
 	<div id="menu2" style="background-color:#EEEEEE;" align = "center" >
         <div class="btn-group">
-	    <a class="btn btn-default btn-xs" href="아이디찾기(이메일).html" >이메일로찾기</a>
-	    <a class="btn btn-default btn-xs" href="아이디찾기(핸드폰).html" >핸드폰으로찾기</a>
+	<a class="btn btn-default btn-xs" href=".\IdEmail.html" >이메일로찾기</a>
+	<a class="btn btn-default btn-xs" href=".\IdCellPhone.html" >핸드폰으로찾기</a>
         </div>
 	</div>
 
     <div id="middle" style="background-color:#EEEEEE;" align="center"> 
-         <br>
-         <table>
+        <br> 
+        <table>
 			
 		    <tr>
 			<td>이름</td>
-			<td><input type="text"  name="name" size="15" id = "name"></td>        <!-- 아이디 -->		
+			<td><input type="text"  name="name" size="15" id = "name"></td>         <!-- 아이디 -->		
 			</tr>
 			<tr>
-			<td>이메일</td>
-			<td><input type="text"  name="email" size="15" id = "email">
-            <select>
-            <option value="" selected>선택하세요</option>
-            <option value="naver.com">@naver.com</option>
-            <option value="hotmail.com">@hotmail.com</option>
-            <option value="hanmail.com">@hanmail.com</option>
-            <option value="yahoo.co.kr">@yahoo.co.kr</option>
-            <option value="1">직접입력</option>
-            </select> 
-            </td>
+			<td>핸드폰</td>
+			<td><select><option>010<option>016<option>011</select>-<input type="text"  name="phone1" size="4" id="phone1" >-<input type="text"  name="phone2" size="4" id="phone2" ></td>
 			</tr><!-- 패스워드 -->
 		</table>
 		<br>
 		<br>
     </div>
-   
-    <div class="btn-group btn-group-justified" >
-  
-	<a class = "btn btn-default btn-lg" >취소</a>
-	<a class = "btn btn-default btn-lg"  href="###" data-toggle="modal" data-target="#myModal">아이디찾기</a>
     
+    <div id="bottom" style="background-color:#FFA500;">
+    <div class="btn-group btn-group-justified" >
+	<a class="btn btn-default btn-lg" >취소</a>
+	<a class="btn btn-default btn-lg" href="###" data-toggle="modal" data-target="#myModal">아이디찾기</a>
     </div>
-	
+	</div>
+    </div>   
 </div>
-</div>
-
 </body>
     
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
@@ -114,7 +85,7 @@ function checkemailaddy(){
                                     <h4 class="modal-title" id="myModalLabel">아이디 찾기</h4>
                                 </div>
                                 <div class="modal-body">
-                                   고객님 이메일로 아이디를 전송하였습니다.
+                                   고객님 휴대폰으로 아이디를 전송하였습니다.
                                 </div>
                                 <div class="modal-footer">
                                     
