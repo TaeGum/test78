@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=0">
-<title>스타일코칭리스트</title>
+<title>Insert title here</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
     
 <div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden;">
-                    <h1>공통UI</h1>
+                    <h1>면접후기리스트</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
 					<ul>
@@ -39,39 +39,56 @@
     <div data-role="main" class="ui-content">
 
     <div id="middle" style="background-color:#EEEEEE;"> 
-        
-	<p></p>
+	
+    <p></p>
 	    <div class="btn-group btn-group-justified">
-        <a class="btn btn-default" href="스타일코칭리스트.html">스타일 코칭</a>
-        <a class="btn btn-default" href="스타일정보리스트.html">스타일 정보</a>
-        <a class="btn btn-default" href="면접후기리스트.html">면접 후기</a>
+        <a class="btn btn-default" href=".\StyleCoachList.html">스타일 코칭</a>
+        <a class="btn btn-default" href=".\StyleInfoList.html">스타일 정보</a>
+        <a class="btn btn-default" href=".\InterviewBehindList.html">면접 후기</a>
         </div>
         <p></p>
           <div align="right">
-        <input type="text" size=10 colspan="5" name="search";>
+        <input type="text" size=10 colspan="5" name="search">
             <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-        </div>    
-        <table class="table" style="text-align:center;">
+        </div>
+    
+         <table class="table">
+            <thead>
+                <th>No</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>작성자</th>
+            </thead>
+    
             <tbody>
             <tr>
-                    <td><a href = "스타일코칭보기.html"><img src="\\192.168.0.26\프로젝트\Test웹(공통UI 이거 사용)\images\makeup.jpg" valign="middle"/></a>
+                    <td>1</td>
+                    <td><a href="InterviewBehind.html">현대오토에버 면접 후기입니다.</td></a>
+                    <td>16.05.28</td>
+                    <td>가나다</td>
             </tr>
-            <tr><td>메이크업 아티스트 : 정샘물</td></tr>
             <tr>
-                    <td><a href = "스타일코칭보기.html"><img src="\\192.168.0.26\프로젝트\Test웹(공통UI 이거 사용)\images\makeup.jpg" valign="middle"/></a>
+                    <td>2</td>
+                    <td>롯데정보통신 면접 후기입니다.</td>
+                    <td>16.04.29</td>
+                    <td>마바사</td>
             </tr>
-            <tr><td>간략 소개</td></tr>
             <tr>
-                    <td><a href = "스타일코칭보기.html"><img src="\\192.168.0.26\프로젝트\Test웹(공통UI 이거 사용)\images\makeup.jpg" valign="middle"/></a>
+                    <td>3</td>
+                    <td>SK C&C SW개발 면접 보고 왔어요</td>
+                    <td>16.05.03</td>
+                    <td>아자카</td>
             </tr>
-            <tr><td>간략 소개</td></tr>
             <tr>
-                    <td><a href = "스타일코칭보기.html"><img src="\\192.168.0.26\프로젝트\Test웹(공통UI 이거 사용)\images\makeup.jpg" valign="middle"/></a>
+                    <td>4</td>
+                    <td>삼성전자 소프트웨어 멤버쉽 면접 후기입니다.</td>
+                    <td>16.04.26</td>
+                    <td>하하하</td> 
             </tr>
-            <tr><td>간략 소개</td></tr>
+        
             </tbody>
         </table>
-        
+		
         <div id="bottom" data-role="footer" style="background-color:default;" align = "center">
 		
 		<div class="btn-group">
@@ -80,5 +97,6 @@
 		</div>
 
         </div>
-        </div>
-</body>
+    
+    </body>
+    </html>
