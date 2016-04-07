@@ -20,7 +20,7 @@
     "jquery": "1.12.2",
     "blueimp-file-upload": "jquery-file-upload#^9.11.2",
     "jquery-mobile":"1.4.5",
-    "font-awesome":"4.2.0"
+    "font-awesome":"~4.2.0"
   },
 
   "install": {
@@ -28,7 +28,9 @@
     "sources": {
       "bootstrap": "bower_components/bootstrap/dist/**",
       "jquery": "bower_components/jquery/dist/**",
-      "blueimp-file-upload": "bower_components/blueimp-file-upload/**"  
+      "blueimp-file-upload": "bower_components/blueimp-file-upload/**", 
+      "font-awesome":"bower_components/font-awesome/**",
+      "jquery-mobile":"bower_components/jquery-mobile/**"
     }
   }
 
