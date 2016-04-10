@@ -5,27 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">    
-<script src="../lib/jquery/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />    
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-
-<script>
-var header_height   = $("div[data-role='header']:visible").outerHeight();
-var footer_height   = $("div[data-role='footer']:visible").outerHeight();
-var content = $("div[data-role='content']:visible");          
-var content_height  = $(window).height() - header_height - footer_height;            
- 
-content_height -= (content.outerHeight() - content.height());   
-$("div[data-role='content']").css("height", content_height);   
-</script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
     
     
 <div data-role="page" id="Main">
-                <div data-role="header" style="overflow:hidden;" data-position="fixed">
+                <div data-role="header" style="overflow:hidden;">
                     <h1>공통UI</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
@@ -45,40 +36,60 @@ $("div[data-role='content']").css("height", content_height);
 					</ul>
 				</div>
                 </div>
-    <div data-role="content" class="ui-content">
+    <div data-role="main" class="ui-content">
     <div id="middle" style="background-color:#EEEEEE;"> 
     <br>
         
-    <table border="1">    
-    제목
-    <div style= "border:1px solid black;">
-    현대오토에버 면접 후기입니다
-    </div>
+    <table>    
+     
+     <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	 </tr>
     
-    작성자
-    <div style= "border:1px solid black;">
-    가나다
-    </div>
-    
-    작성일자
-    <div style= "border:1px solid black;">
-    2016/05/24
-    </div>
-    
-    난이도
-    <div style= "border:1px solid black;">
-    예상보다 어려움
-    </div>
-    
-    질문내용
-    <div style= "overflow:scroll; border:1px solid  black;">
+     <tr>
+     <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;제목&nbsp;&nbsp;&nbsp;</td>
+     <td>현대오토에버 면접 후기입니다</td>
+     </tr>
+     
+     <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	 </tr>
    
-    </div>
-
-    주의사항
-    <div style= "overflow:scroll; border:1px solid  black;">
-    
-    </div>
+     <tr>
+     <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;작성자&nbsp;&nbsp;&nbsp;</td>
+     <td>가나다</td>
+     </tr>
+     
+     <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	 </tr>
+	 
+	 <tr>
+     <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;난이도&nbsp;&nbsp;&nbsp;</td>
+     <td>예상보다 어려움</td>
+     </tr>
+     
+     <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	 </tr>
+	 
+	 <tr>
+     <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;질문내용&nbsp;&nbsp;&nbsp;</td>
+     <td>----</td>
+     </tr>
+     
+     <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	 </tr>
+	 
+	 	 <tr>
+     <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;주의사항&nbsp;&nbsp;&nbsp;</td>
+     <td>----</td>
+     </tr>
+     
+     <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	 </tr>
     
 </table>    
    </div>     
@@ -90,8 +101,5 @@ $("div[data-role='content']").css("height", content_height);
         <a class="btn btn-default btn-lg" href="..\styling\InterviewBehindWrite.html">수정</a>
 	    <a class="btn btn-default btn-lg" href="..\styling\InterviewBehindList.html">확인</a>
 	</div>
-    </div>
-    <div data-role="footer" data-position="fixed">
-    </div>
     </div>
 </body>
