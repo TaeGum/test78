@@ -61,14 +61,14 @@ $("div[data-role='content']").css("height", content_height);
        	<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">약도 및 교통편 안내</button>
 		
 		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
+		  <div class="modal-dialog modal-default">
 		    <div class="modal-content">
 		     <br>
-		     <img src="..\images\map.jpg"/>
+		     <img src="..\images\map.jpg" width="400sp" height="400sp"/>
 		     <br>   
-		        교통편 :
+		        교통편 : 지하철 3호선 압구정역 100m
              <br>
-                    주차안내 :
+                    주차안내 : 나래빌딩 지하주차장 이용
              <br>       
 		   	<div class="modal-footer">
           	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -82,7 +82,7 @@ $("div[data-role='content']").css("height", content_height);
         <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg2">서비스안내</button>
 		
 		<div class="modal fade bs-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
+		  <div class="modal-dialog modal-default">
 		    <div class="modal-content">
 		     <br>   
 		        할인제도 : 
@@ -116,15 +116,37 @@ $("div[data-role='content']").css("height", content_height);
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
-                                    <h4 class="modal-title" id="myModalLabel">결제 안내 및 동의사항</h4>
+                                    <h4 class="modal-title" id="myModalLabel">예약일 및 예약시간 선택</h4>
                                 </div>
                                 <div class="modal-body">
-                                    가격 안내:
-                                    <br>
-                                    동의 사항:
+                                   	<table>
+                                   		<tr>
+				         				<td colspan="9" >&nbsp;&nbsp;&nbsp;예약일&nbsp;&nbsp;&nbsp;</td>
+				         				<td><input type="text" name="@@@"></td>
+				     					</tr>      
+									
+										<tr>
+									    <td colspan="9" >&nbsp;&nbsp;&nbsp;예약시간&nbsp;&nbsp;&nbsp;</td>
+									    <td>
+									   		<select>
+											<option value=""></option>
+											<option>09:00</option>
+											<option>10:00</option>
+											<option>11:00</option>
+											<option>12:00</option>
+											<option>13:00</option>
+											<option>14:00</option>
+											<option>15:00</option>
+											<option>16:00</option>
+											<option>17:00</option>
+											<option>18:00</option>
+											</select>
+									     </td>
+									     </tr>
+								    </table>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="location='\Credit.html'">온라인 결제</button>
+                                    <button type="button" class="btn btn-primary" onclick="location='\Credit.html'">결제하기</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                                 </div>
                             </div>
