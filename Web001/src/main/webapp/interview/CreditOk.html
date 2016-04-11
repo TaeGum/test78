@@ -21,12 +21,12 @@ content_height -= (content.outerHeight() - content.height());
 $("div[data-role='content']").css("height", content_height);   
 </script>
 </head>
-
 <body>
-
-<div data-role="page" id="Main">
+    
+    
+    <div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden;" data-position="fixed">
-                    <h1>1:N모의면접</h1>
+                    <h1>공통UI</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
 					<ul>
@@ -45,47 +45,18 @@ $("div[data-role='content']").css("height", content_height);
 					</ul>
 				</div>
                 </div>
-	<div data-role="content" class="ui-content">
-	
-	<div id="middle1" style="background-color:#EEEEEE;" align="center">
-	<br>
-	<br>
-	<img src="../images/interviewer.jpg"  class="img-responsive">
-    <br>
-	</div>
-    
-	<div id="middle2" style="background-color:#EEEEEE; " align="center"> 
-        
-        <img src="../images/man.JPG"   style="img-responsive;" />
-        <img src="../images/man2.JPG"   style="img-responsive"/>
-        <img src="../images/woman.JPG"   style="img-responsive"/>
-   
+    <div data-role="content" class="ui-content">
+        결제가 완료되었습니다.
+    <div class="btn-group btn-group-justified" >
+    	
+		<a class="btn btn-default btn-lg" href="..\interview\OneInterView.html">면접시작</a>
+    	<!--<a class="btn btn-default btn-lg" href="..\interview\PeopleInterView.html">면접시작</a>-->
     </div>
-
-	<div id="middle3" style="background-color:#EEEEEE; " align="center"> 
-        
-        <img src="../images/timer.JPG"   style="img-responsive;" />  
-		<br>
-		<br>
     </div>
-
-    <div id="middle4" style="background-color:#EEEEEE; " align="center"> 
-        
-        <img src= "../images/video.JPG"   style="img-responsive;" />     
-		<img src= "../images/mic.JPG"   style="img-responsive; " />  
-		<img src= "../images/sound.JPG"   style="img-responsive;" />  
-		<br>
-		<br>
-		
-	</div>
-
-        <div class="btn-group btn-group-justified">
-            <a class="btn btn-default btn-lg" href="..\interview\InterView_menu_Selection.html">목록</a>
-        </div>
-    
+    <div data-role="footer" data-position="fixed">
     </div>
+</div>
 </body>
 </html>
 
-    
     
