@@ -28,7 +28,7 @@
                             <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
                         </li>
 						<li>
-                            <a href="..\styling\StyleInfoList.html"><i class="fa fa-star fa-5x"></i></a>
+                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
@@ -36,108 +36,158 @@
 					</ul>
 				</div>
                 </div>
-    <div data-role="main" class="ui-content">
-
-    <div id="middle" style="background-color:#EEEEEE;" align="center"> 
+     <div data-role="content" class="ui-content table-responsive" style="background-color:">
+    <p></p>
+	    <div class="btn-group btn-group-justified">
+        <a class="btn btn-default" href="..\styling\StyleCoach.html">스타일 코칭</a>
+        <a class="btn btn-default" href="..\styling\StyleInfo.html">스타일 정보</a>
+        <a class="btn btn-default" href="..\styling\InterviewBehindList.html">면접 후기</a>
+        </div>
+        <p></p>
     
-    <br>
-        <img src="..\images\hairshop.jpg"/>&nbsp;
-        
-    <br>
-    <br>
-        <div style= "border:1px solid  black;">
-                oo 미용실
-        <br>
-       	* 위치 : 서울시 강남구 역삼동 111-22번지 &nbsp;
-       	<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">약도 및 교통편 안내</button>
-		
-		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-default">
-		    <div class="modal-content">
-		     <br>
-		     <img src="..\images\map.jpg" width="400sp" height="400sp"/>
-		     <br>   
-		        교통편 : 지하철 3호선 압구정역 100m
-             <br>
-                    주차안내 : 나래빌딩 지하주차장 이용
-             <br>       
-		   	<div class="modal-footer">
-          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-          	</div>
-		    </div>
-		  </div>
-		</div>
-       
-        <br>
-        * 취업 준비 세트 이용시 20% 할인 &nbsp;
-        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg2">서비스안내</button>
-		
-		<div class="modal fade bs-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-default">
-		    <div class="modal-content">
-		     <br>   
-		        할인제도 : 
-             <br>
-                    서비스 안내 :
-             <br>
-             <div class="modal-footer">
-          	 <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-          	 </div>
-		    </div>
-		  </div>
-		  
-		</div>
-		<br>
+    <span style="margin-left:50px; font-size:20px">업체선택</span>
+        <table class="table" style="text-align:center;">
+            <tbody>
+            <tr>
+            <td><img src="../images/hairshop.jpg" align="middle" width="150px" height="200px"></td>
+            </tr>
+            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">@@@ 미용실</a></td></tr>
+            <tr>
+            <td><img src="../images/makeupshop.jpg" align="middle" width="150px" height="200px"></td>
+            </tr>
+            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal2">### 뷰티</a></td></tr>
+        </table>
+
+    </div>
+    
+    <div data-role="footer" data-position="fixed">
         <br>
     </div>
-    <br>
-    <br>
-     <div class="btn-group btn-group-justified">
-            <a class="btn btn-default" href="..\styling\StyleInfoList.html">뒤로</a>       
-            <a class="btn btn-default" data-toggle="modal" data-target="#myModal">예약신청</a>
-    </div>
-    </div>
-    </div>
-</body>
-    	
-  		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
-                                    <h4 class="modal-title" id="myModalLabel">예약일 및 예약시간 선택</h4>
+                                    <h4 class="modal-title" id="myModalLabel">소개 및 회원 한줄평</h4>
                                 </div>
-                                <div class="modal-body">
-                                   	<table>
-                                   		<tr>
-				         				<td colspan="9" >&nbsp;&nbsp;&nbsp;예약일&nbsp;&nbsp;&nbsp;</td>
-				         				<td><input type="text" name="@@@"></td>
-				     					</tr>      
+                                
+                                	&nbsp;&nbsp;&nbsp;-업체소개
+                                	<br>
+                                	&nbsp;&nbsp;@@@ 미용실
+									<br>
+									&nbsp;&nbsp;
+									<br>
+									<br>
+									<br>
+                                	&nbsp;&nbsp;&nbsp;-위치안내
+                                	<br>
+                                	&nbsp;&nbsp;위치 : 서울시 강남구 압구정동 11-11번지
+                                	<br>
+                                	&nbsp;&nbsp;<img src="../images/map.jpg" align="middle" width="250px" height="300px">
+                         			<br>
+                         			&nbsp;&nbsp;교통편 : 
+									<br>
+									<br>
+									<br>
+									&nbsp;&nbsp;&nbsp;-회원한줄평
 									
-										<tr>
-									    <td colspan="9" >&nbsp;&nbsp;&nbsp;예약시간&nbsp;&nbsp;&nbsp;</td>
-									    <td>
-									   		<select>
-											<option value=""></option>
-											<option>09:00</option>
-											<option>10:00</option>
-											<option>11:00</option>
-											<option>12:00</option>
-											<option>13:00</option>
-											<option>14:00</option>
-											<option>15:00</option>
-											<option>16:00</option>
-											<option>17:00</option>
-											<option>18:00</option>
-											</select>
-									     </td>
-									     </tr>
-								    </table>
-                                </div>
+										
+									<table class="table">
+						            <thead>
+						            	<th>별점</th>
+						                <th>회원명</th>
+						                <th>회원 한줄평</th>
+						            </thead>
+						    
+						            <tbody>
+						            <tr>
+						                    <td>***</td>
+						                    <td>가나다</td></a>
+						                    <td>좋아요</td>
+						            </tr>
+						            <tr>
+						                    <td>***</td>
+						                    <td>마바사</td></a>
+						                    <td>좋아요</td>
+						            </tr>
+						            <tr>
+						                    <td>***</td>
+						                    <td>아자차</td></a>
+						                    <td>최고에요!</td>
+						            </tr>
+						        
+						            </tbody>
+	      						</table>
+						
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="location='\Credit.html'">결제하기</button>
+                                    <button type="button" class="btn btn-primary" onclick="location='\StylingReservation.html'">예약하기</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                               <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
+                                    <h4 class="modal-title" id="myModalLabel">소개 및 회원 한줄평</h4>
+                                </div>
+                                	&nbsp;&nbsp;&nbsp;-업체소개
+                                	<br>
+                                	&nbsp;&nbsp;### 뷰티
+									<br>
+									&nbsp;&nbsp;
+									<br>
+									<br>
+									<br>
+                                	&nbsp;&nbsp;&nbsp;-위치안내
+                                	<br>
+                                	&nbsp;&nbsp;위치 : 서울시 강남구 압구정동 11-11번지
+                                	<br>
+                                	&nbsp;&nbsp;<img src="../images/map.jpg" align="middle" width="250px" height="300px">
+                         			<br>
+                         			&nbsp;&nbsp;교통편 : 
+									<br>
+									<br>
+									<br>
+									&nbsp;&nbsp;&nbsp;-회원한줄평
+									
+										
+									<table class="table">
+						            <thead>
+						            	<th>별점</th>
+						                <th>회원명</th>
+						                <th>회원 한줄평</th>
+						            </thead>
+						    
+						            <tbody>
+						            <tr>
+						                    <td>***</td>
+						                    <td>가나다</td></a>
+						                    <td>좋아요</td>
+						            </tr>
+						            <tr>
+						                    <td>***</td>
+						                    <td>마바사</td></a>
+						                    <td>좋아요</td>
+						            </tr>
+						            <tr>
+						                    <td>***</td>
+						                    <td>아자차</td></a>
+						                    <td>강추합니다!!</td>
+						            </tr>
+						        
+						            </tbody>
+	      						</table>
+																
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="location='\StylingReservation.html'">예약하기</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
     </div>
+</body>
+</html>

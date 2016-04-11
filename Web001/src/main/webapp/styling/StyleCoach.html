@@ -37,106 +37,159 @@
 				</div>
                 </div>
     
-    <div data-role="main" class="ui-content">
-        <br>
-        
-        <img src="..\images\makeup.jpg" valign="center" width="250" height="250"/>
-        
-        <br>
-        <br>
-            
-        <div style= "border:1px solid black;">
-            메이크업 아티스트 정샘물
-        <br>
-        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">아티스트 소개</button>
-		
-		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-default">
-		    <div class="modal-content">
-		     <br>
-		     <br>   
-		        약력 :
-             <br>
-                    전문분야 :
-             <br>       
-		   	<div class="modal-footer">
-          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-          	</div>
-		    </div>
-		  </div>
-		</div>
-		
-        <br>
-        * 예약 관련 주의사항 : &nbsp;
+    <div data-role="content" class="ui-content table-responsive" style="background-color:">
+    <p></p>
+	    <div class="btn-group btn-group-justified">
+        <a class="btn btn-default" href="..\styling\StyleCoach.html">스타일 코칭</a>
+        <a class="btn btn-default" href="..\styling\StyleInfoList.html">스타일 정보</a>
+        <a class="btn btn-default" href="..\styling\InterviewBehindList.html">면접 후기</a>
         </div>
-
-        <br>
-        <br>
-
-        <div class="btn-group btn-group-justified">
-            <a class="btn btn-default btn-lg" href="..\styling\StyleCoachList.html">목록</a>
-            <a class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">코칭신청</a>
-        </div>
+        <p></p>
     
+    <span style="margin-left:50px; font-size:20px">스타일리스트선택</span>
+        <table class="table" style="text-align:center;">
+            <tbody>
+            <tr>
+            <td><img src="../images/makeup.jpg" align="middle" width="150px" height="200px"></td>
+            </tr>
+            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">정샘물 메이크업아티스트</a></td></tr>
+            <tr>
+            <td><img src="../images/hairdesign.jpg" align="middle" width="150px" height="200px"></td>
+            </tr>
+            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal2">차홍 헤어디자이너</a></td></tr>
+        </table>
+
     </div>
-</body>
-</html>
-
     
+    <div data-role="footer" data-position="fixed">
+        <br>
+    </div>
      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
-                                    <h4 class="modal-title" id="myModalLabel">예약일 및 예약시간 선택</h4>
-                                </div>
-                                <div class="modal-body">
-                                   	<table>
-                                   		<tr>
-				         				<td colspan="9" >&nbsp;&nbsp;&nbsp;예약일&nbsp;&nbsp;&nbsp;</td>
-				         				<td><input type="text" name="@@@"></td>
-				     					</tr>      
-									
-										<tr>
-									    <td colspan="9" >&nbsp;&nbsp;&nbsp;예약시간&nbsp;&nbsp;&nbsp;</td>
-										    <td>
-										   		<select>
-												<option value=""></option>
-												<option>09:00</option>
-												<option>09:30</option>
-												<option>10:00</option>
-												<option>10:30</option>
-												<option>11:00</option>
-												<option>11:30</option>
-												<option>12:00</option>
-												<option>12:30</option>
-												<option>13:00</option>
-												<option>13:30</option>
-												<option>14:00</option>
-												<option>14:30</option>
-												<option>15:00</option>
-												<option>15:30</option>
-												<option>16:00</option>
-												<option>16:30</option>
-												<option>17:00</option>
-												<option>17:30</option>
-												<option>18:00</option>
-												</select>
-										     </td>
-									     </tr>
-									     
-									     <tr>
-					         				<td colspan="9" >&nbsp;&nbsp;&nbsp;가능여부&nbsp;&nbsp;&nbsp;</td>
-					         				<td></td>
-				     					</tr>  
-								    </table>
+                                    <h4 class="modal-title" id="myModalLabel">소개 및 회원 한줄평</h4>
                                 </div>
                                 
+                                	&nbsp;&nbsp;&nbsp;-스타일리스트소개
+                                	<br>
+                                	&nbsp;&nbsp;정샘물 메이크업아티스트는 국내 최고의 취업면접 메이크업 전문가로서
+									<br>
+									&nbsp;&nbsp;특히 여성 구직자 맞춤 메이크업을 통해 큰 인기를 얻고 있습니다.
+									<br>
+									<br>
+									<br>
+                                	&nbsp;&nbsp;&nbsp;-경력사항
+                                	<br>
+                                	&nbsp;&nbsp;1995년 2월 ~ 2000년 1월 : ooo 전속 스타일리스트
+                                	<br>
+                                	&nbsp;&nbsp;2000년 2월 ~ 2007년 4월 : ooo 뷰티스쿨 강사
+                         			<br>
+                         			&nbsp;&nbsp;2007년 5월 ~ 현재 : (주)정샘물컴퍼니 대표이사 및 수석메이크업 아티스트
+									<br>
+									<br>
+									<br>
+									&nbsp;&nbsp;&nbsp;-회원한줄평
+									
+										
+									<table class="table">
+						            <thead>
+						            	<th>별점</th>
+						                <th>회원명</th>
+						                <th>회원 한줄평</th>
+						            </thead>
+						    
+						            <tbody>
+						            <tr>
+						                    <td>***</td>
+						                    <td>가나다</td></a>
+						                    <td>정샘물 아티스트 짱이에요</td>
+						            </tr>
+						            <tr>
+						                    <td>***</td>
+						                    <td>마바사</td></a>
+						                    <td>차원이 다른 메이크업을 제공하네요 강추합니다.</td>
+						            </tr>
+						            <tr>
+						                    <td>***</td>
+						                    <td>아자차</td></a>
+						                    <td>최고에요!</td>
+						            </tr>
+						        
+						            </tbody>
+	      						</table>
+						
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="location='\Credit.html'">결제하기</button>
+                                    <button type="button" class="btn btn-primary" onclick="location='\StylingReservation.html'">예약하기</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                               <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
+                                    <h4 class="modal-title" id="myModalLabel">소개 및 회원 한줄평</h4>
+                                </div>
+                                	&nbsp;&nbsp;&nbsp;-스타일리스트 소개
+                                	<br>
+                                	&nbsp;&nbsp;차홍 헤어디자이너는 최신 트렌드를 가장 잘 흡수하는 헤어디자이너로서
+									<br>
+									&nbsp;&nbsp;면접시 필요한 최상의 헤어스타일을 제공합니다.
+									<br>
+									<br>
+									<br>
+                                	&nbsp;&nbsp;&nbsp;-경력사항
+                                	<br>
+                                	&nbsp;&nbsp;2003년 2월 ~ 2005년 12월 : oo미용실 근무
+                                	<br>
+                                	&nbsp;&nbsp;2006년 2월 ~ 2011년 10월 : oo살롱 수석 헤어디자이너
+                         			<br>
+                         			&nbsp;&nbsp;2011년 11월 ~ 현재 : 차홍헤어샵 대표 및 수석디자이너
+									<br>
+									<br>
+									<br>
+									&nbsp;&nbsp;&nbsp;-회원한줄평
+									
+										
+									<table class="table">
+						            <thead>
+						            	<th>별점</th>
+						                <th>회원명</th>
+						                <th>회원 한줄평</th>
+						            </thead>
+						    
+						            <tbody>
+						            <tr>
+						                    <td>***</td>
+						                    <td>가나다</td></a>
+						                    <td>남성 헤어스타일도 잘 연출하시네요</td>
+						            </tr>
+						            <tr>
+						                    <td>***</td>
+						                    <td>마바사</td></a>
+						                    <td>머리때문에 걱정 많이 했는데 역시 차홍님은 다르네요</td>
+						            </tr>
+						            <tr>
+						                    <td>***</td>
+						                    <td>아자차</td></a>
+						                    <td>강추합니다!!</td>
+						            </tr>
+						        
+						            </tbody>
+	      						</table>
+																
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="location='\StylingReservation.html'">예약하기</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</body>
+</html>
                     
