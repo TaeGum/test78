@@ -2,12 +2,12 @@ package com.model2.mvc.web.member;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -55,7 +55,16 @@ public class MemberController {
 		}else{
 			model.addAttribute("member", null);
 		}
+	}
+	
+	//로그인 유무 확인
+	@RequestMapping(value="/logincheck.do")
+	public void afterlogin(HttpSession session, Model model){
+		Member m = (Member) session.getAttribute("member");
 		
+		System.out.println("afterlogin :: "+m);
+		
+		model.addAttribute("member", m);
 	}
 	
 

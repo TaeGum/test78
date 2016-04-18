@@ -36,7 +36,7 @@ $("div[data-role='content']").css("height", content_height);
                             <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
                         </li>
 						<li>
-                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                            <a href="..\styling\StyleInfoList.html"><i class="fa fa-star fa-5x"></i></a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
@@ -53,52 +53,24 @@ $("div[data-role='content']").css("height", content_height);
 		<table>
 		<tr>
 		<td>아이디</td>
-		<td><input type="text"  name="id" size="20" id = "id"></td></tr>      <!-- 아이디 -->		
+		<td><input type="text"  name="id" size="20" id = "id"></td></tr>         <!-- 아이디 -->		
 	    <tr>
-		<td>비밀번호</td>
-		<td><input type="password"  name="pwd" size="15" id = "pwd1"></td>
-		<td>&nbsp;&nbsp;</td>
-		<td><img src="..\images\lock_close.JPG"></td>
-		</tr>
+		<td>패스워드</td>
+		<td><input type="password"  name="pwd" size="15" id = "pwd1"> <img src="..\images\lock_close.JPG"></td>
+		</tr><!-- 패스워드 -->
 		<tr>
-		<td>비밀번호 확인</td>
-		<td><input type="password"  name="pwd2" size="15" id = "pwd2"></td> 
-		<td>&nbsp;&nbsp;</td>
-		<td><img src="..\images\lock_open.JPG"></td>
+		<td>패스워드 재확인</td>
+		<td><input type="password"  name="pwd2" size="15" id = "pwd2"> <img src="..\images\lock_open.JPG"></td> <!-- 패스워드 재확인 -->
 		</tr>
 		<tr>
 		<td>이름</td>
 		<td><input type="text"  name="uname" size="15" id="name" ></td>
-		</tr>
+		</tr><!-- 이름 -->
 		<tr>
-		<td>생년월일</td>
-		<td><input type="text"  name="year" size="4" id="year" ></td>
-		<td>&nbsp;년&nbsp;</td>
-		<td><select><option>1<option>2<option>3<option>4<option>5<option>6<option>7<option>8<option>9<option>10<option>11<option>12</select></td>
-		<td>&nbsp;월&nbsp;</td>
-		<td><select><option>1<option>2<option>3<option>4<option>5<option>6<option>7<option>8<option>9<option>10<option>11<option>12<option>13<option>14<option>15<option>16
-		<option>17<option>18<option>19<option>20<option>21<option>22<option>23<option>24<option>25<option>26<option>27<option>28<option>29<option>30<option>31</select>
-		</td>
-		<td>&nbsp;일&nbsp;</td>
+		<td>연락처</td>
+		<td><select><option>010<option>016<option>011</select>-<input type="text"  name="phone1" size="4" id="phone1" >-<input type="text"  name="phone2" size="4" id="phone2" ></td>
 		</tr>
-		<tr>
-		<td>휴대폰</td>
-		<td><select><option>010<option>011<option>016<option>017<option>018<option>019</select></td>
-		<td>&nbsp;-&nbsp;</td>
-		<td><input type="text"  name="phone1" size="4" id="phone1" ></td>
-		<td>&nbsp;-&nbsp;</td>
-		<td><input type="text"  name="phone2" size="4" id="phone2" ></td>
-		</tr>
-		<tr>
-		<td>이메일</td>
-		<td><input type="text"  name="Email1" size="4" id="Email1" ></td>
-		<td>&nbsp;@&nbsp;</td>
-		<td><select><option>gmail.com<option>naver.com<option>hanmail.net<option>hotmail.com</select></td>
-		</tr>
-		<tr>
-		<td>주소</td>
-		<td><input type="text"  name="addr" size="15" id="addr" ></td>
-		</tr>
+
 		</table>
         <br>
         <br>
@@ -106,17 +78,17 @@ $("div[data-role='content']").css("height", content_height);
 
 
 
-		<div id="bottom" style="background-color:#FFA500;">
-	        <div class="btn-group btn-group-justified" >
-	        <a class="btn btn-default btn-lg" >취소</a>
-	        <a class="btn btn-default btn-lg" href="###" data-toggle="modal" data-target="#myModal">회원가입</a>
-	        </div>
-	    </div>
-	</div>
-	<div data-role="footer" data-position="fixed">
-	</div>
-	</div>
-	    
+	<div id="bottom" style="background-color:#FFA500;">
+        <div class="btn-group btn-group-justified" >
+        <a class="btn btn-default btn-lg" >취소</a>
+        <a class="btn btn-default btn-lg" href="###" data-toggle="modal" data-target="#myModal">회원가입</a>
+        </div>
+    </div>
+</div>
+<div data-role="footer" data-position="fixed">
+</div>
+</div>
+    
 </body>
     
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">

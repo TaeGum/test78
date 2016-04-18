@@ -4,73 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
-<script src="./lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-
-<script>
-var header_height   = $("div[data-role='header']:visible").outerHeight();
-var footer_height   = $("div[data-role='footer']:visible").outerHeight();
-var content = $("div[data-role='content']:visible");          
-var content_height  = $(window).height() - header_height - footer_height;            
- 
-content_height -= (content.outerHeight() - content.height());   
-$("div[data-role='content']").css("height", content_height); 
-
-	$( function (){
-		$("input[name='id']").focus();
-		
-		$("#login").on("click",function(){
-			
-			var id =$("input[name='id']").val();
-			var pw =$("input[name='pwd']").val();
-			
-			alert(id);
-			
-			if(id == null || id.length <1) {
-				alert('ID 를 입력하지 않으셨습니다.');
-				$("input[name='id']").focus();
-				return;
-			}
-			
-			if(pw == null || pw.length <1) {
-				alert('패스워드를 입력하지 않으셨습니다.');
-				$("input[name='pwd']").focus();
-				return;
-			}
-			
-			$.ajax(
-					{
-						url : "./login.do",
-						method : "POST" ,
-						dataType : "json" ,
-						headers : {
-							"Accept" : "application/json",
-							"Content-Type" : "application/json"
-						},
-						data : JSON.stringify({
-							userId : id,
-							password : pw
-						}),
-						success : function(JSONData , status) {
-							 if( JSONData.member != null ){
-								 $(window.parent.document.location).attr("href","./afterlogin.html");
-								//location.href="./afterlogin.html"
-							}else{
-								alert("아이디 , 패스워드를 확인하시고 다시 로그인...");
-							}
-						}
-					});
-			});
-		});
-</script>
 </head>
 <body>
-    
-    
 <div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden;" data-position="fixed">
                     <h1>로그인</h1>
@@ -96,9 +31,9 @@ $("div[data-role='content']").css("height", content_height);
     <div data-role="main" class="ui-content" align="center">
     
          <div class="btn-group btn-group-justified" >    
-	       	<a class="btn btn-default"  href=".\AddUser.html" >회원가입</a>
-            <a class="btn btn-default"  href=".\IdEmail.html" >아이디찾기</a>
-            <a class="btn btn-default"  href=".\PasswordEmail.html" >비밀번호찾기</a>
+	       	<a class="btn btn-default"  href=".\user\AddUser.html" >회원가입</a>
+            <a class="btn btn-default"  href=".\user\IdEmail.html" >아이디찾기</a>
+            <a class="btn btn-default"  href=".\user\PasswordEmail.html" >비밀번호찾기</a>
 	       </div>
         <br>
 	   <br>
@@ -128,5 +63,72 @@ $("div[data-role='content']").css("height", content_height);
     </div>
 
     </div>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
+<script src="./lib/jquery/jquery.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+
+	<script>
+	var header_height   = $("div[data-role='header']:visible").outerHeight();
+	var footer_height   = $("div[data-role='footer']:visible").outerHeight();
+	var content = $("div[data-role='content']:visible");          
+	var content_height  = $(window).height() - header_height - footer_height;            
+ 
+	content_height -= (content.outerHeight() - content.height());   
+	$("div[data-role='content']").css("height", content_height); 
+
+	$( function (){
+		$("input[name='id']").focus();
+		
+		$("#login").on("click",function(){
+			
+			var id =$("input[name='id']").val();
+			var pw =$("input[name='pwd']").val();
+			
+			//alert(id);
+			
+			if(id == null || id.length <1) {
+				alert('ID 를 입력하지 않으셨습니다.');
+				$("input[name='id']").focus();
+				return;
+			}
+			
+			if(pw == null || pw.length <1) {
+				alert('패스워드를 입력하지 않으셨습니다.');
+				$("input[name='pwd']").focus();
+				return;
+			}
+			
+			$.ajax(
+					{
+						url : "./login.do",
+						method : "POST" ,
+						dataType : "json" ,
+						headers : {
+							"Accept" : "application/json",
+							"Content-Type" : "application/json"
+						},
+						data : JSON.stringify({
+							userId : id,
+							password : pw
+						}),
+						success : function(JSONData , status) {
+							 if( JSONData.member != null ){
+								//Debug...
+									//alert(status);
+									
+									//alert("JSONData : \n"+JSONData.member.userName);
+								//document.cookie = JSONData;
+								location.href="./afterlogin.html"
+							}else{
+								alert("아이디 , 패스워드를 확인하시고 다시 로그인...");
+							}
+						}
+					});
+			});
+		});
+	</script>
 </body>
 </html>

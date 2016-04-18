@@ -4,30 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
-<script src="./lib/jquery/jquery.min.js"></script>
-<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-<script type="text/javascript">
-var header_height   = $("div[data-role='header']:visible").outerHeight();
-var footer_height   = $("div[data-role='footer']:visible").outerHeight();
-var content = $("div[data-role='content']:visible");          
-var content_height  = $(window).height() - header_height - footer_height;            
- 
-content_height -= (content.outerHeight() - content.height());   
-$("div[data-role='content']").css("height", content_height);
-
-	$( function (){
-		var name= '${request.getSession(true).getAttribute("member").getUserName()}';
-		alert(name);
-	});
-
-
-
-</script>
 </head>
 <body>
     <div data-role="page" id="Main">
@@ -51,20 +28,8 @@ $("div[data-role='content']").css("height", content_height);
                </ul>
             </div>
                 </div>
-    <div data-role="main" class="ui-content" align="center" style="background-color:#FFFFFF;">
-        <img src=".\images\lov.JPG"   style="img-responsive"/><br><br>
-       <script type="text/javascript">
-       
-       document.write(name);</script> 님 환영합니다.
-        <br>
-        <br>
-        예정 면접 일정 : OO.OO.OO
-        <br>
-        <br>
-        모의 면접 일정 : OO.OO.OO
-        <br>
-        <br>
-        <a class="btn btn-default btn-lg" href="..\interview\InterView_menu_Selection.html" >면접 시작</a>
+    <div data-role="main" id = "main" class="ui-content" align="center" style="background-color:#FFFFFF;">
+        
     </div>
     
     <div data-role="footer" data-position="fixed">
@@ -72,5 +37,45 @@ $("div[data-role='content']").css("height", content_height);
     </div>
 
     </div>
+
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
+	<script src="./lib/jquery/jquery.min.js"></script>
+	<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<script type="text/javascript">
+	var header_height   = $("div[data-role='header']:visible").outerHeight();
+	var footer_height   = $("div[data-role='footer']:visible").outerHeight();
+	var content = $("div[data-role='content']:visible");          
+	var content_height  = $(window).height() - header_height - footer_height;            
+ 	
+	content_height -= (content.outerHeight() - content.height());   
+	$("div[data-role='content']").css("height", content_height);
+
+	$( function (){
+		$.ajax({
+			url:"./logincheck.do",
+			dataType:"json",
+			success:function(data){
+				if(data.member != null){
+				var name = data.member.userName;
+				var str = "";
+				str += "<img src='.\\images\\lov.JPG'   style='img-responsive'/><br><br>"
+				+name+"님 환영합니다.<br><br>예정 면접 일정 : OO.OO.OO<br><br>모의 면접 일정 : OO.OO.OO"+
+		        "<br><br>"+"<a class='btn btn-default btn-lg' href='.\\interview\\InterView_menu_Selection.html' >면접 시작</a>"
+				
+		        var divTag = document.getElementById("main");
+		        divTag.innerHTML = str;
+				}else{
+					location.href="./index.html"
+				}
+			}
+			
+		});
+		
+	});
+	</script>
 </body>
 </html>

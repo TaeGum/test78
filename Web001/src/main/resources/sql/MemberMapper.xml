@@ -19,7 +19,7 @@
 	
 	 <!-- SQL : SELECT ONE -->
 	 <select id="getMember"	parameterType="java.lang.String" resultMap="memberSelectMap">
-		SELECT id, pw 
+		SELECT id, pw, name   
 		FROM members 
 		WHERE ID = #{value}
 	 </select>
