@@ -5,19 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />    
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">    
+<script src="../lib/jquery/jquery.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+var header_height   = $("div[data-role='header']:visible").outerHeight();
+var footer_height   = $("div[data-role='footer']:visible").outerHeight();
+var content = $("div[data-role='content']:visible");          
+var content_height  = $(window).height() - header_height - footer_height;            
+ 
+content_height -= (content.outerHeight() - content.height());   
+$("div[data-role='content']").css("height", content_height);   
+</script>
 </head>
 <body>
     
     
 <div data-role="page" id="Main">
-                <div data-role="header" style="overflow:hidden;">
-                    <h1>스타일정보보기</h1>
+                <div data-role="header" style="overflow:hidden;" data-position="fixed">
+                    <h1>멘토신청</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
 					<ul>
@@ -36,26 +45,29 @@
 					</ul>
 				</div>
                 </div>
-     <div data-role="content" class="ui-content table-responsive" style="background-color:">
-    <p></p>
-	    <div class="btn-group btn-group-justified">
-        <a class="btn btn-default" href="..\styling\StyleCoach.html">스타일 코칭</a>
-        <a class="btn btn-default" href="..\styling\StyleInfo.html">스타일 정보</a>
-        <a class="btn btn-default" href="..\styling\InterviewBehindList.html">면접 후기</a>
+                
+                    <div data-role="content" class="ui-content">
+
+    <div id="middle" style="background-color:#EEEEEE;"> 
+	
+          <div align="right">
+        <input type="text" size=10 colspan="5" name="search">
+            <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
         </div>
-        <p></p>
-    
-    <span style="margin-left:50px; font-size:20px">업체선택</span>
+                
+    <div data-role="content" class="ui-content table-responsive" style="background-color:">
+    <span style="margin-left:50px; font-size:20px">동영상을 평가받을 멘토를 선택하세요</span>
         <table class="table" style="text-align:center;">
             <tbody>
+            
             <tr>
-            <td><img src="../images/hairshop.jpg" align="middle" width="150px" height="200px"></td>
+            <td><img src="../images/kim1.JPG" align="middle" width="150px" height="200px"></td>
             </tr>
-            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">@@@ 미용실</a></td></tr>
+            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">기술면접의 대가 김영진강사</a></td></tr>
             <tr>
-            <td><img src="../images/makeupshop.jpg" align="middle" width="150px" height="200px"></td>
+            <td><img src="../images/jin1.JPG" align="middle" width="150px" height="200px"></td>
             </tr>
-            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal2">### 뷰티</a></td></tr>
+            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal2">인성면접의 강자 엄진영강사</a></td></tr>
         </table>
 
     </div>
@@ -71,21 +83,21 @@
                                     <h4 class="modal-title" id="myModalLabel">소개 및 회원 한줄평</h4>
                                 </div>
                                 
-                                	&nbsp;&nbsp;&nbsp;-업체소개
+                                	&nbsp;&nbsp;&nbsp;-강사소개
                                 	<br>
-                                	&nbsp;&nbsp;@@@ 미용실
+                                	&nbsp;&nbsp;김영진강사는 여러 대기업 전산실 근무 경험을 바탕으로
 									<br>
-									&nbsp;&nbsp;
+									&nbsp;&nbsp;여러분들에게 최고의 기술면접 정보를 제공합니다.
 									<br>
 									<br>
 									<br>
-                                	&nbsp;&nbsp;&nbsp;-위치안내
+                                	&nbsp;&nbsp;&nbsp;-경력사항
                                 	<br>
-                                	&nbsp;&nbsp;위치 : 서울시 강남구 압구정동 11-11번지
+                                	&nbsp;&nbsp;1993년 2월 ~ 1998년 1월 : oo기업 IT팀 근무
                                 	<br>
-                                	&nbsp;&nbsp;<img src="../images/map.jpg" align="middle" width="250px" height="300px">
+                                	&nbsp;&nbsp;1998년 2월 ~ 2007년 4월 : oo그룹 SW개발팀 근무
                          			<br>
-                         			&nbsp;&nbsp;교통편 : 
+                         			&nbsp;&nbsp;2007년 5월 ~ 현재 : oo취업컨설팅 대표
 									<br>
 									<br>
 									<br>
@@ -103,51 +115,52 @@
 						            <tr>
 						                    <td>***</td>
 						                    <td>가나다</td>
-						                    <td>좋아요</td>
+						                    <td>김영진강사 짱이에요!!</td>
 						            </tr>
 						            <tr>
 						                    <td>***</td>
 						                    <td>마바사</td>
-						                    <td>좋아요</td>
+						                    <td>기술면접의 대가답게 정말 잘 가르치십니다.</td>
 						            </tr>
 						            <tr>
 						                    <td>***</td>
 						                    <td>아자차</td>
-						                    <td>최고에요!</td>
+						                    <td>감사합니다 강사님</td>
 						            </tr>
 						        
 						            </tbody>
 	      						</table>
 						
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="location='\StylingReservation.html'">예약하기</button>
+                                    <button type="button" class="btn btn-primary" onclick="location='\FeedBackReady.html'">동영상제출</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
+    
+    				<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
                                     <h4 class="modal-title" id="myModalLabel">소개 및 회원 한줄평</h4>
                                 </div>
-                                	&nbsp;&nbsp;&nbsp;-업체소개
+                                	&nbsp;&nbsp;&nbsp;-강사소개
                                 	<br>
-                                	&nbsp;&nbsp;### 뷰티
+                                	&nbsp;&nbsp;엄진영강사는 다량의 축적된 취업컨설팅 경험을 바탕으로
 									<br>
-									&nbsp;&nbsp;
+									&nbsp;&nbsp;여러분들에게 최고의 인성면접 정보를 제공합니다.
 									<br>
 									<br>
 									<br>
-                                	&nbsp;&nbsp;&nbsp;-위치안내
+                                	&nbsp;&nbsp;&nbsp;-경력사항
                                 	<br>
-                                	&nbsp;&nbsp;위치 : 서울시 강남구 압구정동 11-11번지
+                                	&nbsp;&nbsp;1994년 2월 ~ 2003년 12월 : oo기업 IT팀 근무
                                 	<br>
-                                	&nbsp;&nbsp;<img src="../images/map.jpg" align="middle" width="250px" height="300px">
+                                	&nbsp;&nbsp;2004년 1월 ~ 2008년 10월 : 비트교육센터 강사 근무
                          			<br>
-                         			&nbsp;&nbsp;교통편 : 
+                         			&nbsp;&nbsp;2009년 5월 ~ 현재 : oo취업컨설팅 대표
 									<br>
 									<br>
 									<br>
@@ -165,29 +178,30 @@
 						            <tr>
 						                    <td>***</td>
 						                    <td>가나다</td>
-						                    <td>좋아요</td>
+						                    <td>엄진영강사 짱이에요!!</td>
 						            </tr>
 						            <tr>
 						                    <td>***</td>
 						                    <td>마바사</td>
-						                    <td>좋아요</td>
+						                    <td>면접연습을 통해 이번 공채에 합격했어요]</td>
 						            </tr>
 						            <tr>
 						                    <td>***</td>
 						                    <td>아자차</td>
-						                    <td>강추합니다!!</td>
+						                    <td>감사합니다 강사님</td>
 						            </tr>
 						        
 						            </tbody>
 	      						</table>
 																
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="location='\StylingReservation.html'">예약하기</button>
+                                    <button type="button" class="btn btn-primary" onclick="location='\FeedBackReady.html'">동영상제출</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+    </div>
     </div>
 </body>
 </html>

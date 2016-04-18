@@ -17,12 +17,12 @@ var footer_height   = $("div[data-role='footer']:visible").outerHeight();
 var content = $("div[data-role='content']:visible");          
 var content_height  = $(window).height() - header_height - footer_height;            
  
-content_height -= (content.outerHeight() - content.height());   
-$("div[data-role='content']").css("height", content_height);   
-</script>
-</head>
-<body>
-<div data-role="page" id="Main">
+		content_height -= (content.outerHeight() - content.height());   
+		$("div[data-role='content']").css("height", content_height);   
+		</script>
+		</head>
+		<body>
+		<div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden;" data-position="fixed">
                     <h1>모의면접</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
@@ -43,28 +43,30 @@ $("div[data-role='content']").css("height", content_height);
 					</ul>
 				</div>
                 </div>
-	<div data-role="content" class="ui-content">
-    <div id="middle" style="background-color:#EEEEEE;" align="center"> 
-        <br>
-        <br>
-        <img src="../images/interviewer.jpg" class="img-responsive"><br>
-        <button class="btn btn-default btn-lg" onclick="location='..\feedback\FeedBack.html'">FeedBack</button>
-        <br>
-        <br>
-        <button class="btn btn-default btn-lg" >My Record</button>
-        <br>
-        <br>
-        
-    </div>
-   <div id="bottom" style="background-color:#FFA500;" >
-        <div class="btn-group btn-group-justified" >
-           <a class="btn btn-default btn-lg">뒤로가기</a>
-        </div>
-    </div>
-	</div>
-	<div data-role="footer" data-position="fixed">
-	</div>
-</div>
-</body>
-</html>
+		
+		
+				<div data-role="content" class="ui-content">
+			    <div id="middle" style="background-color:#EEEEEE;" align="center"> 
+			        <br>
+			        <br>
+			        <img src="../images/interviewer.jpg" class="img-responsive"><br>
+			        <button class="btn btn-default btn-lg" onclick="location='..\feedback\FeedBack.html'">FeedBack</button>
+			        <br>
+			        <br>
+			        <button class="btn btn-default btn-lg" >My Record</button>
+			        <br>
+			        <br>
+			        
+			    </div>
+			   <div id="bottom" style="background-color:#FFA500;" >
+			        <div class="btn-group btn-group-justified" >
+			           <a class="btn btn-default btn-lg">뒤로가기</a>
+			        </div>
+			    </div>
+				</div>
+				<div data-role="footer" data-position="fixed">
+				</div>
+			</div>
+			</body>
+			</html>
     
