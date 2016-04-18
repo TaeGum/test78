@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+
+	<resultMap id="memberSelectMap" type="com.model2.mvc.service.domain.Member">
+		<result property="userId" 	column="id" 			jdbcType="VARCHAR"/>
+		<result property="password"	column="pw" 		jdbcType="VARCHAR" />
+		<result property="userName" column="name" 		jdbcType="VARCHAR" />
+		<!-- <result property="Birth" 	column="birth" 					jdbcType="DATE" /> -->
+		<result property="address" 	column="addr" 					jdbcType="VARCHAR" />
+		<result property="age" 		column="age" 		jdbcType="INTEGER" />
+		<result property="email" 	column="email" 				jdbcType="VARCHAR"  />
+		<result property="tel" 		column="tel" 			jdbcType="VARCHAR" />
+	</resultMap>
+	
+	 <!-- SQL : SELECT ONE -->
+	 <select id="getMember"	parameterType="java.lang.String" resultMap="memberSelectMap">
+		SELECT id, pw 
+		FROM members 
+		WHERE ID = #{value}
+	 </select>
+	 
+	 <!-- <insert 	id="getMember"		parameterType="member" >
+	 	INSERT
+		INTO members( id , pw, name, email, tel) 
+		VALUES	 (	#{userId} , #{password}, '금동수', 'abc@abcc.com', '123-222-333')
+	 </insert> -->
+	 
+</mapper>

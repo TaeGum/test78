@@ -4,21 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
 <script src="./lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-<script>
+<script type="text/javascript">
 var header_height   = $("div[data-role='header']:visible").outerHeight();
 var footer_height   = $("div[data-role='footer']:visible").outerHeight();
 var content = $("div[data-role='content']:visible");          
 var content_height  = $(window).height() - header_height - footer_height;            
  
 content_height -= (content.outerHeight() - content.height());   
-$("div[data-role='content']").css("height", content_height);   
+$("div[data-role='content']").css("height", content_height);
+
+	$( function (){
+		var name= '${request.getSession(true).getAttribute("member").getUserName()}';
+		alert(name);
+	});
+
+
+
 </script>
 </head>
 <body>
@@ -45,7 +53,9 @@ $("div[data-role='content']").css("height", content_height);
                 </div>
     <div data-role="main" class="ui-content" align="center" style="background-color:#FFFFFF;">
         <img src=".\images\lov.JPG"   style="img-responsive"/><br><br>
-        최유정님 환영합니다.
+       <script type="text/javascript">
+       
+       document.write(name);</script> 님 환영합니다.
         <br>
         <br>
         예정 면접 일정 : OO.OO.OO
