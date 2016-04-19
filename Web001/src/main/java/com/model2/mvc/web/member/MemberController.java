@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.apache.ibatis.session.SqlSession;
 
 import com.model2.mvc.service.domain.*;
 import com.model2.mvc.service.member.*;
+import com.model2.mvc.service.student.*;
 
 @Controller
 public class MemberController {
@@ -26,6 +28,10 @@ public class MemberController {
 	@Autowired
 	@Qualifier("memberServiceImpl")
 	private MemberService memberService;
+	
+	@Autowired
+	@Qualifier("studentServiceImpl")
+	private StudentService studentService;
 	
 	public MemberController(){
 		System.out.println(this.getClass());
@@ -59,12 +65,28 @@ public class MemberController {
 	
 	//로그인 유무 확인
 	@RequestMapping(value="/logincheck.do")
-	public void afterlogin(HttpSession session, Model model){
+	public void afterlogin(HttpSession session, Model model) throws Exception{
 		Member m = (Member) session.getAttribute("member");
 		
 		System.out.println("afterlogin :: "+m);
 		
+		Student s = studentService.getStudent(m.getUserId());
+		
+		System.out.println("afterlogin :: "+s);
+		
 		model.addAttribute("member", m);
+		model.addAttribute("student",s);
+		
+	}
+	
+	//로그아웃
+	@RequestMapping(value="/logout.do")
+	public void logout(HttpSession session ) throws Exception{
+		
+		System.out.println("/user/logout : POST");
+		
+		session.invalidate();
+	
 	}
 	
 

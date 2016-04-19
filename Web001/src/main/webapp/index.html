@@ -13,8 +13,7 @@
 				<div data-role="navbar" data-grid="c">
 					<ul>
 						<li>
-						
-                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                            <a href=".\"><i class="fa fa-home fa-5x"></i></a>
                         </li>
 						<li>
                             <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
@@ -80,8 +79,23 @@
 	$("div[data-role='content']").css("height", content_height); 
 
 	$( function (){
+		//세션체크..(로그인체크..)
+		$.ajax({
+			url:"./logincheck.do",
+			dataType:"json",
+			success:function(data){
+				if(data.member != null){
+					location.href="./afterlogin.html"
+				}else{
+					alert("로그인이 필요합니다");
+				}
+			}
+			
+		});
+		
 		$("input[name='id']").focus();
 		
+	
 		$("#login").on("click",function(){
 			
 			var id =$("input[name='id']").val();

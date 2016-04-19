@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="StudentMapper">
+
+	<resultMap id="studentSelectMap" type="student">
+		<result property="student.userId" column="STID" jdbcType="VARCHAR"/>
+		<!-- <result property="resume" column="RESUM" jdbcType="CLOB"/> -->
+		<result property="spicture" column="SPIC" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="getStudent"	parameterType="java.lang.String" resultMap="studentSelectMap">
+		SELECT stid, spic      
+		FROM student 
+		WHERE stid = #{value}
+	 </select>
+</mapper>

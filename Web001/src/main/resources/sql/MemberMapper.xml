@@ -24,6 +24,8 @@
 		WHERE ID = #{value}
 	 </select>
 	 
+	 
+	 
 	 <!-- <insert 	id="getMember"		parameterType="member" >
 	 	INSERT
 		INTO members( id , pw, name, email, tel) 
