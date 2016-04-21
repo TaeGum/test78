@@ -66,13 +66,17 @@
 				//alert(img);
 				
 				if(img == null){
-					img = ".\\images\\default.jpg"
+					img = "./images/default.jpg"
 				}
 				
 				str += "<img src='"+img+"'   style='img-responsive'/><br><br>"
 				+name+"님 환영합니다.<br><br>예정 면접 일정 : OO.OO.OO<br><br>모의 면접 일정 : OO.OO.OO"+
-		        "<br><br>"+"<a class='btn btn-default btn-lg' href='.\\interview\\InterView_menu_Selection.html' >면접 시작</a>"
-		        
+		        "<br><br>";
+		        if(img == "./images/default.jpg"){
+		        	str +="<a class='btn btn-default btn-lg' href='./upload.html'>정보 입력 </a>";
+		        }else{
+		        	str +="<a class='btn btn-default btn-lg' href='./interview/InterView_menu_Selection.html' >면접 시작</a>";
+		        }
 		        var divTag = document.getElementById("main");
 		        divTag.innerHTML = str;
 				}else{

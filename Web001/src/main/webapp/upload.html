@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 id='banner'>Upload Files</h1>
+  <i>Uploading File With Ajax</i><br/>
+<form id="form2" method="post" action="/upload.do" enctype="multipart/form-data">
+  <!-- File input -->    
+  <input name="file2" id="file2" type="file" /><br/>
+</form>
+ 
+<button value="Submit" onclick="uploadJqueryForm()" >Upload</button><i>Using JQuery Form Plugin</i><br/>
+<button value="Submit" onclick="uploadFormData()" >Upload</button><i>Using FormData Object</i>
+ 
+<div id="result"></div>
+</body>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
+<script src="./lib/jquery/jquery.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="./lib/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="./lib/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="./lib/form-master/jquery.form.js"></script>
+
+<script type='text/javascript'>
+
+function uploadJqueryForm(){
+    $('#result').html('');
+ 
+   $("#form2").ajaxForm({
+    success:function(data) { 
+          $('#result').html(data);
+     },
+     dataType:"text"
+   }).submit();
+}
+function uploadFormData(){
+    $('#result').html('');
+ 
+  var oMyForm = new FormData();
+  oMyForm.append("file", file2.files[0]);
+ 
+  $.ajax({
+    url: './upload.do',
+    data: oMyForm,
+    dataType: 'text',
+    processData: false,
+    contentType: false,
+    type: 'POST',
+    success: function(data){
+      $('#result').html(data);
+    }
+  });
+}
+
+</script>
+
+</html>

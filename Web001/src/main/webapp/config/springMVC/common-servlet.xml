@@ -4,6 +4,7 @@
 		xmlns:context="http://www.springframework.org/schema/context"
 		xmlns:mvc="http://www.springframework.org/schema/mvc"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" 
 		xsi:schemaLocation=
 				"http://www.springframework.org/schema/beans 
 				http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -52,6 +53,11 @@
     <bean id="viewResolver"
 				class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
 	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+        p:maxUploadSize="1000000"/>
+        
+        <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"
+       p:extractValueFromSingleKeyModel="true" />
 	
 	<!--	
 		■ / 형식의 Mapping 은 모든(정적,동적 자원) 요청시 처리책임
