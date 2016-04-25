@@ -24,4 +24,16 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.getStudent(userId);
 	}
 
+	@Override
+	public void updateStudent(Student student) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void uploadStudent(Student student) throws Exception {
+		// TODO Auto-generated method stub
+		studentDao.uploadStudent(student);
+	}
+
 }

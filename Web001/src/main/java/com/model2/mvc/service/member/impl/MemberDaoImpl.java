@@ -3,6 +3,8 @@ package com.model2.mvc.service.member.impl;
 import com.model2.mvc.service.domain.*;
 import com.model2.mvc.service.member.*;
 
+import java.util.*;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,6 +37,13 @@ public class MemberDaoImpl implements MemberDao {
 		
 		//sqlSession.insert("MemberMapper.getMember", member);
 		
+	}
+
+	@Override
+	public List<Member> getMemberList() throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.selectList("MemberMapper.getMemberList");
 	}
 
 }

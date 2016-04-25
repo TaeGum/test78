@@ -37,7 +37,8 @@ public class MemberController {
 		System.out.println(this.getClass());
 	}
 	
-	@RequestMapping( value="/login.do", method = RequestMethod.POST)
+	//로그인
+	@RequestMapping( value="/login", method = RequestMethod.POST)
 	public void login(@RequestBody Member member,
 						HttpSession session,
 						Model model) throws Exception{
@@ -64,7 +65,7 @@ public class MemberController {
 	}
 	
 	//로그인 유무 확인
-	@RequestMapping(value="/logincheck.do")
+	@RequestMapping(value="/logincheck")
 	public void afterlogin(HttpSession session, Model model) throws Exception{
 		Member m = (Member) session.getAttribute("member");
 		
@@ -80,13 +81,25 @@ public class MemberController {
 	}
 	
 	//로그아웃
-	@RequestMapping(value="/logout.do")
-	public void logout(HttpSession session ) throws Exception{
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session ) throws Exception{
 		
-		System.out.println("/user/logout : POST");
+		System.out.println("/logout");
 		
 		session.invalidate();
+		
+		return "redirect:/index.html";
+		
+	}
 	
+	//리스트 가져오기
+	@RequestMapping(value="/getlist")
+	public void getlist(Model model) throws Exception{
+		System.out.println("/getlist");
+		
+		Map<String, Object> map = memberService.getMemberList();
+		
+		model.addAttribute("list",map.get("list"));
 	}
 	
 

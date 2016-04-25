@@ -4,7 +4,7 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="MemberMapper">
+<mapper namespace="UploadMapper">
 
 	<resultMap id="memberSelectMap" type="com.model2.mvc.service.domain.Member">
 		<result property="userId" 	column="id" 			jdbcType="VARCHAR"/>
@@ -23,18 +23,4 @@
 		FROM members 
 		WHERE ID = #{value}
 	 </select>
-	 
-	 <select id="getMemberList"	resultMap="memberSelectMap">
-		SELECT id, pw, name, ROWNUM AS row_seq   
-		FROM members 
-	 </select>
-	 
-	 
-	 
-	 <!-- <insert 	id="getMember"		parameterType="member" >
-	 	INSERT
-		INTO members( id , pw, name, email, tel) 
-		VALUES	 (	#{userId} , #{password}, '금동수', 'abc@abcc.com', '123-222-333')
-	 </insert> -->
-	 
 </mapper>

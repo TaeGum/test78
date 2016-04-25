@@ -8,8 +8,9 @@
 
 	<resultMap id="studentSelectMap" type="student">
 		<result property="student.userId" column="STID" jdbcType="VARCHAR"/>
-		<!-- <result property="resume" column="RESUM" jdbcType="CLOB"/> -->
+		<result property="resume" column="RESUM" jdbcType="CLOB"/>
 		<result property="spicture" column="SPIC" jdbcType="VARCHAR"/>
+		<result property="uploadpath" column="SPIC" jdbcType="VARCHAR"/>
 	</resultMap>
 	
 	<select id="getStudent"	parameterType="java.lang.String" resultMap="studentSelectMap">
@@ -17,4 +18,12 @@
 		FROM student 
 		WHERE stid = #{value}
 	 </select>
+	 
+	 <update id="uploadStudent" parameterType="student">
+		UPDATE student  
+		<set>
+			spic = #{uploadpath} 
+		</set>
+		WHERE stid = #{student.userId}
+	</update>
 </mapper>

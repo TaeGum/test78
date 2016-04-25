@@ -71,6 +71,12 @@
 	<mvc:resources mapping="/css/**" location="/css/" />
    	<mvc:resources mapping="/images/**" location="/images/" />
    	<mvc:resources mapping="/javascript/**" location="/javascript/" />
+   	<mvc:resources mapping="/**" location="/" />
+   	<mvc:resources mapping="/feedback/**" location="/feedback/" />
+   	<mvc:resources mapping="/interview/**" location="/interview/" />
+   	<mvc:resources mapping="/styling/**" location="/styling/" />
+   	<mvc:resources mapping="/user/**" location="/user/" />
+   	<!-- <mvc:resources mapping="/upload/**" location="/upload/" /> -->
    	
 
 	<!-- 	:: exception resolver  선언 :: 서술적 / 선언적 예외처리 
@@ -109,8 +115,19 @@
 	 <!-- /////// Client 로 전달되는 Domain Object  를 JSON Data  변환위한 설정            /////// -->
 	 <!-- Client  Response 받기원핟는 Content 타입을 선택,협상(Negotiation)하는 ViewResolver 설정 --> 
 	 <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-         <property name="defaultContentType" value="text/html"/>
 
+        <property name="defaultContentType" value="text/html"/>
+        <property name="viewResolvers">
+        	<list>
+	            <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+				<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+				    <property name="prefix" value="/WEB-INF/jsp/"/>
+				    <property name="suffix" value=".jsp"/>
+				</bean>
+        	</list>
+    	</property>
+    
          <property name="defaultViews">
              <list>
                  <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>

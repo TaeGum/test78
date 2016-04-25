@@ -9,7 +9,7 @@
 <body>
     <div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden; background-color:#FAECC5;" data-position="fixed">
-                    <h1>After Login</h1>
+                    <h1>MemberList</h1>
                     <a href="#" id="logout" style="align:right;"><i class="fa fa-cog"></i></a>
             <div data-role="navbar" data-grid="c">
                <ul>
@@ -29,6 +29,8 @@
             </div>
                 </div>
     <div data-role="main" id = "main" class="ui-content" align="center" style="background-color:#FFFFFF;">
+        <h1>MemberList 테스트 페이지</h1>
+        
         
     </div>
     
@@ -53,36 +55,31 @@
  	
 	content_height -= (content.outerHeight() - content.height());   
 	$("div[data-role='content']").css("height", content_height);
-
+	
 	$( function (){
 		$.ajax({
-			url:"./logincheck",
+			url:"./getlist",
 			dataType:"json",
 			success:function(data){
-				if(data.member != null){
-				var name = data.member.userName;
-				var str = "";
-				var img = data.student.spicture;
-				//alert(img);
+				alert("성공");
+				alert(data.list);
+				//if(data.member != null){
+				var str = "<table>";
+				var list = data.list;
 				
-				if(img == null){
-					img = "./images/default.jpg"
-				}
+				for( var i = 0; i < list.length; i ++){
+					str += "<tr>";
+					str += "<td>" + list[i].userId + "</td>";
+					str += "<td>" + list[i].userName + "</td>";
+					str += "</tr>";
+					//alert(list[i].userId);
+					
+					}
+				str += "</table>";
 				
-				str += "<a href='/uploadst.html'><img src='"+img+"'   style='img-responsive'/></a><br><br>"
-				+name+"님 환영합니다.<br><br>예정 면접 일정 : OO.OO.OO<br><br>모의 면접 일정 : OO.OO.OO"+
-		        "<br><br>";
-		        if(img == "./images/default.jpg"){
-		        	str +="<a class='btn btn-default btn-lg' href='/abc.html'>정보 입력 </a>";
-		        }else{
-		        	str +="<a class='btn btn-default btn-lg' href='./interview/InterView_menu_Selection.html' >면접 시작</a>";
-		        }
-		        var divTag = document.getElementById("main");
+				var divTag = document.getElementById("main");
 		        divTag.innerHTML = str;
-				}else{
-					alert("로그인이 필요합니다");
-					location.href="./index.html"
-				}
+				//}
 			}
 			
 		});
@@ -92,6 +89,7 @@
 		});
 		
 	});
+	
 	</script>
 </body>
 </html>

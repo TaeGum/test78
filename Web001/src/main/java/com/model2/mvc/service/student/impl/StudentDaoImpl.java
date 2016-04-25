@@ -28,4 +28,17 @@ public class StudentDaoImpl implements StudentDao {
 		return (Student)sqlSession.selectOne("StudentMapper.getStudent",userId);
 	}
 
+	@Override
+	public void updateStudent(Student student) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void uploadStudent(Student student) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("Dao::"+student);
+		sqlSession.update("StudentMapper.uploadStudent", student);
+	}
+
 }
