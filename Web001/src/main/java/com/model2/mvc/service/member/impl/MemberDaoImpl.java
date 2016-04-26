@@ -42,7 +42,6 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public List<Member> getMemberList() throws Exception {
 		// TODO Auto-generated method stub
-		
 		return sqlSession.selectList("MemberMapper.getMemberList");
 	}
 

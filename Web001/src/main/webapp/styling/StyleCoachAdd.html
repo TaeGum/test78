@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코치등록</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>      
+</head>        
+    
+<div data-role="page" id="Main">
+                <div data-role="header" style="overflow:hidden;">
+                    <h1>스타일리스트등록</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+                </div>
+    <div data-role="main" class="ui-content">
+    <div id="middle" style="background-color:#EEEEEE;"> 
+    <br>    
+        
+    <table> 
+      
+      <tr>
+      <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;아이디&nbsp;&nbsp;&nbsp;</td>
+      <td>
+      <input type="text" name="userId">
+      </td>
+      </tr>  
+          
+   	 <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	 </tr>
+
+     <tr>
+         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;코치사진&nbsp;&nbsp;&nbsp;</td>
+         <td>
+         <input type="text" name="coachPicture">
+         </td>
+     </tr>
+
+	 <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+
+     <tr>
+         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;코치이름&nbsp;&nbsp;&nbsp;</td>
+         <td>
+         <input type="text" name="coachName">
+         </td>
+     </tr> 
+
+	 <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	 
+	 <tr>
+         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;코치종류&nbsp;&nbsp;&nbsp;</td>
+         <td>
+         <input type="text" name="coachType">
+         </td>
+     </tr> 
+
+	 <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+
+     <tr>
+         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;코치소개&nbsp;&nbsp;&nbsp;</td>
+         <td>
+             <textarea name="coachPresentation" rows=2 cols=20 colspan="9" wrap=off></textarea>
+         </td>
+     </tr>
+     
+     <tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	
+	     <tr>
+         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체번호&nbsp;&nbsp;&nbsp;</td>
+         <td>
+         <input type="text" id="companyNumber" name="companyNumber">
+         </td>
+     </tr>
+
+     </table>    
+
+    <br>
+    
+        <div class="btn-group btn-group-justified" >
+        	<a class="btn btn-default btn-lg" id = addstylecoach>입력</a>
+        </div>
+	
+	<script>
+		
+  	 $(function() {
+  		 
+  		 	$("#addstylecoach").on("click", function() {
+  			
+  				var STID = $("input[name='userId']").val();
+  				var CPIC = $("input[name='coachPicture']").val();
+  				var CNAME = $("input[name='coachName']").val();
+  				var CTYPE = $("input[name='coachType']").val();
+  				var CPRES = $("input[name='coachPresentation']").val();
+  				var COMNO = $("input[name='companyNumber']").val();
+			
+  		 	$.ajax(
+					{
+						url : "../addstylecoach.do",
+						method : "POST" ,
+						dataType : "json" ,
+						headers : {
+							"Accept" : "application/json",
+							"Content-Type" : "application/json"
+						},
+						
+						data : JSON.stringify({
+							userId : STID,
+							coachPicture : CPIC, 
+							coachName : CNAME, 
+							coachType : CTYPE, 
+							coachPresentation : CPRES, 
+							companyNumber : COMNO
+
+						}),
+							success : function(JSONData , status) {
+								
+							location.href="./StyleCoach.html"		
+						}
+					});
+  			});
+  		});
+	</script>
+	
+    </div>
+  
+</body>

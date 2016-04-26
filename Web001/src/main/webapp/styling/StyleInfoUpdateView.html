@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>업체정보수정</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>    
+
+</head>
+<body>
+<div data-role="page" id="Main">
+                <div data-role="header" style="overflow:hidden;">
+                    <h1>공통UI</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+                </div>
+                
+    <div data-role="main" class="ui-content" style="background-color:#EEEEEE;">
+    			
+		 <table>
+		 
+		 <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체번호&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	         <input type="text" id="companyNumber" name="companyNumber">
+	     	 </td>
+	     </tr>
+	     
+	     <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		 </tr>
+		 
+		 <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체명&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	         <input type="text" id="companyName" name="companyName">
+	         </td>
+	     </tr>
+	
+		 <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		 </tr>
+	
+	     <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체종류&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	         <input type="text" id="companyType" name="companyType">
+	         </td>
+	     </tr> 
+	
+		 <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		 </tr>
+		 
+		 <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체주소&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	         <input type="text" id="companyAddr" name="companyAddr">
+	         </td>
+	     </tr> 
+	
+		 <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		</tr>
+	
+	     <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체소개&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	             <textarea id="companyPresentation" name="companyPresentation" rows=2 cols=20 colspan="9" wrap=off></textarea>
+	         </td>
+	     </tr>
+	     
+	     <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		</tr>
+	
+		 <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체사진&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	         <input type="text" id="companyPicture" name="companyPicture">
+	         </td>
+	     </tr> 
+	    
+	     <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		</tr>
+		
+		 <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체지도&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	         <input type="text" id="companyMap" name="companyMap">
+	         </td>
+	     </tr> 
+	     
+	     </table>   	
+			
+	</div>
+	
+	<script>
+		$(function(){
+			var companyNumber = location.href.split("?")[1].split("=")[1];
+			$("#companyNumber").html(companyNumber);
+			alert(companyNumber);
+			
+			$.getJSON("../getcompany?companyNumber=" + companyNumber, 
+			
+			function(result) {
+				console.log(result);
+			});
+			
+			$.ajax({
+				url : "../getcompany?companyNumber=" + companyNumber, 
+				method : "POST" ,
+				dataType : "json" ,
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+		
+			success : function(data) {
+				
+	    		$('#companyNumber').val(data.info.companyNumber);
+                $('#companyName').val(data.info.companyName);
+                $('#companyType').val(data.info.companyType);
+                $('#companyAddr').val(data.info.companyAddr);
+                $('#companyPresentation').val(data.info.companyPresentation);
+                $('#companyPicture').val(data.info.companyPicture);
+                $('#companyMap').val(data.info.companyMap);
+    		
+			}								
+		});	
+		
+		$("#updatecompany").on("click",function(){
+      			
+    			var COMNO = $("input[name='companyNumber']").val();
+  				var COMNAME = $("input[name='companyName']").val();
+  				var COMTYPE = $("input[name='companyType']").val();
+  				var COMADDR = $("input[name='companyAddr']").val();
+  				var COMPRES = $("input[name='companyPresentation']").val();
+  				var COMPIC = $("input[name='companyPicture']").val();
+  				var COMMAP = $("input[name='companyMap']").val();
+			
+  		 	$.ajax({
+						url : "../updatecompany",
+						method : "POST" ,
+						dataType : "json" ,
+						headers : {
+							"Accept" : "application/json",
+							"Content-Type" : "application/json"
+						},
+						
+						data : JSON.stringify({
+							
+							companyNumber : COMNO,
+							companyName : COMNAME,
+							companyType : COMTYPE, 
+							companyAddr : COMADDR, 
+							companyPresentation : COMPRES, 
+							companyPicture : COMPIC, 
+							companyMap : COMMAP
+
+						}),
+							success : function(JSONData , status) {
+								
+							location.href="./StyleInfo.html"		
+						}
+					});
+  			});	
+		});	
+	</script> 
+
+   	<br>
+    
+        <div class="btn-group btn-group-justified">
+        	<a class="btn btn-default btn-lg" id=updatecompany>수정</a>
+        </div>        	     
+</body>
+</html>

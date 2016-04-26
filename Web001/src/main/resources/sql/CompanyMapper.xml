@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CompanyMapper">
+
+	 <resultMap id="companySelectMap" type="com.model2.mvc.service.domain.Company">
+		<result property="companyNumber" 		column="COMNO" 		jdbcType="VARCHAR"/>
+		<result property="companyName"			column="COMNAME" 	jdbcType="VARCHAR"/>
+		<result property="companyType" 			column="COMTYPE" 	jdbcType="VARCHAR"/>
+		<result property="companyAddr" 			column="COMADDR" 	jdbcType="VARCHAR"/>
+		<result property="companyPresentation" 	column="COMPRES" 	jdbcType="VARCHAR"/>
+		<result property="companyPicture" 		column="COMPIC" 	jdbcType="VARCHAR"/>
+		<result property="companyMap" 			column="COMMAP" 	jdbcType="VARCHAR"/>
+	</resultMap>
+
+	 <!-- insert -->
+	 <insert id="addCompany" parameterType="company">
+		INSERT
+		INTO company(COMNO, COMNAME, COMTYPE, COMADDR, COMPRES, COMPIC, COMMAP)
+		VALUES (seq_company_COMNO.nextval , #{companyName:VARCHAR} , #{companyType:VARCHAR} , 
+		#{companyAddr:VARCHAR} , #{companyPresentation:VARCHAR} , #{companyPicture:VARCHAR} , #{companyMap:VARCHAR})
+	 </insert>
+	 
+	 <!-- select List -->
+	 <select id="getCompanyList" resultMap="companySelectMap">
+	 	SELECT COMNO, COMNAME, COMTYPE, COMADDR, COMPRES, COMPIC, COMMAP, ROWNUM AS row_seq
+	 	FROM company
+	 </select>
+	 
+	 <!-- select -->
+	 <select id="getCompany" parameterType="java.lang.String" resultMap="companySelectMap">
+		SELECT COMNO, COMNAME, COMTYPE, COMADDR, COMPRES, COMPIC, COMMAP
+		FROM company 
+		WHERE COMNO = #{value}
+	 </select>
+	 
+	 <!-- update -->
+	 <update id="updateCompany" parameterType="company">
+	 	UPDATE company
+	 	<set>
+	 	COMNAME = #{companyName:VARCHAR}, 
+	 	COMTYPE = #{companyType:VARCHAR}, 
+	 	COMADDR = #{companyAddr:VARCHAR}, 
+	 	COMPRES = #{companyPresentation:VARCHAR}, 
+	 	COMPIC = #{companyPicture:VARCHAR}, 
+	 	COMMAP = #{companyMap:VARCHAR}
+	 	</set>
+	 	WHERE COMNO = #{companyNumber:VARCHAR}
+	 </update>
+	 
+	 <!-- delete -->
+	 <delete id="deleteCompany" parameterType="company">
+	 	DELETE
+	 	FROM company
+	 	WHERE COMNO = #{value}
+	 </delete>
+	 	 
+</mapper>

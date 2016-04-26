@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="StyleCoachMapper">
+
+	<resultMap id="stylecoachSelectMap" type="com.model2.mvc.service.domain.StyleCoach">
+		<result property="userId" 						column="STID" 		jdbcType="VARCHAR"/>
+		<result property="coachPicture"					column="CPIC" 		jdbcType="VARCHAR"/>
+		<result property="coachType" 					column="CTYPE" 		jdbcType="VARCHAR"/>
+		<result property="coachPresentation" 			column="CPRES" 		jdbcType="VARCHAR"/>
+		<result property="companyNumber" 				column="COMNO" 		jdbcType="INTEGER"/>
+		<result property="coachName" 					column="CNAME" 		jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- insert -->
+	<insert id="addStyleCoach" parameterType="stylecoach">
+	 	INSERT 
+	 	INTO stylecoach (STID, CPIC, CTYPE, CPRES, COMNO, CNAME)
+	 	VALUES (#{userId:VARCHAR} , #{coachPicture:VARCHAR} , #{coachName:VARCHAR}, 
+	 	#{coachType:VARCHAR} , #{coachPresentation:VARCHAR} , #{companyNumber:INTEGER})
+	</insert>
+	 
+	<!-- select List -->
+	<select id="getStyleCoachList" resultMap="stylecoachSelectMap">
+	 	SELECT STID, CPIC, CTYPE, CPRES, COMNO, CNAME, ROWNUM AS row_seq
+	 	FROM stylecoach
+	</select>
+	
+	<!-- select --> 
+	<select id="getStyleCoach"	parameterType="java.lang.String" resultMap="stylecoachSelectMap">
+		SELECT STID, CPIC, CNAME, CTYPE, CPRES, COMNO
+		FROM stylecoach
+		WHERE CNAME = #{value}
+	</select>
+	 
+	<update id="updateStyleCoach" parameterType="stylecoach">
+	 	UPDATE stylecoach
+	 	<set>
+
+	 	</set>
+	 	WHERE STID 
+	</update>
+
+</mapper>
