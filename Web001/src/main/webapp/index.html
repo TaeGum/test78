@@ -35,12 +35,11 @@
             <a class="btn btn-default"  href="./user/PasswordEmail.html" >비밀번호찾기</a>
 	       </div>
         <br>
-	   <br>
-	   <img src = "./images/login.JPG" style="img-responsive">
-	   <br>
-        <br>
+	   <div class="thumbnail">
+	   <img src = "./images/login.JPG">
+	   </div>
+
 	   <table>
-			
 		    <tr>
 			<td>아이디</td>
 			<td><input type="text" data-mini="true"  name="id" id="id" size="10"></td></tr>         <!-- 아이디 -->		
@@ -48,7 +47,6 @@
 			<td>패스워드&nbsp;&nbsp;</td>
 			<td><input type="password" data-mini="true"  name="pwd" id="pwd" size="10"></td>
 			</tr><!-- 패스워드 -->
-			
 		</table>
 		<br>
 		<br>
@@ -62,23 +60,21 @@
     </div>
 
     </div>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<!-- script -->
 <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
+<link rel="stylesheet" href="./css/common.css">
 <script src="./lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="./javascript/commonlayer.js"></script>
+<script src="./lib/nailthumb/jquery.nailthumb.1.1.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 
 	<script>
-	var header_height   = $("div[data-role='header']:visible").outerHeight();
-	var footer_height   = $("div[data-role='footer']:visible").outerHeight();
-	var content = $("div[data-role='content']:visible");          
-	var content_height  = $(window).height() - header_height - footer_height;            
- 
-	content_height -= (content.outerHeight() - content.height());   
-	$("div[data-role='content']").css("height", content_height); 
-
 	$( function (){
+		
 		//세션체크..(로그인체크..)
 		$.ajax({
 			url:"./logincheck",
@@ -100,9 +96,7 @@
 			
 			var id =$("input[name='id']").val();
 			var pw =$("input[name='pwd']").val();
-			
-			//alert(id);
-			
+						
 			if(id == null || id.length <1) {
 				alert('ID 를 입력하지 않으셨습니다.');
 				$("input[name='id']").focus();
@@ -130,11 +124,6 @@
 						}),
 						success : function(JSONData , status) {
 							 if( JSONData.member != null ){
-								//Debug...
-									//alert(status);
-									
-									//alert("JSONData : \n"+JSONData.member.userName);
-								//document.cookie = JSONData;
 								location.href="./afterlogin.html"
 							}else{
 								alert("아이디 , 패스워드를 확인하시고 다시 로그인...");
@@ -144,5 +133,6 @@
 			});
 		});
 	</script>
+
 </body>
 </html>

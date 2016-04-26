@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-
 </head>
 <body>
-    <div data-role="page" id="Main">
+<div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden; background-color:#FAECC5;" data-position="fixed">
                     <h1>MemberList</h1>
                     <a href="#" id="logout" style="align:right;"><i class="fa fa-cog"></i></a>
@@ -29,8 +28,9 @@
             </div>
                 </div>
     <div data-role="main" id = "main" class="ui-content" align="center" style="background-color:#FFFFFF;">
-        <h1>MemberList 테스트 페이지</h1>
-        
+        <h1>ID CHECK 테스트 페이지</h1>
+        <input type="text" id="id" value=""/>
+        <span id="result_id_msg"></span>
         
     </div>
     
@@ -40,55 +40,37 @@
 
     </div>
 
-    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
 	<script src="./lib/jquery/jquery.min.js"></script>
 	<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-	<script type="text/javascript">
-	var header_height   = $("div[data-role='header']:visible").outerHeight();
-	var footer_height   = $("div[data-role='footer']:visible").outerHeight();
-	var content = $("div[data-role='content']:visible");          
-	var content_height  = $(window).height() - header_height - footer_height;            
- 	
-	content_height -= (content.outerHeight() - content.height());   
-	$("div[data-role='content']").css("height", content_height);
 	
-	$( function (){
-		$.ajax({
-			url:"/getlist",
-			dataType:"json",
-			success:function(data){
-				alert("성공");
-				alert(data.list);
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#id').keyup(function(){
+			if($('#id').val().length > 5){
+				var id = $(this).val();
 				
-				var str = "<table>";
-				var list = data.list;
-				
-				for( var i = 0; i < list.length; i ++){
-					str += "<tr>";
-					str += "<td>" + list[i].userId + "</td>";
-					str += "<td>" + list[i].userName + "</td>";
-					str += "</tr>";
-					//alert(list[i].userId);					
+				$.getJSON("./idcheck",{
+					id: id
+				}, 
+				function(data){
+					var dup = data.result;
+					console.log(dup);
+					console.log(data);
+					if(dup == true ){
+						$('#result_id_msg').html("사용가능한 아이디 입니다");
+					}else{
+						$('#result_id_msg').html("사용불가능한 아이디 입니다");
 					}
-				str += "</table>";
-				
-				var divTag = document.getElementById("main");
-		        divTag.innerHTML = str;
-				
+				});
 			}
-			
 		});
-		
-		$( "#logout" ).on("click" , function() {
-			$(window.parent.document.location).attr("href","./logout");
-		});
-		
 	});
 	
 	</script>
+
 </body>
 </html>

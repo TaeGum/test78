@@ -10,7 +10,7 @@
     <div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden; background-color:#FAECC5;" data-position="fixed">
                     <h1>After Login</h1>
-                    <a href="#" id="logout" style="align:right;"><i class="fa fa-cog"></i></a>
+                    <a href="#" id="logout" style='align:right;'><i class="fa fa-cog"></i></a>
             <div data-role="navbar" data-grid="c">
                <ul>
                 	<li>
@@ -39,21 +39,17 @@
     </div>
 
     <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">    
+	<link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">  
+	<link rel="stylesheet" href="./lib/nailthumb/jquery.nailthumb.1.1.min.css">
+	<link rel="stylesheet" href="./css/common.css"> 
 	<script src="./lib/jquery/jquery.min.js"></script>
 	<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="./lib/nailthumb/jquery.nailthumb.1.1.min.js"></script>
+	<script src="./javascript/commonlayer.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 	<script type="text/javascript">
-	var header_height   = $("div[data-role='header']:visible").outerHeight();
-	var footer_height   = $("div[data-role='footer']:visible").outerHeight();
-	var content = $("div[data-role='content']:visible");          
-	var content_height  = $(window).height() - header_height - footer_height;            
- 	
-	content_height -= (content.outerHeight() - content.height());   
-	$("div[data-role='content']").css("height", content_height);
-
 	$( function (){
 		$.ajax({
 			url:"./logincheck",
@@ -63,13 +59,12 @@
 				var name = data.member.userName;
 				var str = "";
 				var img = data.student.spicture;
-				//alert(img);
 				
 				if(img == null){
 					img = "./images/default.jpg"
 				}
 				
-				str += "<a href='/uploadst.html'><img src='"+img+"'   style='img-responsive'/></a><br><br>"
+				str += "<div class='thumbnail'><a href='/uploadst.html'><img src='"+img+"'   style='img-responsive'/></a></div>"
 				+name+"님 환영합니다.<br><br>예정 면접 일정 : OO.OO.OO<br><br>모의 면접 일정 : OO.OO.OO"+
 		        "<br><br>";
 		        if(img == "./images/default.jpg"){
@@ -79,6 +74,7 @@
 		        }
 		        var divTag = document.getElementById("main");
 		        divTag.innerHTML = str;
+		        
 				}else{
 					alert("로그인이 필요합니다");
 					location.href="./index.html"
@@ -93,5 +89,6 @@
 		
 	});
 	</script>
+
 </body>
 </html>

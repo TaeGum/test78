@@ -102,5 +102,15 @@ public class MemberController {
 		model.addAttribute("list",map.get("list"));
 	}
 	
+	//아이디 중복 체크
+	@RequestMapping(value="/idcheck")
+	public void duplicationId(@RequestParam("id") String userId, Model model) throws Exception{
+		System.out.println("/idcheck : POST");
+		
+		boolean duplication = memberService.checkDuplication(userId);
+		
+		model.addAttribute("result",new Boolean(duplication));
+		model.addAttribute("userId", userId);
+	}
 
 }

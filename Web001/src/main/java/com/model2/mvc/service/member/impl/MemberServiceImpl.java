@@ -40,4 +40,18 @@ public class MemberServiceImpl implements MemberService {
 		return map;
 	}
 
+	@Override
+	public boolean checkDuplication(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		boolean result = true;
+		Member m = memberDao.getMember(userId);
+		
+		if(m !=null){
+			result = false;
+			return result;
+		}
+			return result;
+
+	}
+
 }

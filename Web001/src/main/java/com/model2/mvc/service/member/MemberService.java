@@ -11,4 +11,6 @@ public interface MemberService {
 	//public void getMember(Member member) throws Exception;
 	
 	public Map<String, Object> getMemberList() throws Exception;
+	
+	public boolean checkDuplication(String userId) throws Exception;
 }

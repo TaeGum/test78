@@ -11,4 +11,5 @@ public interface MemberDao {
 	//public void getMember(Member member) throws Exception;
 
 	public List<Member> getMemberList() throws Exception;
+	
 }
