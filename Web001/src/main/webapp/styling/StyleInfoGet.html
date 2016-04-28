@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코치정보</title>
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div data-role="page" id="Main">
+		<div data-role="header" style="overflow: hidden;">
+			<h1>공통UI</h1>
+			<a href="#" style="align: right;"><i class="fa fa-cog"></i></a>
+			<div data-role="navbar" data-grid="c">
+				<ul>
+					<li><a href="..\afterlogin.html"><i
+							class="fa fa-home fa-5x"></i></a></li>
+					<li><a href="..\interview\InterView_menu_Selection.html"><i
+							class="fa fa-microphone fa-5x"></i></a></li>
+					<li><a href="..\styling\StyleCoach.html"><i
+							class="fa fa-star fa-5x"></i></a></li>
+					<li><a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a></li>
+				</ul>
+			</div>
+		</div>
+		<br>
+		<br>
+		
+		<table class="table">
+			 <tbody>
+			 <tr>
+		         <td width="200" class="ct_write">&nbsp;업체번호&nbsp;</td>
+		         <td id="info1"></td>
+		     </tr>
+		     
+			 <tr>
+		         <td width="120" class="ct_write">&nbsp;업체명&nbsp;</td>
+		         <td id="info2"></td>
+		     </tr>      
+			 
+			 <tr>
+		         <td width="120" class="ct_write">&nbsp;전문분야&nbsp;</td>
+		         <td id="info3"></td>
+		     </tr>
+		
+		     <tr>
+		         <td width="120" class="ct_write">&nbsp;주소&nbsp;</td>
+		         <td id="info4"></td>
+		     </tr> 
+	
+			 <tr>
+		         <td width="120" class="ct_write">&nbsp;업체소개&nbsp;</td>
+		         <td id="info5"></td>
+		     </tr> 
+		
+		     <tr>
+		         <td width="120" class="ct_write">&nbsp;업체사진&nbsp;</td>
+		         <td><img src="info6"></td>
+		     </tr>
+		     
+		     <tr>
+		         <td width="120" class="ct_write">&nbsp;안내도&nbsp;</td>
+		         <td id="info7"></td>
+		     </tr>
+		     </tbody>
+	     </table> 
+	     
+	     <table class="table">
+		 	<thead>
+			    <th>별점</th>
+				<th>회원명</th>
+				<th>회원 한줄평</th>			      
+			</thead>
+						    
+			<tbody>
+				 <tr>
+				 <td>***</td>
+			     <td>가나다</td>
+			     <td>정샘물 아티스트 짱이에요</td>
+				 </tr>
+				
+				 <tr>
+				 <td>***</td>
+				 <td>마바사</td>
+			     <td>차원이 다른 메이크업을 제공하네요 강추합니다.</td>
+			     </tr>
+				
+				 <tr>
+			     <td>***</td>
+				 <td>아자차</td>
+				 <td>최고에요!</td>
+				 </tr>			        
+			</tbody>
+	      </table>  
+		
+			<div class="modal-footer">
+            	<button id="reservationViewBtn" type="button" class="btn btn-primary">코칭 예약 하기</button>
+           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">업체 정보 수정</button>
+        	</div>
+        
+		</div>
+	
+	<script type="text/javascript">
+		$(function(){
+			
+			var companyNumber = location.href.split("?")[1].split("=")[1];
+			/*$("#userId").html(userId);*/
+			
+			$.getJSON("../getcompany?companyNumber=" + companyNumber,
+			
+			function(result) {
+				console.log(result);
+			});	
+			
+			
+			$.ajax({
+		         				
+		         url:"../getcompany?companyNumber=" + companyNumber,
+		         dataType:"json",
+		         success:function(data){
+		            
+		        	var companyNumber = data.info.companyNumber;
+		            var companyName = data.info.companyName;
+		            var companyType = data.info.companyType;
+		            var companyAddr = data.info.companyAddr;
+		            var companyPresentation = data.info.companyPresentation;
+		            var companyPicture = data.info.companyPicture;
+		            var companyMap = data.info.companyMap;
+		            
+		            
+		            $("#info1").html(companyNumber);
+		            //console.log(companyNumber);
+		            $("#info2").html(companyName);
+		            //console.log(companyName);
+		            $("#info3").html(companyType);
+		            //console.log(companyType);
+		            $("#info4").html(companyAddr);
+		            //console.log(companyAddr);
+		            $("#info5").html(companyPresentation);
+		            //console.log(companyPresentation);
+		            $("#info6").html(companyPicture);
+		            //console.log(companyPicture);
+		  			$("#info7").html(companyMap);
+		            //console.log(companyMap);
+		            
+		         }
+		         
+		      });	
+		
+				$('#updateViewBtn').click(function(){
+				location.href='\StyleInfoUpdateView.html?companyNumber=' + $('#info1').text();
+				
+			  });
+		
+				$('#reservationViewBtn').click(function(){
+					location.href='\StylingReservation.html?companyNumber=' + $('#info1').text();
+					
+			  });
+				
+		});		
+	</script>
+	
+</body>
+</html>

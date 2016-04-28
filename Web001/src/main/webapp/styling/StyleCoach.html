@@ -36,183 +36,80 @@
 				</div>
                 </div>
     
-    <div data-role="content" class="ui-content table-responsive" style="background-color:">
-    <p></p>
-	    <div class="btn-group btn-group-justified">
-        <a class="btn btn-default" href="..\styling\StyleCoach.html">스타일 코칭</a>
-        <a class="btn btn-default" href="..\styling\StyleInfo.html">스타일 정보</a>
-        <a class="btn btn-default" href="..\styling\InterviewBehindList.html">면접 후기</a>
-        </div>
-        <p></p>
+    <div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
     
-    <span style="margin-left:50px; font-size:20px">스타일리스트선택</span>
-        <table class="table" style="text-align:center;">
-            <tbody>
-            <tr>
-            <td><img src="../images/makeup.jpg" align="middle" width="150px" height="200px"></td>
-            </tr>
-            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">정샘물 메이크업아티스트</a></td></tr>
-            <tr>
-            <td><img src="../images/hairdesign.jpg" align="middle" width="150px" height="200px"></td>
-            </tr>
-            <tr><td><a type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal2">차홍 헤어디자이너</a></td></tr>
-        </table>
-
-		<div class="btn-group btn-group-justified" >
-		<a class="btn btn-default btn-sm" href="..\styling\StyleCoachAdd.html">등록하기</a>
-    	</div>
+    
+    </div>
+   
+	<div class="btn-group btn-group-justified" >
+	<a class="btn btn-default btn-sm" href="..\styling\StyleCoachAdd.html">등록하기</a>
+    </div>
 		
     </div>
     
-
-     
-     
+	<script type="text/javascript">
+    $(document).on('click', '.coachLink', function(event) {
+    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+    	location.href = this.href;
+    });
     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
-                                    <h4 class="modal-title" id="myModalLabel">소개 및 회원 한줄평</h4>
-                                </div>
-                                
-                                	&nbsp;&nbsp;&nbsp;-스타일리스트소개
-                                	<br>
-                                	&nbsp;&nbsp;정샘물 메이크업아티스트는 국내 최고의 취업면접 메이크업 전문가로서
-									<br>
-									&nbsp;&nbsp;특히 여성 구직자 맞춤 메이크업을 통해 큰 인기를 얻고 있습니다.
-									<br>
-									<br>
-									<br>
-                                	&nbsp;&nbsp;&nbsp;-경력사항
-                                	<br>
-                                	&nbsp;&nbsp;1995년 2월 ~ 2000년 1월 : ooo 전속 스타일리스트
-                                	<br>
-                                	&nbsp;&nbsp;2000년 2월 ~ 2007년 4월 : ooo 뷰티스쿨 강사
-                         			<br>
-                         			&nbsp;&nbsp;2007년 5월 ~ 현재 : (주)정샘물컴퍼니 대표이사 및 수석메이크업 아티스트
-									<br>
-									<br>
-									<br>
-									&nbsp;&nbsp;&nbsp;-회원한줄평
-									
-										
-									<table class="table">
-						            <thead>
-						            	<th>별점</th>
-						                <th>회원명</th>
-						                <th>회원 한줄평</th>
-						            </thead>
-						    
-						            <tbody>
-						            <tr>
-						                    <td>***</td>
-						                    <td>가나다</td>
-						                    <td>정샘물 아티스트 짱이에요</td>
-						            </tr>
-						            <tr>
-						                    <td>***</td>
-						                    <td>마바사</td>
-						                    <td>차원이 다른 메이크업을 제공하네요 강추합니다.</td>
-						            </tr>
-						            <tr>
-						                    <td>***</td>
-						                    <td>아자차</td>
-						                    <td>최고에요!</td>
-						            </tr>
-						        
-						            </tbody>
-	      						</table>
+    $(document).on('click', '.StyleCoach', function(event) {
+    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+    	location.href = this.href;
+    }); 
+    
+    $(document).on('click', '.StyleInfo', function(event) {
+    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+    	location.href = this.href;
+    }); 
+    
+    $(document).on('click', '.InterviewBehindList', function(event) {
+    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+    	location.href = this.href;
+    }); 
+    
+    $( function (){
+    	
+    	$.ajax({
+			url:"../getstylecoachList",
+			dataType:"json",
+			success:function(data){
 						
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="location='StylingReservation.html'">예약하기</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                               <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
-                                    <h4 class="modal-title" id="myModalLabel">소개 및 회원 한줄평</h4>
-                                </div>
-                                	&nbsp;&nbsp;&nbsp;-스타일리스트 소개
-                                	<br>
-                                	&nbsp;&nbsp;차홍 헤어디자이너는 최신 트렌드를 가장 잘 흡수하는 헤어디자이너로서
-									<br>
-									&nbsp;&nbsp;면접시 필요한 최상의 헤어스타일을 제공합니다.
-									<br>
-									<br>
-									<br>
-                                	&nbsp;&nbsp;&nbsp;-경력사항
-                                	<br>
-                                	&nbsp;&nbsp;2003년 2월 ~ 2005년 12월 : oo미용실 근무
-                                	<br>
-                                	&nbsp;&nbsp;2006년 2월 ~ 2011년 10월 : oo살롱 수석 헤어디자이너
-                         			<br>
-                         			&nbsp;&nbsp;2011년 11월 ~ 현재 : 차홍헤어샵 대표 및 수석디자이너
-									<br>
-									<br>
-									<br>
-									&nbsp;&nbsp;&nbsp;-회원한줄평
-									
-										
-									<table class="table">
-						            <thead>
-						            	<th>별점</th>
-						                <th>회원명</th>
-						                <th>회원 한줄평</th>
-						            </thead>
-						    
-						            <tbody>
-						            <tr>
-						                    <td>***</td>
-						                    <td>가나다</td>
-						                    <td>남성 헤어스타일도 잘 연출하시네요</td>
-						            </tr>
-						            <tr>
-						                    <td>***</td>
-						                    <td>마바사</td>
-						                    <td>머리때문에 걱정 많이 했는데 역시 차홍님은 다르네요</td>
-						            </tr>
-						            <tr>
-						                    <td>***</td>
-						                    <td>아자차</td>
-						                    <td>강추합니다!!</td>
-						            </tr>
-						        
-						            </tbody>
-	      						</table>
-																
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="location='\StylingReservation.html'">예약하기</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    </div>
+				var list = data.list;
+				
+				var str = "<div class='btn-group btn-group-justified'>"+
+		        "<a class='StyleCoach' href='\StyleCoach.html'><button type='button' class='btn btn-default'>스타일 코칭</button></a>"+
+		        "<a class='StyleInfo' href='\StyleInfo.html'><button type='button' class='btn btn-default'>스타일 정보</button></a>" + 
+		        "<a class='InterviewBehindList' href='\InterviewBehindList.html'><button type='button' class='btn btn-default'>리뷰 및 후기</button></a>" + 
+		        "</div><p></p>" + 
+		        "<span style='margin-left:50px; font-size:20px'>스타일리스트선택</span>"+ 
+		        "<table class='table' style='text-align:center;'>"+ 
+		        "<tbody>";
+		   
+				
+				for(var i=0; i<list.length; i++){
+					
+								
+				  str += "<tr class='ct_list_pop'>"+
+    			  		 "<td>"+ 
+				  		 "<a class='coachLink' href='\StyleCoachGet.html?userId="+list[i].userId+"'>" +
+				  		 "<img src='" + list[i].coachPicture + "'align='middle' width='150px' height='200px'></a></td>" + 
+    			  		 "</tr>" + 
+    			  		 "<tr><td>" + list[i].coachName +"</td></tr>"; 			
+				}
+        				  
+        		str += "</tbody>" + 
+				  	  "</table>";
+				  	  
+				var divTag = document.getElementById("main");
+				divTag.innerHTML = str;
+				  	  
+				}   
+ 	   		
+		    }); 
+    	
+   	 }());
+	</script>
 
 </body>
-</html>
-                    
+</html>              

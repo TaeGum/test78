@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코치정보</title>
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div data-role="page" id="Main">
+		<div data-role="header" style="overflow: hidden;">
+			<h1>공통UI</h1>
+			<a href="#" style="align: right;"><i class="fa fa-cog"></i></a>
+			<div data-role="navbar" data-grid="c">
+				<ul>
+					<li><a href="..\afterlogin.html"><i
+							class="fa fa-home fa-5x"></i></a></li>
+					<li><a href="..\interview\InterView_menu_Selection.html"><i
+							class="fa fa-microphone fa-5x"></i></a></li>
+					<li><a href="..\styling\StyleCoach.html"><i
+							class="fa fa-star fa-5x"></i></a></li>
+					<li><a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a></li>
+				</ul>
+			</div>
+		</div>
+		<br>
+		<br>
+		
+		<table class="table">
+			 <tbody>
+			 <tr>
+		         <td width="200" class="ct_write">&nbsp;아이디&nbsp;</td>
+		         <td id="info1"></td>
+		     </tr>
+		     
+			 <tr>
+		         <td width="120" class="ct_write">&nbsp;코치사진&nbsp;</td>
+		         <td><img src="info2"></td>
+		     </tr>      
+			 
+			 <tr>
+		         <td width="120" class="ct_write">&nbsp;코치이름&nbsp;</td>
+		         <td id="info3"></td>
+		     </tr>
+		
+		     <tr>
+		         <td width="120" class="ct_write">&nbsp;코칭타입&nbsp;</td>
+		         <td id="info4"></td>
+		     </tr> 
+	
+			 <tr>
+		         <td width="120" class="ct_write">&nbsp;코치소개&nbsp;</td>
+		         <td id="info5"></td>
+		     </tr> 
+		
+		     <tr>
+		         <td width="120" class="ct_write">&nbsp;소속업체번호&nbsp;</td>
+		         <td id="info6"></td>
+		     </tr>
+		     </tbody>
+	     </table> 
+	     
+	     <table class="table">
+		 	<thead>
+			    <th>별점</th>
+				<th>회원명</th>
+				<th>회원 한줄평</th>			      
+			</thead>
+						    
+			<tbody>
+				 <tr>
+				 <td>***</td>
+			     <td>가나다</td>
+			     <td>정샘물 아티스트 짱이에요</td>
+				 </tr>
+				
+				 <tr>
+				 <td>***</td>
+				 <td>마바사</td>
+			     <td>차원이 다른 메이크업을 제공하네요 강추합니다.</td>
+			     </tr>
+				
+				 <tr>
+			     <td>***</td>
+				 <td>아자차</td>
+				 <td>최고에요!</td>
+				 </tr>			        
+			</tbody>
+	      </table>  
+		
+			<div class="modal-footer">
+            	<button id="reservationViewBtn" type="button" class="btn btn-primary">코칭 예약 하기</button>
+           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">코치 정보 수정</button>
+        	</div>
+        
+		</div>
+	
+	<script type="text/javascript">
+		$(function(){
+			
+			var userId = location.href.split("?")[1].split("=")[1];
+			/*$("#userId").html(userId);*/
+			
+			$.getJSON("../getstylecoach?userId=" + userId,
+			
+			function(result) {
+				console.log(result);
+			});	
+			
+			
+			$.ajax({
+		         				
+		         url:"../getstylecoach?userId=" + userId,
+		         dataType:"json",
+		         success:function(data){
+		            
+		        	var userId = data.info.userId;
+		            var coachPicture = data.info.coachPicture;
+		            var coachName = data.info.coachName;
+		            var coachType = data.info.coachType;
+		            var coachPresentation = data.info.coachPresentation;
+		            var companyNumber = data.info.companyNumber;
+		            
+		            $("#info1").html(userId);
+		            //console.log(userId);
+		            $("#info2").html(coachPicture);
+		            //console.log(coachPicture);
+		            $("#info3").html(coachName);
+		            //console.log(coachName);
+		            $("#info4").html(coachType);
+		            //console.log(coachType);
+		            $("#info5").html(coachPresentation);
+		            //console.log(coachPresentation);
+		            $("#info6").html(companyNumber);
+		            //console.log(companyNumber);
+		  
+		         }
+		         
+		      });	
+		
+				$('#updateViewBtn').click(function(){
+				location.href='\StyleCoachUpdateView.html?userId=' + $('#info1').text();
+				
+			  });
+		
+				$('#reservationViewBtn').click(function(){
+					location.href='\StylingReservation.html?userId=' + $('#info1').text();
+					
+			  });
+				
+		});		
+	</script>
+	
+</body>
+</html>
+
+

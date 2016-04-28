@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>스타일업체목록</title>
+<title>업체목록</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="../lib/jquery/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>      
-</head>   
-<body>    
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
     
- 	<div data-role="page" id="Main">
+<div data-role="page" id="Main">
                 <div data-role="header" style="overflow:hidden;">
-                    <h1>스타일정보보기</h1>
+                    <h1>공통UI</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
 					<ul>
@@ -34,206 +35,80 @@
 					</ul>
 				</div>
                 </div>
-     
-     <div data-role="content" class="ui-content table-responsive" style="background-color:">
-    	
-    	<p></p>
-	    <div class="btn-group btn-group-justified">
-        <a class="btn btn-default" href="..\styling\StyleCoach.html">스타일 코칭</a>
-        <a class="btn btn-default" href="..\styling\StyleInfo.html">스타일 정보</a>
-        <a class="btn btn-default" href="..\styling\InterviewBehindList.html">면접 후기</a>
-        </div>
-        <p></p>
-        
- 
-    <span style="margin-left:50px; font-size:20px">업체선택</span>
-       
-       <table class="table" style="text-align:center;">
-            <tbody>
-	            <tr>
-	            	<td><a type="button" class="btn btn-link" id="infobutton" data-toggle="modal" data-target="#myModal"><img src="..\images\hairshop.jpg" align="middle" width="150px" height="200px"></a></td>
-	            </tr>
-	            <tr>
-	            	<td id="name"></td>
-	            </tr>
-        	</tbody>
-        </table>
-             
-        <div class="btn-group btn-group-justified" >
-		<a class="btn btn-default btn-sm" href="..\styling\StyleInfoAdd.html">등록하기</a>
-    	</div>
+    
+    <div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
+    
     
     </div>
-                        
-    <script type="text/javascript">
-       
-    $( function (){
+   
+	<div class="btn-group btn-group-justified" >
+	<a class="btn btn-default btn-sm" href="..\styling\StyleInfoAdd.html">등록하기</a>
+    </div>
+		
+    </div>
+    
+	<script type="text/javascript">
+	$(document).on('click', '.companyLink', function(event) {
+		event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+    	location.href = this.href;
+	});
+    $(document).on('click', '.StyleCoach', function(event) {
+    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+    	location.href = this.href;
+    }); 
+    
+    $(document).on('click', '.StyleInfo', function(event) {
+    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+    	location.href = this.href;
+    }); 
+    
+    $(document).on('click', '.InterviewBehindList', function(event) {
+    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+    	location.href = this.href;
+    }); 
+	
+    $(function (){
     	
     	$.ajax({
 			url:"../getcompanyList",
 			dataType:"json",
 			success:function(data){
-				
+						
 				var list = data.list;
-				var companyName
+				
+				var str = "<div class='btn-group btn-group-justified'>"+
+		        "<a class='StyleCoach' href='\StyleCoach.html'><button type='button' class='btn btn-default'>스타일 코칭</button></a>"+
+		        "<a class='StyleInfo' href='\StyleInfo.html'><button type='button' class='btn btn-default'>스타일 정보</button></a>" + 
+		        "<a class='InterviewBehindList' href='\InterviewBehindList.html'><button type='button' class='btn btn-default'>리뷰 및 후기</button></a>" + 
+		        "</div><p></p>" + 
+		        "<span style='margin-left:50px; font-size:20px'>업체선택</span>"+ 
+		        "<table class='table' style='text-align:center;'>"+ 
+		        "<tbody>";
+		   
 				
 				for(var i=0; i<list.length; i++){
 					
-					companyName = list[i].companyName;						
-					
-					$("#name").html(companyName);
-
-				}			
-			}			
-		});		
+								
+				  str += "<tr class='ct_list_pop'>"+
+    			  		 "<td>"+ 
+				  		 "<a class='companyLink' href='\StyleInfoGet.html?companyNumber="+list[i].companyNumber+"'>" +
+				  		 "<img src='" + list[i].companyPicture + "'align='middle' width='150px' height='200px'></a></td>" + 
+    			  		 "</tr>" + 
+    			  		 "<tr><td>" + list[i].companyName +"</td></tr>"; 			
+				}
+        				  
+        		str += "</tbody>" + 
+				  	  "</table>";
+				  	  
+				var divTag = document.getElementById("main");
+				divTag.innerHTML = str;
+				  	  
+				}   
+ 	   		
+		    }); 
     	
-    	$("#infobutton01").on("click", function(){
-    		
-    		$.ajax({
-    			
-				url:"../getcompanyList",
-				dataType:"json",
-				success:function(data){
-					
-					var info1; 
-					var info2;
-					var info3;
-					var info4;
-					var info5;
-					var info6;
-					var info7;
-					
-					var list = data.list;
-					
-					for(var i=0; i<list.length; i++){
-						
-						info1 = "업체번호 : <span id='companyNumber'>" + list[i].companyNumber; + "</span>"
-						info2 = "업체명 : " + list[i].companyName;
-						info3 = "업종분류 : " + list[i].companyType;
-						info4 = "주소 : " + list[i].companyAddr;
-						info5 = "업체 소개 : " + list[i].companyPresentation;
-						info6 = list[i].companyPicture;
-						info7 = list[i].companyMap;
-						
-						$("#info1").html(info1);
-						$("#info2").html(info2);
-						$("#info3").html(info3);
-						$("#info4").html(info4);
-						$("#info5").html(info5);
-						$("#info6").html(info6);
-						$("#info7").html(info7);
-		
-					}
-				}			
-			});		
-    		
     	});
-    
-		$("#infobutton").on("click", function(){
-    		
-    		$.ajax({
-    			
-				url:"../getcompanyList",
-				dataType:"json",
-				success:function(data){
-					
-					var info1; 
-					var info2;
-					var info3;
-					var info4;
-					var info5;
-					var info6;
-					var info7;
-					
-					var list = data.list;
-					
-					for(var i=0; i<list.length; i++){
-						
-						info1 = "업체번호 : <span id='companyNumber'>" + list[i].companyNumber; + "</span>"
-						info2 = "업체명 : " + list[i].companyName;
-						info3 = "업종분류 : " + list[i].companyType;
-						info4 = "주소 : " + list[i].companyAddr;
-						info5 = "업체 소개 : " + list[i].companyPresentation;
-						info6 = list[i].companyPicture;
-						info7 = list[i].companyMap;
-						
-						$("#info1").html(info1);
-						$("#info2").html(info2);
-						$("#info3").html(info3);
-						$("#info4").html(info4);
-						$("#info5").html(info5);
-						$("#info6").html(info6);
-						$("#info7").html(info7);
-		
-					}
-				}			
-			});		
-    		
-    	});
-    
-    });	
-    </script>
-                      
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModlLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                               <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only"></span></button>
-                                    <h4 class="modal-title" id="myModalLabel2">소개 및 회원 한줄평</h4>
-                               </div>	
-                                    
-                                    <table class="table">
-	                                	<tbody>
-		                                	<tr><td id="info1"></td></tr>
-		                                	<tr><td id="info2"></td></tr>
-		                                	<tr><td id="info3"></td></tr>
-		                                	<tr><td id="info4"></td></tr>
-		                                	<tr><td id="info5"></td></tr>
-		                                	<tr><td id="info6"></td></tr>
-		                                	<tr><td id="info7"></td></tr>
-	                                	</tbody>
-                                    </table>
-                                    
-									<table class="table">
-						            <thead>
-						            	<th>별점</th>
-						                <th>회원명</th>
-						                <th>회원 한줄평</th>
-						            </thead>
-						    
-						            <tbody>
-						            <tr>
-						                    <td>***</td>
-						                    <td>가나다</td>
-						                    <td>좋아요</td>
-						            </tr>
-						            <tr>
-						                    <td>***</td>
-						                    <td>마바사</td>
-						                    <td>좋아요</td>
-						            </tr>
-						            <tr>
-						                    <td>***</td>
-						                    <td>아자차</td>
-						                    <td>강추합니다!!</td>
-						            </tr>
-						        
-						            </tbody>
-	      						</table>
-																
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="location='\StylingReservation.html'">예약하기</button>
-                                    <button id="updateViewBtn" type="button" class="btn btn-primary">업체 정보 수정</button>
-                                </div>
-                            </div>
-                        </div>
-    </div>
-   
-    </div>	
-		<script>
-			$('#updateViewBtn').click(function(){
-				location.href='\StyleInfoUpdateView.html?companyNumber=' + $('#companyNumber').text();
-			});
-		</script>  
+	</script>
+
 </body>
-</html>
+</html>       
