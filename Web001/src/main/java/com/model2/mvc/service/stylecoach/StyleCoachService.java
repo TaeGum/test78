@@ -10,4 +10,8 @@ public interface StyleCoachService {
 
 	public Map<String, Object> getStyleCoachList() throws Exception;
 
+	public StyleCoach getStyleCoach(String userId) throws Exception;
+
+	public void updateStyleCoach(StyleCoach styleCoach) throws Exception;
+
 }

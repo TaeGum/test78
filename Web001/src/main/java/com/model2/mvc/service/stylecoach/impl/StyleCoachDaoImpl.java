@@ -35,9 +35,21 @@ public class StyleCoachDaoImpl implements StyleCoachDao {
 
 	@Override
 	public List<StyleCoach> getStyleCoachList() throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("StyleCoachMapper.getStyleCoachList");
 	}
+
+	@Override
+	public StyleCoach getStyleCoach(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("StyleCoachMapper.getStyleCoach", userId);
+	}
+	
+	@Override
+	public void updateStyleCoach(StyleCoach styleCoach) throws Exception {
+		sqlSession.update("StyleCoachMapper.updateStyleCoach", styleCoach);
+	}
+
+
 
 
 }

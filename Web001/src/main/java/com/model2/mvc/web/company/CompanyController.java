@@ -39,7 +39,7 @@ public class CompanyController {
 		System.out.println(this.getClass());	
 	}
 
-	@RequestMapping(value = "/addcompany", method=RequestMethod.POST)
+	@RequestMapping(value="/addcompany", method=RequestMethod.POST)
 	public void addCompany(@RequestBody Company company, HttpServletRequest request, HttpSession session) throws Exception {
 
 		//입력한 정보 DB에 저장
@@ -60,7 +60,7 @@ public class CompanyController {
 		model.addAttribute("list", map.get("list"));			
 	}
 
-	@RequestMapping(value = "/getcompany")
+	@RequestMapping(value="/getcompany")
 	public void getCompany(Company company, Model model) throws Exception {
 		System.out.println("/getcompany");
 
@@ -71,21 +71,16 @@ public class CompanyController {
 		Company companyInfo = companyService.getCompany(number);
 		System.out.println("자료들 : " + companyInfo);
 		
-		//Select를 통해 뽑아낸 정보를 company에 담아서 View로 보내기
+		//Select를 통해 뽑아낸 정보를 info에 담아서 View로 보내기
 		model.addAttribute("info", companyInfo);
 
 	}
 
-	@RequestMapping(value = "/updatecompany", method=RequestMethod.POST)
-	public void updateCompany(@RequestBody Company company , Model model, HttpSession session) throws Exception {
+	@RequestMapping(value="/updatecompany", method=RequestMethod.POST)
+	public void updateCompany(@RequestBody Company company , Model model) throws Exception {
 
 		System.out.println("/updatecompany");
 		//입력한 수정된 정보를 DB에 넣기
 		companyService.updateCompany(company);		
 	}
-
-
-
-
-
 }

@@ -40,7 +40,6 @@ public class StyleCoachServiceImpl implements StyleCoachService{
 
 	@Override
 	public Map<String, Object> getStyleCoachList() throws Exception {
-		// TODO Auto-generated method stub
 		List<StyleCoach> list = stylecoachDao.getStyleCoachList();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -48,6 +47,18 @@ public class StyleCoachServiceImpl implements StyleCoachService{
 		
 		return map;
 	}
+
+	@Override
+	public StyleCoach getStyleCoach(String userId) throws Exception {
+		return stylecoachDao.getStyleCoach(userId);
+	}
+
+
+	@Override
+	public void updateStyleCoach(StyleCoach styleCoach) throws Exception {
+		stylecoachDao.updateStyleCoach(styleCoach);	
+	}
+
 
 	
 	
