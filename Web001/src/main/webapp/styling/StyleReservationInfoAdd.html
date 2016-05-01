@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>업체 예약</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="../javascript/calendar.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    
+	<div data-role="page" id="Main">
+             <div data-role="header" style="overflow:hidden;">
+                    <h1>공통UI</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+                </div>
+   			
+   			
+   		<div id="middle" style="background-color:#EEEEEE;" align="center"> 
+		  	<table>
+					<tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;업체번호&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="companyNumber" name="companyNumber" readonly>
+				     	 </td>
+				    </tr>
+				     
+				    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+					 
+					<tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;업체명&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="companyName" name="companyName" readonly>
+				         </td>
+				    </tr>
+                    
+                    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+                    
+                    <tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;예약아이디&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="reservationId" name="reservationId">
+				         </td>
+				    </tr>
+                    
+                    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+                    
+                    <tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;예약신청자&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="reservationName" name="reservationName">
+				         </td>
+				    </tr>
+                    
+                    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+                    
+                    <tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;예약일&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" name="reservationDate" id="reservationDate" value="" onclick="fnPopUpCalendar(reservationDate,reservationDate,'yyyy-mm-dd')" class='text_box1'>
+        				 <script type="text/javascript" src="../javascript/calendar.js"></script>
+       					 </td>
+      				</tr>
+
+                    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+                    
+					<tr>
+	            		<td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;예약시간&nbsp;&nbsp;&nbsp;</td>
+	    
+	      				<td>
+	       					<select name="time_select"  id="time_select">
+		          					<option value="" >선택하세요</option>
+		         			 		<option value="09:00">09:00</option>
+		         			 		<option value="09:30">09:30</option>
+		         			 		<option value="10:00">10:00</option>
+		         			 		<option value="10:30">10:30</option>
+		         			 		<option value="11:00">11:00</option>
+		         			 		<option value="11:30">11:30</option>
+		         			 		<option value="13:00">13:00</option>
+		         			 		<option value="13:30">13:30</option>
+		         			 		<option value="14:00">14:00</option>
+		         			 		<option value="14:00">14:30</option>
+		         			 		<option value="15:00">15:00</option>
+		         			 		<option value="15:00">15:30</option>
+		         			 		<option value="16:00">16:00</option>
+		         			 		<option value="16:30">16:30</option>
+		         			 		<option value="17:00">17:00</option>
+		         			 		<option value="17:30">17:30</option>
+							</select>
+	      				</td>
+	       				
+	       				<td>
+	         				<input id="reservationTime" name="reservationTime" size=12  value="">
+	        			 	<script>
+	       						function dd(){$("#reservationTime").val($('#time_select').val() );}
+	       						$("#time_select").change(dd);
+	      					</script>
+	        			</td>     
+       				</tr>   
+			</table>
+    	</div>
+
+		<div class="modal-footer">
+   			<button id="reservationInfoBtn" type="button" class="btn btn-primary">업체 예약 하기</button>
+    	</div>	
+
+</div>
+
+		<script>
+		$(function(){
+			var companyNumber = location.href.split("?")[1].split("=")[1];
+			$("#companyNumber").html(companyNumber);
+			alert(companyNumber);
+			
+			$.getJSON("../getcompany?companyNumber=" + companyNumber, 
+			
+			function(result) {
+				console.log(result);
+			});
+			
+			$.ajax({
+				url : "../getcompany?companyNumber=" + companyNumber, 
+				method : "POST" ,
+				dataType : "json" ,
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+		
+			success : function(data) {
+				
+	    			$('#companyNumber').val(data.info.companyNumber);
+                	$('#companyName').val(data.info.companyName);
+				}								
+			  });	
+			
+			$("#reservationInfoBtn").on("click",function(){
+  			
+				var COMNO = $("input[name='companyNumber']").val();
+				var COMNAME = $("input[name='companyName']").val();
+				var RVID = $("input[name='reservationId']").val();
+				var RVNAME = $("input[name='reservationName']").val();
+				var RVDATE = $("input[name='reservationDate']").val();
+				var RVTIME = $("input[name='reservationTime']").val();
+		
+		 	$.ajax({
+					url : "../addreservationinfo",
+					method : "POST" ,
+					dataType : "json" ,
+					headers : {
+						"Accept" : "application/json",
+						"Content-Type" : "application/json"
+					},
+					
+					data : JSON.stringify({
+						companyNumber : COMNO,
+						companyName : COMNAME, 
+						reservationId : RVID, 
+						reservationName : RVNAME, 
+						reservationDate : RVDATE, 
+						reservationTime : RVTIME
+
+					}),
+						success : function(JSONData , status) {
+							
+						location.href='./StyleReservationInfoList.html'		
+					}
+				});
+			});
+		});
+		</script>
+	    
+</body>
+</html>

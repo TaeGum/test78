@@ -3,18 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>코치정보수정</title>
+<title>코칭 예약</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
-<script src="../lib/jquery/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="../javascript/calendar.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>    
-
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div data-role="page" id="Main">
-                <div data-role="header" style="overflow:hidden;">
+    
+    
+	<div data-role="page" id="Main">
+             <div data-role="header" style="overflow:hidden;">
                     <h1>공통UI</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
@@ -34,36 +36,36 @@
 					</ul>
 				</div>
                 </div>
-                
-    <div data-role="main" class="ui-content" style="background-color:#EEEEEE;">
-    			
+   			
+   			
+   		<div id="middle" style="background-color:#EEEEEE;" align="center"> 
 		  	<table>
 					<tr>
-				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;업체번호&nbsp;&nbsp;&nbsp;</td>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;코치아이디&nbsp;&nbsp;&nbsp;</td>
 				         <td>
-				         <input type="text" id="companyNumber" name="companyNumber" readonly>
+				         <input type="text" id="userId" name="userId" readonly>
 				     	 </td>
 				    </tr>
 				     
 				    <tr>
 						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 					</tr>
-					 
+					
 					<tr>
-				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;업체명&nbsp;&nbsp;&nbsp;</td>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;코치이름&nbsp;&nbsp;&nbsp;</td>
 				         <td>
-				         <input type="text" id="companyName" name="companyName" readonly>
+				         <input type="text" id="coachName" name="coachName">
 				         </td>
 				    </tr>
                     
                     <tr>
 						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 					</tr>
-                    
+					 
                     <tr>
 				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;예약아이디&nbsp;&nbsp;&nbsp;</td>
 				         <td>
-				         <input type="text" id="reservationId" name="reservationId" readonly>
+				         <input type="text" id="reservationId" name="reservationId">
 				         </td>
 				    </tr>
                     
@@ -127,24 +129,29 @@
 	      					</script>
 	        			</td>     
        				</tr>   
-			</table>	
-			
-	</div>
-	
-	<script>
+			</table>
+    	</div>
+
+		<div class="modal-footer">
+   			<button id="reservationInfoBtn" type="button" class="btn btn-primary">코치 예약 하기</button>
+    	</div>	
+
+</div>
+
+		<script>
 		$(function(){
-			var reservationId = location.href.split("?")[1].split("=")[1];
-			$("#reservationId").html(reservationId);
-			alert(reservationId);
+			var userId = location.href.split("?")[1].split("=")[1];
+			$("#userId").html(userId);
+			alert(userId);
 			
-			$.getJSON("../getreservation?reservationId=" + reservationId, 
+			$.getJSON("../getstylecoach?userId=" + userId, 
 			
 			function(result) {
 				console.log(result);
 			});
 			
 			$.ajax({
-				url : "../getreservation?reservationId=" + reservationId, 
+				url : "../getstylecoach?userId=" + userId, 
 				method : "POST" ,
 				dataType : "json" ,
 				headers : {
@@ -154,57 +161,47 @@
 		
 			success : function(data) {
 				
-	    		$('#companyNumber').val(data.info.companyNumber);
-                $('#companyName').val(data.info.companyName);
-                $('#reservationId').val(data.info.reservationId);
-                $('#reservationName').val(data.info.reservationName);
-                $('#reservationDate').val(data.info.reservationDate);
-                $('#reservationTime').val(data.info.reservationTime);
-    		
-			}								
-		});	
-		
-		$("#updatereservation").on("click",function(){
-      			
-    			var COMNO = $("input[name='companyNumber']").val();
-  				var COMNAME = $("input[name='companyName']").val();
-  				var RVID = $("input[name='reservationId']").val();
-  				var RVNAME = $("input[name='reservationName']").val();
-  				var RVDATE = $("input[name='reservationDate']").val();
-  				var RVTIME = $("input[name='reservationTime']").val();
+	    			$('#userId').val(data.info.userId);
+                	$('#coachName').val(data.info.coachName);
+				}								
+			  });	
 			
-  		 	$.ajax({
-						url : "../updatereservation",
-						method : "POST" ,
-						dataType : "json" ,
-						headers : {
-							"Accept" : "application/json",
-							"Content-Type" : "application/json"
-						},
-						
-						data : JSON.stringify({
+			$("#reservationInfoBtn").on("click",function(){
+  			
+				var STID = $("input[name='userId']").val();
+				var CNAME = $("input[name='coachName']").val();
+				var RVID = $("input[name='reservationId']").val();
+				var RVNAME = $("input[name='reservationName']").val();
+				var RVDATE = $("input[name='reservationDate']").val();
+				var RVTIME = $("input[name='reservationTime']").val();
+		
+		 	$.ajax({
+					
+		 		url : "../addreservationcoach",
+					method : "POST" ,
+					dataType : "json" ,
+					headers : {
+						"Accept" : "application/json",
+						"Content-Type" : "application/json"
+					},
+					
+					data : JSON.stringify({
+						userId : STID,
+						coachName : CNAME,
+						reservationId : RVID, 
+						reservationName : RVNAME, 
+						reservationDate : RVDATE, 
+						reservationTime : RVTIME
+
+					}),
+						success : function(JSONData , status) {
 							
-							companyNumber : COMNO,
-							companyName : COMNAME,
-							reservationId : RVID, 
-							reservationName : RVNAME, 
-							reservationDate : RVDATE, 
-							reservationTime : RVTIME, 
-
-						}),
-							success : function(JSONData , status) {
-								
-							location.href="./StyleInfoReservationList.html"		
-						}
-					});
-  			});	
-		});	
-	</script> 
-
-   	<br>
-    
-        <div class="btn-group btn-group-justified">
-        	<a class="btn btn-default btn-lg" id=updatereservation>예약 수정</a>
-        </div>        	     
+						location.href='./StyleReservationCoachList.html'		
+					}
+				});
+			});
+		});
+		</script>
+	    
 </body>
 </html>

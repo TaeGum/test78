@@ -64,7 +64,7 @@
     $(function (){
     	
     	$.ajax({
-			url:"../getreservationList",
+			url:"../getreservationinfoList",
 			dataType:"json",
 			success:function(data){
 						
@@ -90,7 +90,7 @@
 								
 				  str += "<tr class='ct_list_pop'>" +
     			  		 "<td>" + list[i].companyName + "</td>" + 
-    			  		 "<td><a class='reservationLink' href='\StyleInfoReservationGet.html?reservationId="+ list[i].reservationId + "'>" + list[i].reservationId + "</a></td>" +
+    			  		 "<td><a class='reservationLink' href='\StyleReservationInfoGet.html?reservationId="+ list[i].reservationId + "'>" + list[i].reservationId + "</a></td>" +
     			  		 "<td>" + list[i].reservationDate + "</td>" + 
     			  		 "<td>" + list[i].reservationTime + "</td>" +
 				  		 "</tr>" 			
