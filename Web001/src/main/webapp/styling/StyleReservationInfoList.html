@@ -75,7 +75,7 @@
 		        "<a class='StyleInfo' href='\StyleInfo.html'><button type='button' class='btn btn-default'>스타일 정보</button></a>" + 
 		        "<a class='InterviewBehindList' href='\InterviewBehindList.html'><button type='button' class='btn btn-default'>리뷰 및 후기</button></a>" + 
 		        "</div><p></p>" + 
-		        "<span style='margin-left:50px; font-size:20px'>업체 예약 목록</span>"+ 
+		        "<span style='margin-left:50px; font-size:20px'>" + data.Id + " 님 의 업체 예약 목록</span>"+ 
 		        "<table class='table' style='text-align:center;'>"+ 
 		        "<thead>" + 
 		        "<th>예약업체명</th>" + 
@@ -89,8 +89,9 @@
 					
 								
 				  str += "<tr class='ct_list_pop'>" +
+			  		 	 "<td><a class='reservationLink' href='\StyleReservationInfoGet.html?reservationNumber="+ list[i].reservationNumber + "'>" + list[i].reservationNumber + "</a></td>" +
     			  		 "<td>" + list[i].companyName + "</td>" + 
-    			  		 "<td><a class='reservationLink' href='\StyleReservationInfoGet.html?reservationId="+ list[i].reservationId + "'>" + list[i].reservationId + "</a></td>" +
+    			  		 "<td>" + list[i].reservationId + "</td>" +
     			  		 "<td>" + list[i].reservationDate + "</td>" + 
     			  		 "<td>" + list[i].reservationTime + "</td>" +
 				  		 "</tr>" 			

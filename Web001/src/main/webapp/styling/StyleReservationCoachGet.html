@@ -113,24 +113,18 @@
 		            
 		            $("#info1").html(reservationNumber);
 		            $("#info2").html(userId);
-		            //console.log(userId);
 		            $("#info3").html(coachName);
-		            //console.log(coachPicture);
 		            $("#info4").html(reservationId);
-		            //console.log(coachName);
 		            $("#info5").html(reservationName);
-		            //console.log(coachType);
 		            $("#info6").html(reservationDate);
-		            //console.log(coachPresentation);
 		            $("#info7").html(reservationTime);
-		            //console.log(companyNumber);
 		  
 		         }
 		         
 		      });	
 		
 				$('#updateViewBtn').click(function(){
-				location.href='\StyleReservationCoachUpdateView.html?reservationNumber=' + $('#info1').text();
+				location.href='\StyleReservationCoachUpdate.html?reservationNumber=' + $('#info1').text();
 				
 			  });
 		

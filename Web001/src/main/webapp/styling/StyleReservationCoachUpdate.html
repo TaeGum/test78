@@ -39,20 +39,31 @@
     			
 		  	<table>
 					<tr>
-				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;업체번호&nbsp;&nbsp;&nbsp;</td>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;예약일련번호&nbsp;&nbsp;&nbsp;</td>
 				         <td>
-				         <input type="text" id="companyNumber" name="companyNumber" readonly>
+				         <input type="text" id="reservationNumber" name="reservationNumber" readonly>
 				     	 </td>
 				    </tr>
 				     
 				    <tr>
 						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 					</tr>
-					 
+					
 					<tr>
-				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;업체명&nbsp;&nbsp;&nbsp;</td>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;코치아이디&nbsp;&nbsp;&nbsp;</td>
 				         <td>
-				         <input type="text" id="companyName" name="companyName" readonly>
+				         <input type="text" id="userId" name="userId" readonly>
+				     	 </td>
+				    </tr>
+				     
+				    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr> 
+					
+					<tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;코치이름&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="coachName" name="coachName" readonly>
 				         </td>
 				    </tr>
                     
@@ -135,16 +146,16 @@
 		$(function(){
 			var reservationNumber = location.href.split("?")[1].split("=")[1];
 			$("#reservationNumber").html(reservationNumber);
-			alert(reservationId);
+			alert(reservationNumber);
 			
-			$.getJSON("../getreservationinfo?reservationNumber=" + reservationNumber, 
+			$.getJSON("../getreservationcoach?reservationNumber=" + reservationNumber, 
 			
 			function(result) {
 				console.log(result);
 			});
 			
 			$.ajax({
-				url : "../getreservationinfo?reservationNumber=" + reservationNumber, 
+				url : "../getreservationcoach?reservationNumber=" + reservationNumber, 
 				method : "POST" ,
 				dataType : "json" ,
 				headers : {
@@ -154,27 +165,30 @@
 		
 			success : function(data) {
 				
-	    		$('#companyNumber').val(data.info.companyNumber);
-                $('#companyName').val(data.info.companyName);
+				$('#reservationNumber').val(data.info.reservationNumber);
+				$('#userId').val(data.info.userId);
+                $('#coachName').val(data.info.coachName);
                 $('#reservationId').val(data.info.reservationId);
                 $('#reservationName').val(data.info.reservationName);
                 $('#reservationDate').val(data.info.reservationDate);
                 $('#reservationTime').val(data.info.reservationTime);
+                
     		
 			}								
 		});	
 		
 		$("#updatereservation").on("click",function(){
       			
-    			var COMNO = $("input[name='companyNumber']").val();
-  				var COMNAME = $("input[name='companyName']").val();
+				var STYNO = $("input[name='reservationNumber']").val();
+				var STID = $("input[name='userId']").val();
+  				var CNAME = $("input[name='coachName']").val();
   				var RVID = $("input[name='reservationId']").val();
   				var RVNAME = $("input[name='reservationName']").val();
   				var RVDATE = $("input[name='reservationDate']").val();
   				var RVTIME = $("input[name='reservationTime']").val();
 			
   		 	$.ajax({
-						url : "../updatereservationinfo",
+						url : "../updatereservationcoach",
 						method : "POST" ,
 						dataType : "json" ,
 						headers : {
@@ -184,17 +198,18 @@
 						
 						data : JSON.stringify({
 							
-							companyNumber : COMNO,
-							companyName : COMNAME,
+							reservationNumber : STYNO,
+							userId : STID,
+							coachName : CNAME, 
 							reservationId : RVID, 
 							reservationName : RVNAME, 
 							reservationDate : RVDATE, 
-							reservationTime : RVTIME, 
+							reservationTime : RVTIME 
 
 						}),
 							success : function(JSONData , status) {
 								
-							location.href="./StyleReservationInfoList.html"		
+							location.href="./StyleReservationCoachList.html"		
 						}
 					});
   			});	
