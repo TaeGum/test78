@@ -123,7 +123,37 @@
   				var CPRES = $("input[name='coachPresentation']").val();
   				var COMNO = $("input[name='companyNumber']").val();
 			
-  		 	$.ajax(
+  			$.ajax({
+  					url : "../logincheck", 
+  					method : "POST" ,
+  					dataType : "json" ,
+  					headers : {
+  						"Accept" : "application/json",
+  						"Content-Type" : "application/json"
+  					},
+  			
+  						success : function(data) {
+  					
+  	                	$('#userId').val(data.member.userId);
+  					}								
+  				  });	
+			
+  			$.ajax({
+				url : "../logincheck", 
+				method : "POST" ,
+				dataType : "json" ,
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+		
+			success : function(data) {
+				
+                	$('#reservationId').val(data.member.userId);
+				}								
+			  });		
+  				
+  			$.ajax(
 					{
 						url : "../addstylecoach",
 						method : "POST" ,

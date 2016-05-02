@@ -80,7 +80,7 @@
 	     
 	     		
 			<div class="modal-footer">
-           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">예약 정보 수정</button>
+           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">예약 수정</button>
         	</div>
         
 		</div>
@@ -88,9 +88,9 @@
 	<script type="text/javascript">
 		$(function(){
 			
-			var reservationId = location.href.split("?")[1].split("=")[1];
+			var reservationNumber = location.href.split("?")[1].split("=")[1];
 			
-			$.getJSON("../getreservationcoach?reservationId=" + reservationId,
+			$.getJSON("../getreservationcoach?reservationNumber=" + reservationNumber,
 			
 			function(result) {
 				console.log(result);
@@ -99,7 +99,7 @@
 			
 			$.ajax({
 		         				
-		         url:"../getreservationcoach?reservationId=" + reservationId,
+		         url:"../getreservationcoach?reservationNumber=" + reservationNumber,
 		         dataType:"json",
 		         success:function(data){
 		            
@@ -130,7 +130,7 @@
 		      });	
 		
 				$('#updateViewBtn').click(function(){
-				location.href='\StyleReservationInfoUpdateView.html?reservationId=' + $('#info4').text();
+				location.href='\StyleReservationCoachUpdateView.html?reservationNumber=' + $('#info1').text();
 				
 			  });
 		

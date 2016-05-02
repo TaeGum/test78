@@ -36,14 +36,14 @@
 				</div>
                 </div>
     
-    <div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
-    
-    
-    </div>
-   
-	<div class="btn-group btn-group-justified" >
-	<a class="btn btn-default btn-sm" href="..\styling\StyleCoachAdd.html">등록하기</a>
-    </div>
+	    <div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
+	    
+	    
+	    </div>
+	   
+		<div class="modal-footer">
+	          <button id="styleCoachAddBtn" type="button" class="btn btn-primary">등록 하기</button>
+	    </div>
 		
     </div>
     
@@ -108,7 +108,14 @@
  	   		
 		    }); 
     	
-   	 }());
+    	
+			$('#styleCoachAddBtn').click(function(){
+			location.href='\StyleCoachAdd.html';
+			
+		    }); 
+    
+    
+    });
 	</script>
 
 </body>

@@ -166,6 +166,21 @@
 				}								
 			  });	
 			
+			$.ajax({
+				url : "../logincheck", 
+				method : "POST" ,
+				dataType : "json" ,
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+		
+			success : function(data) {
+				
+                	$('#reservationId').val(data.member.userId);
+				}								
+			  });	
+			
 			$("#reservationInfoBtn").on("click",function(){
   			
 				var COMNO = $("input[name='companyNumber']").val();
