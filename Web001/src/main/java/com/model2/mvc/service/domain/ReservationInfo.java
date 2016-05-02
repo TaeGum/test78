@@ -3,6 +3,7 @@ package com.model2.mvc.service.domain;
 public class ReservationInfo {
 	
 	//Field
+	int reservationNumber;
 	int companyNumber;
 	String companyName;
 	String reservationId;
@@ -15,6 +16,14 @@ public class ReservationInfo {
 	}
 	
 	//getter and setter
+	public int getReservationNumber() {
+		return reservationNumber;
+	}
+
+	public void setReservationNumber(int reservationNumber) {
+		this.reservationNumber = reservationNumber;
+	}
+	
 	public int getCompanyNumber() {
 		return companyNumber;
 	}
@@ -65,7 +74,7 @@ public class ReservationInfo {
 	
 	@Override
 	public String toString() {
-		return "Reservation [companyNumber=" + companyNumber + ", companyName=" + companyName + ", reservationId=" + reservationId + ", reservationName=" + 
+		return "Reservation [reservationNumber=" + reservationNumber + ", companyNumber=" + companyNumber + ", companyName=" + companyName + ", reservationId=" + reservationId + ", reservationName=" + 
 				reservationName + ", reservationDate=" + reservationDate + ", reservationTime=" + reservationTime + "]";
 	}
 
