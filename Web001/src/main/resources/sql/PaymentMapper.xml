@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PaymentMapper">
+
+	 <resultMap id="paymentSelectMap" type="com.model2.mvc.service.domain.Payment">
+		<result property="paymentNumber" 		column="PNO" 		jdbcType="INTEGER"/>
+		<result property="reservationNumber" 	column="STYNO" 		jdbcType="INTEGER"/>
+		<result property="paymentName" 			column="PNAME" 		jdbcType="VARCHAR"/>
+		<result property="paymentDate" 			column="PDATE" 		jdbcType="DATE"/>
+		<result property="paymentCardName" 		column="PCDNAME" 	jdbcType="VARCHAR"/>
+		<result property="paymentCardNumber" 	column="PCDNUM" 	jdbcType="INTEGER"/>
+		<result property="paymentCardPassword" 	column="PCDPW" 		jdbcType="INTEGER"/>
+		<result property="studentId"			column="STID" 		jdbcType="VARCHAR"/>
+		<result property="paymentMoney"			column="PMONEY" 	jdbcType="INTEGER"/>
+	</resultMap>
+
+	 <!-- insert -->
+	 <insert id="addPayment" parameterType="payment">
+		INSERT
+		INTO payment(PNO, STYNO, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, STID, PMONEY)
+		VALUES (seq_payment_PNO.nextval, #{reservationNumber:INTEGER}, #{paymentName:VARCHAR}, SYSDATE, #{paymentCardName:VARCHAR}, 
+		#{paymentCardNumber:INTEGER}, #{paymentCardPassword:INTEGER}, #{studentId:VARCHAR}, 20000)
+	 </insert>
+	 
+	 <!-- select List -->
+	 <select id="getPaymentList" resultMap="paymentSelectMap">
+	 	SELECT PNO, STYNO, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, STID, PMONEY, ROWNUM AS row_seq
+	 	FROM payment
+	 </select>
+	 
+	 <!-- select -->
+	 <select id="getPayment" parameterType="int" resultMap="paymentSelectMap">
+		SELECT PNO, STYNO, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, STID, PMONEY
+		FROM payment 
+		WHERE PNO = #{value}
+	 </select>
+	 
+	 <!-- delete -->
+	 <delete id="deletePayment">
+	 
+	 
+	 </delete>
+	 	 
+</mapper>

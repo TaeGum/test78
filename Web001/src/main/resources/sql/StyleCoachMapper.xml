@@ -18,7 +18,7 @@
 	<!-- insert -->
 	<insert id="addStyleCoach" parameterType="stylecoach">
 	 	INSERT 
-	 	INTO stylecoach (STID, CPIC, CTYPE, CPRES, COMNO, CNAME)
+	 	INTO stylecoach (STID, CPIC, CNAME, CTYPE, CPRES, COMNO)
 	 	VALUES (#{userId:VARCHAR} , #{coachPicture:VARCHAR} , #{coachName:VARCHAR}, 
 	 	#{coachType:VARCHAR} , #{coachPresentation:VARCHAR} , #{companyNumber:INTEGER})
 	</insert>
@@ -30,18 +30,24 @@
 	</select>
 	
 	<!-- select --> 
-	<select id="getStyleCoach"	parameterType="java.lang.String" resultMap="stylecoachSelectMap">
+	<select id="getStyleCoach"	parameterType="String" resultMap="stylecoachSelectMap">
 		SELECT STID, CPIC, CNAME, CTYPE, CPRES, COMNO
 		FROM stylecoach
-		WHERE CNAME = #{value}
+		WHERE STID = #{value}
 	</select>
 	 
+	<!-- update -->
 	<update id="updateStyleCoach" parameterType="stylecoach">
 	 	UPDATE stylecoach
 	 	<set>
-
-	 	</set>
-	 	WHERE STID 
+		STID = #{userId:VARCHAR},
+		CPIC = #{coachPicture:VARCHAR}, 
+		CNAME = #{coachName:VARCHAR},
+		CTYPE = #{coachType:VARCHAR},
+		CPRES = #{coachPresentation:VARCHAR},
+		COMNO = #{companyNumber:INTEGER}
+		</set>
+	 	WHERE STID = #{userId:VARCHAR}
 	</update>
 
 </mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReplCoachMapper">
+
+	<resultMap id="replcoachSelectMap" type="com.model2.mvc.service.domain.ReplCoach">
+		<result property="userId" 	   column="STID" 		jdbcType="VARCHAR"/>
+		<result property="repName"	   column="REPNAME" 	jdbcType="VARCHAR"/>
+		<result property="repDate" 	   column="REPDATE" 	jdbcType="DATE"/>
+		<result property="repMain" 	   column="REPMAIN" 	jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- insert -->
+	<insert id="addCoachRepl" parameterType="replcoach">
+	 	INSERT 
+	 	INTO coachrep(STID, REPNAME, REPDATE, REPMAIN)
+	 	VALUES (#{userId:VARCHAR}, #{repName:VARCHAR}, SYSDATE, #{repMain:VARCHAR})
+	</insert>
+	 
+	<!-- select List -->
+	<select id="getCoachReplList" resultMap="replCoachSelectMap">
+	 	SELECT STID, REPNAME, REPDATE, REPMAIN, ROWNUM AS row_seq
+	 	FROM coachrep
+	</select>
+	
+	<!--
+	<delete id="deleteCoachRepl" parameterType="String">
+		DELETE FROM coachrep
+		WHERE STID = #{value}
+	</delete>
+	-->
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReplCompanyMapper">
+
+	<resultMap id="replcompanySelectMap" type="com.model2.mvc.service.domain.ReplCompany">
+		<result property="companyNumber" column="COMNO" 	 jdbcType="INTEGER"/>
+		<result property="repName"		 column="REPNAME" 	 jdbcType="VARCHAR"/>
+		<result property="repDate" 		 column="REPDATE" 	 jdbcType="DATE"/>
+		<result property="repMain" 		 column="REPMAIN" 	 jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- insert -->
+	<insert id="addCompanyRepl" parameterType="replcompany">
+	 	INSERT 
+	 	INTO companyrep (COMNO, REPNAME, REPDATE, REPMAIN)
+	 	VALUES (#{COMNO:INTEGER} , #{repName:VARCHAR} , SYSDATE, #{repMain:VARCHAR})
+	</insert>
+	 
+	<!--  select List -->
+	<select id="getCompanyReplList" resultMap="replcompanySelectMap">
+	 	SELECT COMNO, REPNAME, REPDATE, REPMAIN, ROWNUM AS row_seq
+	 	FROM companyrep
+	</select>
+	
+	<!--  
+	<delete id="deleteCompanyRepl" parameterType="int">
+		DELETE FROM companyrep
+		WHERE COMNO = #{value}
+	</delete>
+	-->
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReservationInfoMapper">
+
+	 <resultMap id="reservationInfoSelectMap" type="com.model2.mvc.service.domain.ReservationInfo">
+		<result property="reservationNumber"	column="RVNUMBER"	jdbcType="INTEGER"/>
+		<result property="companyNumber" 		column="COMNO" 		jdbcType="INTEGER"/>
+		<result property="companyName"			column="COMNAME" 	jdbcType="VARCHAR"/>
+		<result property="reservationId" 		column="RVID" 		jdbcType="VARCHAR"/>
+		<result property="reservationName" 		column="RVNAME" 	jdbcType="VARCHAR"/>
+		<result property="reservationDate" 		column="RVDATE" 	jdbcType="VARCHAR"/>
+		<result property="reservationTime" 		column="RVTIME" 	jdbcType="VARCHAR"/>
+	</resultMap>
+
+	 <!-- insert -->
+	 <insert id="addReservation" parameterType="reservationinfo">
+		INSERT
+		INTO companyrv(RVNUMBER, COMNO, COMNAME, RVID, RVNAME, RVDATE, RVTIME)
+		VALUES (seq_companyrv_RVNUMBER.nextval, #{companyNumber:INTEGER} , #{companyName:VARCHAR} , 
+		#{reservationId:VARCHAR} , #{reservationName:VARCHAR} , #{reservationDate:VARCHAR} , #{reservationTime:VARCHAR})
+	 </insert>
+	 
+	 <!-- select List -->
+	 <select id="getReservationList"  parameterType="String" resultMap="reservationInfoSelectMap">
+	 	SELECT RVNUMBER, COMNO, COMNAME, RVID, RVNAME, RVDATE, RVTIME, ROWNUM AS row_seq
+	 	FROM companyrv
+	 	WHERE RVID = #{value}
+	 </select>
+	 
+	 <!-- select -->
+	 <select id="getReservation" parameterType="int" resultMap="reservationInfoSelectMap">
+	 	SELECT RVNUMBER, COMNO, COMNAME, RVID, RVNAME, RVDATE, RVTIME
+	 	FROM companyrv
+	 	WHERE RVNUMBER = #{value}
+	 </select>
+	 			 
+	 <!-- update --> 			 
+	 <update id="updateReservation" parameterType="reservationinfo">
+	 	UPDATE companyrv
+	 	<set>
+	 	RVNUMBER = #{reservationNumber:INTEGER}, 
+	 	COMNO = #{companyNumber:INTEGER},
+	 	COMNAME = #{companyName:VARCHAR}, 
+	 	RVID = #{reservationId:VARCHAR}, 
+	 	RVNAME = #{reservationName:VARCHAR},
+	 	RVDATE = #{reservationDate:VARCHAR}, 
+	 	RVTIME = #{reservationTime:VARCHAR}
+	 	</set>
+	 	WHERE RVNUMBER = #{reservationNumber:INTEGER}
+	 </update>	 			 
+</mapper>

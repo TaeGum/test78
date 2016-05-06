@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReservationCoachMapper">
+
+	 <resultMap id="reservationCoachSelectMap" type="com.model2.mvc.service.domain.ReservationCoach">
+		<result property="reservationNumber" 	column="STYNO" 		jdbcType="INTEGER"/>
+		<result property="userId"				column="STID" 		jdbcType="VARCHAR"/>
+		<result property="coachName"			column="CNAME" 		jdbcType="VARCHAR"/>
+		<result property="reservationId" 		column="RVID" 		jdbcType="VARCHAR"/>
+		<result property="reservationName" 		column="RVNAME" 	jdbcType="VARCHAR"/>
+		<result property="reservationDate" 		column="RVDATE" 	jdbcType="VARCHAR"/>
+		<result property="reservationTime" 		column="RVTIME" 	jdbcType="VARCHAR"/>
+	</resultMap>
+
+	 
+	 <insert id="addReservation" parameterType="reservationcoach">
+		INSERT
+		INTO styling(STYNO, STID, CNAME, RVID, RVNAME, RVDATE, RVTIME)
+		VALUES (seq_styling_STYNO.nextval, #{userId:VARCHAR} , #{coachName:VARCHAR}, #{reservationId:VARCHAR} , 
+		#{reservationName:VARCHAR} , #{reservationDate:VARCHAR} , #{reservationTime:VARCHAR})
+	 </insert>
+	 
+	
+	 <select id="getReservationList" parameterType="String" resultMap="reservationCoachSelectMap">
+	 	SELECT STYNO, STID, CNAME, RVID, RVNAME, RVDATE, RVTIME, ROWNUM AS row_seq
+	 	FROM styling
+	 	WHERE RVID = #{value}
+	 </select>
+	 
+
+	 <select id="getReservation" parameterType="int" resultMap="reservationCoachSelectMap">
+	 	SELECT STYNO, STID, CNAME, RVID, RVNAME, RVDATE, RVTIME
+	 	FROM styling
+	 	WHERE STYNO = #{value}
+	 </select>
+	 			 
+	 <!-- update --> 			 
+	 <update id="updateReservation" parameterType="reservationcoach">
+	 	UPDATE styling
+	 	<set>
+	 	STYNO = #{reservationNumber:INTEGER},
+	 	STID = #{userId:VARCHAR}, 
+	 	CNAME = #{coachName:VARCHAR}, 
+	 	RVID = #{reservationId:VARCHAR}, 
+	 	RVNAME = #{reservationName:VARCHAR},
+	 	RVDATE = #{reservationDate:VARCHAR}, 
+	 	RVTIME = #{reservationTime:VARCHAR}
+	 	</set>
+	 	WHERE STYNO = #{reservationNumber:INTEGER}
+	 </update>	 			 
+</mapper>

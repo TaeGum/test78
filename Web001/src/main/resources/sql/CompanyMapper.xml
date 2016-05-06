@@ -31,7 +31,7 @@
 	 </select>
 	 
 	 <!-- select -->
-	 <select id="getCompany" parameterType="java.lang.String" resultMap="companySelectMap">
+	 <select id="getCompany" parameterType="int" resultMap="companySelectMap">
 		SELECT COMNO, COMNAME, COMTYPE, COMADDR, COMPRES, COMPIC, COMMAP
 		FROM company 
 		WHERE COMNO = #{value}
@@ -51,11 +51,11 @@
 	 	WHERE COMNO = #{companyNumber:VARCHAR}
 	 </update>
 	 
-	 <!-- delete -->
-	 <delete id="deleteCompany" parameterType="company">
-	 	DELETE
-	 	FROM company
-	 	WHERE COMNO = #{value}
-	 </delete>
-	 	 
+	 <!-- SQL : SELECT ROW count -->
+	 <select  id="getTotalCount"  parameterType="search" resultType="int">
+	  	SELECT COUNT(*)
+	  	FROM company 
+	  	countTable						
+	 </select>
+
 </mapper>
