@@ -29,7 +29,7 @@
 					</ul>
 			</div>
 		</div>
-		<br>
+		
 		<br>
 		
 		<table class="table">
@@ -76,24 +76,23 @@
     	</div>
 		
 			<div class="modal-footer">
-				<button id="replcompanyreplBtn" type="button" class="btn btn-primary">한줄평</button>
+				<button id="replcompanyreplBtn" type="button" class="btn btn-primary">한줄평쓰기</button>
            		<button id="reservationViewBtn" type="button" class="btn btn-primary">예약</button>
            	 	<button id="updateViewBtn" type="button" class="btn btn-primary">정보 수정</button>
         	</div>
      	</div>
 	
 
-	<script src="../lib/jquery/jquery.min.js"></script>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
+		<script src="../lib/jquery/jquery.min.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
 		
 		$(document).on('click', '.ReplUpdate', function(event) {
-			event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
+			event.preventDefault();
 	    	location.href = this.href;
 		});
-		
 		
 		$(function(){
 		
