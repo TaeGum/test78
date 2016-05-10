@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>결제 하기</title>
+</head>
+<body>
+    
+	<div data-role="page" id="Main">
+             <div data-role="header" style="overflow:hidden;">
+                    <h1>공통UI</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../interview/InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../styling/StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+              </div>
+            
+             <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+			 <script type="text/javascript" src="../javascript/calendar.js"></script>
+			 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+			 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	  
+   				 
+   			 <div id="middle" style="background-color:#EEEEEE;" align="center"> 
+		  	 <table>
+					<tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;결제아이디&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="studentId" name="studentId">
+				     	 </td>
+				    </tr>
+				     
+				    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+					
+					<tr>
+				         <td width="120" class="ct_write">&nbsp;스타일링일련번호&nbsp;</td>
+				         <td>
+				         <input type="text" id="reservationNumber" name="reservationNumber">
+				         </td>
+				    </tr>
+                    
+                    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+					
+					<tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;결제자&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="paymentName" name="paymentName">
+				         </td>
+				    </tr>
+                    
+                    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+					
+					
+					<tr>
+	            		<td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;카드사선택&nbsp;&nbsp;&nbsp;</td>
+	    
+	      				<td>
+	       					<select name="card_select" id="card_select">
+		          					<option value="" >선택하세요</option>
+		         			 		<option value="신한">신한</option>
+		         			 		<option value="우리">우리</option>
+		         			 		<option value="BC">BC</option>
+		         			 		<option value="기업">기업</option>
+		         			 		<option value="국민">국민</option>
+		         			 		<option value="롯데">롯데</option>
+		         			 		<option value="현대">현대</option>
+		         			 		<option value="하나">하나</option>
+		         			 		<option value="농협">농협</option>
+							</select>
+	      				</td>
+	       				
+	       				<td>
+	         				<input id="paymentCardName" name="paymentCardName" size=12  value="">
+	        			 	<script>
+	       						function dd(){$("#paymentCardName").val($('#card_select').val() );}
+	       						$("#card_select").change(dd);
+	      					</script>
+	        			</td>     
+       				</tr> 
+					 
+                    <tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;카드번호&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="paymentCardNumber" name="paymentCardNumber">
+				         </td>
+				    </tr>
+                    
+                    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+                    
+                    <tr>
+				         <td width="120" class="ct_write">&nbsp;&nbsp;&nbsp;카드비밀번호&nbsp;&nbsp;&nbsp;</td>
+				         <td>
+				         <input type="text" id="paymentCardPassword" name="paymentCardPassword">
+				         </td>
+				    </tr>
+                    
+                    <tr>
+						<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+					</tr>
+                     
+			</table>
+    	</div>
+		
+		<div class="modal-footer">
+   			<button id="paymentBtn" type="button" class="btn btn-primary">결제</button>
+    	</div>	
+	
+	</div>
+		
+		<script type="text/javascript">
+
+		$(function(){
+			
+			var reservationNumber = location.href.split("?")[1].split("=")[1];
+			$("#reservationNumber").html(reservationNumber);
+			alert(reservationNumber);
+			
+			$.getJSON("../getreservationcoach?reservationNumber=" + reservationNumber, 
+			
+			function(result) {
+				console.log(result);
+			});
+			
+			$.ajax({
+				url : "../getreservationcoach?reservationNumber=" + reservationNumber, 
+				method : "POST" ,
+				dataType : "json" ,
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+		
+			success : function(data) {
+				
+                	$('#reservationNumber').val(data.info.reservationNumber);
+				}								
+			  });
+			
+			
+			$.ajax({
+				url : "../logincheck", 
+				method : "POST" ,
+				dataType : "json" ,
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+		
+			success : function(data) {
+				
+                	$('#studentId').val(data.member.userId);
+                	$('#paymentName').val(data.member.userName);
+				}								
+			});	
+			
+			
+			$("#paymentBtn").on("click",function(){
+  			
+				var STID = $("input[name ='studentId']").val();
+				var STYNO = $("input[name ='reservationNumber']").val();
+				var PNAME = $("input[name ='paymentName']").val();
+				var PCDNAME = $("input[name ='paymentCardName']").val();
+				var PCDNUM = $("input[name ='paymentCardNumber']").val();
+				var PCDPW = $("input[name ='paymentCardPassword']").val();
+						
+		 	$.ajax({
+					
+		 		url : "../addpayment",
+					method : "POST" ,
+					dataType : "json" ,
+					headers : {
+						"Accept" : "application/json",
+						"Content-Type" : "application/json"
+					},
+					
+					data : JSON.stringify({
+						
+						studentId : STID,
+						reservationNumber : STYNO,
+						paymentName : PNAME, 
+						paymentCardName : PCDNAME, 
+						paymentCardNumber : PCDNUM, 
+						paymentCardPassword : PCDPW, 
+						
+					}),
+						success : function(JSONData , status) {
+							
+						location.href='./PaymentList.html'		
+					}
+				});
+			});
+		});
+		</script>
+		</body>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">   
+</html>

@@ -8,10 +8,11 @@
 <body>
     
 	<div data-role="page" id="Main">
-                <div data-role="header" style="overflow:hidden;">
-                    <h1>공통UI</h1>
-                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
-				<div data-role="navbar" data-grid="c">
+          <div data-role="header" style="overflow:hidden;">
+                  <h1>공통UI</h1>
+                  <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+		   
+		  <div data-role="navbar" data-grid="c">
 					<ul>
 						<li>
                             <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
@@ -26,32 +27,33 @@
                             <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
                         </li>
 					</ul>
-				</div>
-                </div>
-    
+		  </div>
+          </div>
+                
 	    <div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
 	    
 	    </div>
-  
-    </div>
+ 
+	</div> 
 
 	<script src="../lib/jquery/jquery.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	
 	$(document).on('click', '.reservationLink', function(event) {
 		event.preventDefault(); 
     	location.href = this.href;
 	});
 	
-    $(document).on('click', '.StyleCoach', function(event) {
+	$(document).on('click', '.StyleCoach', function(event) {
     	event.preventDefault(); 
     	location.href = this.href;
     }); 
     
     $(document).on('click', '.StyleInfo', function(event) {
-    	event.preventDefault();
+    	event.preventDefault(); 
     	location.href = this.href;
     }); 
     
@@ -60,10 +62,11 @@
 		location.href = this.href;
 	});
 	
-    $(function (){
+    
+	$(function (){
     	
     	$.ajax({
-			url:"../getreservationinfoList",
+			url:"../getpaymentList",
 			dataType:"json",
 			success:function(data){
 						
@@ -74,29 +77,25 @@
 		        "<a class='StyleInfo' href='\StyleInfo.html'><button type='button' class='btn btn-default'>스타일 정보</button></a>" + 
 				"<a class='StyleReservationList' href='\StyleReservationList.html'><button type='button' class='btn btn-default'>나의 예약 목록</button></a>" + 
 		        "</div><p></p>" + 
-		        "<span style='margin-left:50px; font-size:20px'>" + data.Id + " 님 의 업체 예약 목록</span>"+ 
+		        "<span style='margin-left:50px; font-size:20px'>" + data.Id + " 님 의 결제 목록</span>"+ 
 		        "<table class='table' style='text-align:center;'>"+ 
 		        "<thead>" +
-		        "<th>예약일련번호</th>" + 
-		        "<th>예약업체명</th>" + 
-		        "<th>예약아이디</th>" + 
-		        "<th>예약일시</th>" + 
-		        "<th>예약시간</th>" + 
+		        "<th>결제일련번호</th>" +  
+		        "<th>결제아이디</th>" + 
+		        "<th>결제금액</th>" + 
+		        "<th>결제일시</th>" + 
 		        "</thead>" + 
 		        "<tbody>";
 		   
 				for(var i=0; i<list.length; i++){
 					
-					if(list[i].reservationId == data.Id) {
 								
 				  str += "<tr class='ct_list_pop'>" +
-			  		 	 "<td><a class='reservationLink' href='\StyleReservationInfoGet.html?reservationNumber="+ list[i].reservationNumber + "'>" + list[i].reservationNumber + "</a></td>" +
-    			  		 "<td>" + list[i].companyName + "</td>" + 
-    			  		 "<td>" + list[i].reservationId + "</td>" +
-    			  		 "<td>" + list[i].reservationDate + "</td>" + 
-    			  		 "<td>" + list[i].reservationTime + "</td>" +
+			  		 	 "<td><a class='reservationLink' href='\PaymentGet.html?paymentNumber="+ list[i].paymentNumber + "'>" + list[i].paymentNumber + "</a></td>" +
+    			  		 "<td>" + list[i].studentId + "</td>" +
+    			  		 "<td>" + list[i].paymentMoney + "</td>" + 
+    			  		 "<td>" + list[i].paymentDate + "</td>" +
 				  		 "</tr>" 			
-					}
 				}
         				  
         		str += "</tbody>" + 
@@ -115,4 +114,4 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-</html>   
+</html>  

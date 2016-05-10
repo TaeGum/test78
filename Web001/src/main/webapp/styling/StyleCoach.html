@@ -4,119 +4,110 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>스타일코칭목록</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
-<body>
-    
-<div data-role="page" id="Main">
-                <div data-role="header" style="overflow:hidden;">
-                    <h1>공통UI</h1>
-                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
-				<div data-role="navbar" data-grid="c">
-					<ul>
-						<li>
-                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
-                        </li>
-						<li>
-                            <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
-                        </li>
-						<li>
-                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
-                        </li>
-					</ul>
-				</div>
-                </div>
-    
-	    <div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
-	    
-	    
-	    </div>
-	   
-		<div class="modal-footer">
-	          <button id="styleCoachAddBtn" type="button" class="btn btn-primary">등록 하기</button>
-	    </div>
-		
-    </div>
-    
-	<script type="text/javascript">
-    $(document).on('click', '.coachLink', function(event) {
-    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
-    	location.href = this.href;
-    });
-    
-    $(document).on('click', '.StyleCoach', function(event) {
-    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
-    	location.href = this.href;
-    }); 
-    
-    $(document).on('click', '.StyleInfo', function(event) {
-    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
-    	location.href = this.href;
-    }); 
-    
-    $(document).on('click', '.InterviewBehindList', function(event) {
-    	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
-    	location.href = this.href;
-    }); 
-    
-    $( function (){
-    	
-    	$.ajax({
-			url:"../getstylecoachList",
-			dataType:"json",
-			success:function(data){
-						
-				var list = data.list;
-				
-				var str = "<div class='btn-group btn-group-justified'>"+
-		        "<a class='StyleCoach' href='\StyleCoach.html'><button type='button' class='btn btn-default'>스타일 코칭</button></a>"+
-		        "<a class='StyleInfo' href='\StyleInfo.html'><button type='button' class='btn btn-default'>스타일 정보</button></a>" + 
-		        "<a class='InterviewBehindList' href='\InterviewBehindList.html'><button type='button' class='btn btn-default'>리뷰 및 후기</button></a>" + 
-		        "</div><p></p>" + 
-		        "<span style='margin-left:50px; font-size:20px'>스타일리스트선택</span>"+ 
-		        "<table class='table' style='text-align:center;'>"+ 
-		        "<tbody>";
-		   
-				
-				for(var i=0; i<list.length; i++){
-					
-								
-				  str += "<tr class='ct_list_pop'>"+
-    			  		 "<td>"+ 
-				  		 "<a class='coachLink' href='\StyleCoachGet.html?userId="+list[i].userId+"'>" +
-				  		 "<img src='" + list[i].coachPicture + "'align='middle' width='150px' height='200px'></a></td>" + 
-    			  		 "</tr>" + 
-    			  		 "<tr><td>" + list[i].coachName +"</td></tr>"; 			
-				}
-        				  
-        		str += "</tbody>" + 
-				  	  "</table>";
-				  	  
-				var divTag = document.getElementById("main");
-				divTag.innerHTML = str;
-				  	  
-				}   
- 	   		
-		    }); 
-    	
-    	
-			$('#styleCoachAddBtn').click(function(){
-			location.href='\StyleCoachAdd.html';
-			
-		    }); 
-    
-    
-    });
-	</script>
 
-</body>
-</html>              
+<body>
+	<div data-role="page" id="Main">
+		<div data-role="header" style="overflow: hidden;">
+			<h1>공통UI</h1>
+			<a href="#" style="align: right;"><i class="fa fa-cog"></i></a>
+			<div data-role="navbar" data-grid="c">
+				<ul>
+					<li><a href="../afterlogin.html"><i
+							class="fa fa-home fa-5x"></i></a></li>
+					<li><a href="../interview/InterView_menu_Selection.html"><i
+							class="fa fa-microphone fa-5x"></i></a></li>
+					<li><a href="../styling/StyleCoach.html"><i
+							class="fa fa-star fa-5x"></i></a></li>
+					<li><a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
+		
+		</div>
+
+		<div class="modal-footer">
+			<button id="styleCoachAddBtn" type="button" class="btn btn-primary">등록</button>
+		</div>
+	</div>
+	
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+
+	
+		$(document).on('click', '.coachLink', function(event) {
+			event.preventDefault(); 
+			location.href = this.href;
+		});
+
+		$(document).on('click', '.StyleCoach', function(event) {
+			event.preventDefault(); 
+			location.href = this.href;
+		});
+
+		$(document).on('click', '.StyleInfo', function(event) {
+			event.preventDefault(); 
+			location.href = this.href;
+		});
+
+		$(document).on('click', '.StyleReservationList', function(event) {
+			event.preventDefault();
+			location.href = this.href;
+		});
+
+		$(function() {
+
+			$.ajax({
+						url : "../getstylecoachList",
+						dataType : "json",
+						success : function(data) {
+
+							var list = data.list;
+
+							var str = "<div class='btn-group btn-group-justified'>"
+									+ "<a class='StyleCoach' href='\StyleCoach.html'><button type='button' class='btn btn-default'>스타일 코칭</button></a>"
+									+ "<a class='StyleInfo' href='\StyleInfo.html'><button type='button' class='btn btn-default'>스타일 정보</button></a>"
+									+ "<a class='StyleReservationList' href='\StyleReservationList.html'><button type='button' class='btn btn-default'>나의 예약 목록</button></a>"
+									+ "</div><p></p>"
+									+ "<span style='margin-left:50px; font-size:20px'>스타일리스트선택</span>"
+									+ "<table class='table' style='text-align:center;'>"
+									+ "<tbody>";
+
+							for (var i = 0; i < list.length; i++) {
+
+								str += "<tr class='ct_list_pop'>"
+										+ "<td>"
+										+ "<a class='coachLink' href='\StyleCoachGet.html?userId="
+										+ list[i].userId
+										+ "'>"
+										+ "<img src='" + list[i].coachPicture + "'align='middle' width='150px' height='200px'></a></td>"
+										+ "</tr>" + "<tr><td>"
+										+ list[i].coachName + "</td></tr>";
+							}
+
+							str += "</tbody>" + "</table>";
+
+							var divTag = document.getElementById("main");
+							divTag.innerHTML = str;
+
+						}
+
+					});
+
+			$('#styleCoachAddBtn').click(function() {
+				location.href = '\StyleCoachAdd.html';
+
+			});
+
+		});
+		</script>
+	</body>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</html>

@@ -4,18 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>코치정보</title>
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script
-	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -24,15 +12,20 @@
 			<h1>공통UI</h1>
 			<a href="#" style="align: right;"><i class="fa fa-cog"></i></a>
 			<div data-role="navbar" data-grid="c">
-				<ul>
-					<li><a href="..\afterlogin.html"><i
-							class="fa fa-home fa-5x"></i></a></li>
-					<li><a href="..\interview\InterView_menu_Selection.html"><i
-							class="fa fa-microphone fa-5x"></i></a></li>
-					<li><a href="..\styling\StyleCoach.html"><i
-							class="fa fa-star fa-5x"></i></a></li>
-					<li><a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a></li>
-				</ul>
+					<ul>
+						<li>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../interview/InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../styling/StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
 			</div>
 		</div>
 		<br>
@@ -47,7 +40,7 @@
 		     
 			 <tr>
 		         <td width="120" class="ct_write">&nbsp;코치사진&nbsp;</td>
-		         <td><img src="info2"></td>
+		         <td><div><img width="120" height="150" id="info2" src=""></div></td> 
 		     </tr>      
 			 
 			 <tr>
@@ -72,54 +65,90 @@
 		     </tbody>
 	     </table> 
 	     
-	     <table class="table">
-		 	<thead>
-			    <th>별점</th>
-				<th>회원명</th>
-				<th>회원 한줄평</th>			      
-			</thead>
-						    
-			<tbody>
-				 <tr>
-				 <td>***</td>
-			     <td>가나다</td>
-			     <td>정샘물 아티스트 짱이에요</td>
-				 </tr>
-				
-				 <tr>
-				 <td>***</td>
-				 <td>마바사</td>
-			     <td>차원이 다른 메이크업을 제공하네요 강추합니다.</td>
-			     </tr>
-				
-				 <tr>
-			     <td>***</td>
-				 <td>아자차</td>
-				 <td>최고에요!</td>
-				 </tr>			        
-			</tbody>
-	      </table>  
+	    <br>
+    	<div id="main2" data-role="main2" class="ui-content table-responsive" style="background-color:">
+    
+    	</div>
 		
 			<div class="modal-footer">
-            	<button id="reservationViewBtn" type="button" class="btn btn-primary">코칭 예약 하기</button>
-           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">코치 정보 수정</button>
+				<button id="replcoachBtn" type="button" class="btn btn-primary">한줄평</button>
+            	<button id="reservationViewBtn" type="button" class="btn btn-primary">예약</button>
+           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">정보 수정</button>
         	</div>
         
 		</div>
-	
+
+
+
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	
+		$(document).on('click', '.ReplUpdate', function(event) {
+			event.preventDefault();
+    		location.href = this.href;
+		});
+			
 		$(function(){
 			
 			var userId = location.href.split("?")[1].split("=")[1];
-			/*$("#userId").html(userId);*/
+			
+			$.ajax({
+				url:"../getcoachreplList",
+				dataType:"json",
+				success:function(data){
+							
+					var list = data.list;
+					var str =
+				    "<span style='margin-left:5px; font-size:20px'>회원 한줄평</span>"+ 	
+					"<table class='table'>" + 
+				 	"<thead>" +
+				 	"<th>No</th>" +
+					"<th>회원명</th>" + 
+					"<th>회원 한줄평</th>" + 			      
+					"</thead>"
+			        "<table class='table' style='text-align:center;'>"+ 
+			        "<tbody>";
+			   	       			        	
+					for(var i=0; i<list.length; i++){
+										
+						if(userId == list[i].userId) {
+							
+					  	str += "<tr class='ct_list_pop'>" +
+					  	 	 "<td>" + list[i].repNumber +"</td>" +
+						 	 "<td>" + list[i].repName +"</td>" + 
+	    			  		 "<td>" + list[i].repMain +"</td>" + 			
+	    				     "<td><a class='ReplUpdate' href='\StyleCoachReplUpdate.html?="+list[i].repNumber+"'>" +
+	    				   	 "<button type='button' class='btn btn-default'>수정</button></a>" +
+	    				   	 "<tr>";
+						}
+					
+			        }
+	        				  
+	        		str += "</tbody>" + 
+					  	  "</table>";
+					  	  
+					var divTag = document.getElementById("main2");
+					divTag.innerHTML = str;
+					  	  
+					}   
+	 	   		
+			    }); 
+						
+		}); 
+		
+		$(function(){
+			
+			var userId = location.href.split("?")[1].split("=")[1];
 			
 			$.getJSON("../getstylecoach?userId=" + userId,
-			
-			function(result) {
-				console.log(result);
-			});	
-			
-			
+					
+					function(result) {
+						console.log(result);
+					});
+					
 			$.ajax({
 		         				
 		         url:"../getstylecoach?userId=" + userId,
@@ -134,24 +163,23 @@
 		            var companyNumber = data.info.companyNumber;
 		            
 		            $("#info1").html(userId);
-		            //console.log(userId);
-		            $("#info2").html(coachPicture);
-		            //console.log(coachPicture);
-		            $("#info3").html(coachName);
-		            //console.log(coachName);
+		            $("#info2").attr('src',coachPicture);
+					$("#info3").html(coachName);
 		            $("#info4").html(coachType);
-		            //console.log(coachType);
 		            $("#info5").html(coachPresentation);
-		            //console.log(coachPresentation);
 		            $("#info6").html(companyNumber);
-		            //console.log(companyNumber);
 		  
 		         }
 		         
-		      });	
-		
+			});
+			
+				$('#replcoachBtn').click(function(){
+					location.href='\StyleCoachReplAdd.html?userId=' + $('#info1').text();
+				
+			  });
+				
 				$('#updateViewBtn').click(function(){
-				location.href='\StyleCoachUpdateView.html?userId=' + $('#info1').text();
+					location.href='\StyleCoachUpdateView.html?userId=' + $('#info1').text();
 				
 			  });
 		
@@ -161,9 +189,9 @@
 			  });
 				
 		});		
-	</script>
-	
-</body>
+		</script>
+	</body>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">	
 </html>
-
-

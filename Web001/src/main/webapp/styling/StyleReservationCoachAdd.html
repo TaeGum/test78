@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>코칭 예약</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="../javascript/calendar.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -14,28 +11,27 @@
 </head>
 <body>
     
-    
-	<div data-role="page" id="Main">
+		<div data-role="page" id="Main">
              <div data-role="header" style="overflow:hidden;">
                     <h1>공통UI</h1>
                     <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
 				<div data-role="navbar" data-grid="c">
 					<ul>
 						<li>
-                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
                         </li>
 						<li>
-                            <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                            <a href="../interview/InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
                         </li>
 						<li>
-                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                            <a href="../styling/StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
                         </li>
 					</ul>
 				</div>
-                </div>
+        </div>
    			
    			
    		<div id="middle" style="background-color:#EEEEEE;" align="center"> 
@@ -133,12 +129,13 @@
     	</div>
 
 		<div class="modal-footer">
-   			<button id="reservationInfoBtn" type="button" class="btn btn-primary">코치 예약 하기</button>
+   			<button id="reservationInfoBtn" type="button" class="btn btn-primary">예약</button>
     	</div>	
 
-</div>
+	</div>	
 
-		<script>
+		<script type="text/javascript">
+
 		$(function(){
 			var userId = location.href.split("?")[1].split("=")[1];
 			$("#userId").html(userId);
@@ -178,8 +175,9 @@
 			success : function(data) {
 				
                 	$('#reservationId').val(data.member.userId);
+                	$('#reservationName').val(data.member.userName);
 				}								
-			  });	
+			});	
 			
 			$("#reservationInfoBtn").on("click",function(){
   			
@@ -216,7 +214,10 @@
 				});
 			});
 		});
+
 		</script>
-	    
-</body>
+	</body>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </html>

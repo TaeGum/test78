@@ -4,13 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>코치정보수정</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>    
-
 </head>
 <body>
 <div data-role="page" id="Main">
@@ -20,13 +13,13 @@
 				<div data-role="navbar" data-grid="c">
 					<ul>
 						<li>
-                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
                         </li>
 						<li>
-                            <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                            <a href="../interview/InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
                         </li>
 						<li>
-                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                            <a href="../styling/StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
@@ -97,14 +90,22 @@
 	     <tr>
 	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;코치소개&nbsp;&nbsp;&nbsp;</td>
 	         <td>
-	             <textarea id="coachPresentation" name="coachPresentation" rows=2 cols=20 colspan="9" wrap=off></textarea>
+	         <input type="text" id="coachPresentation" name="coachPresentation">
+	         <!--<textarea id="coachPresentation" name="coachPresentation" rows=2 cols=20 colspan="9" wrap=off></textarea>-->
 	         </td>
 	     </tr>
 	     
 	     </table>  
 			
 	</div>
-	
+   	<br>
+			<div class="modal-footer">
+            	<button id="updatestylecoach" type="button" class="btn btn-primary">수정</button>
+        	</div>    	     
+
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			var userId = location.href.split("?")[1].split("=")[1];
@@ -168,16 +169,14 @@
 						}),
 							success : function(JSONData , status) {
 								
-							location.href="./StyleCoach.html"		
+							location.href='\StyleCoachGet.html?='+userId+'';
 						}
 					});
   			});	
 		});	
-	</script> 
-
-   	<br>
-        <div class="btn-group btn-group-justified">
-        	<a class="btn btn-default btn-lg" id=updatestylecoach>수정</a>
-        </div>        	     
-</body>
+		</script>
+	</body> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">    
 </html>

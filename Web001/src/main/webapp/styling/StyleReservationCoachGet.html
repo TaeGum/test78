@@ -4,18 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>코치정보</title>
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script
-	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -24,15 +12,20 @@
 			<h1>공통UI</h1>
 			<a href="#" style="align: right;"><i class="fa fa-cog"></i></a>
 			<div data-role="navbar" data-grid="c">
-				<ul>
-					<li><a href="..\afterlogin.html"><i
-							class="fa fa-home fa-5x"></i></a></li>
-					<li><a href="..\interview\InterView_menu_Selection.html"><i
-							class="fa fa-microphone fa-5x"></i></a></li>
-					<li><a href="..\styling\StyleCoach.html"><i
-							class="fa fa-star fa-5x"></i></a></li>
-					<li><a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a></li>
-				</ul>
+					<ul>
+						<li>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../interview/InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../styling/StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
 			</div>
 		</div>
 		<br>
@@ -80,12 +73,18 @@
 	     
 	     		
 			<div class="modal-footer">
-           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">예약 수정</button>
+           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">수정</button>
+           	 	<button id="paymentViewBtn" type="button" class="btn btn-primary">결제</button>
         	</div>
         
 		</div>
-	
+		
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	
 		$(function(){
 			
 			var reservationNumber = location.href.split("?")[1].split("=")[1];
@@ -124,13 +123,20 @@
 		      });	
 		
 				$('#updateViewBtn').click(function(){
-				location.href='\StyleReservationCoachUpdate.html?reservationNumber=' + $('#info1').text();
+					location.href='\StyleReservationCoachUpdate.html?reservationNumber=' + $('#info1').text();
 				
+			  });
+				
+				$('#paymentViewBtn').click(function(){
+					location.href='\PaymentAdd.html?reservationNumber=' + $('#info1').text();
+					
 			  });
 		
 				
 		});		
-	</script>
-	
-</body>
+		</script>
+	</body>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </html>

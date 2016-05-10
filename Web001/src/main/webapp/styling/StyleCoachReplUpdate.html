@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코치한줄평수정</title>  
+</head>        
+    
+	<div data-role="page" id="Main">
+                <div data-role="header" style="overflow:hidden;">
+                    <h1>코치한줄평수정</h1>
+                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
+				<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../interview/InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../styling/StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+				</div>
+                </div>
+    	
+    	<div data-role="main" class="ui-content">
+    	</div>
+    	
+    	<div id="middle" style="background-color:#EEEEEE;"> 
+	    <br>    
+	        
+	    <table>
+	    
+	      
+	     <tr>
+		     <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;한줄평 번호&nbsp;&nbsp;&nbsp;</td>
+		     <td>
+		     <input type="text" id="repNumber" name="repNumber">
+		     </td>
+	     </tr>  
+	          
+	   	 <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		 </tr>
+		 
+		 <tr>
+		     <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;작성자&nbsp;&nbsp;&nbsp;</td>
+		     <td>
+		     <input type="text" id="repName" name="repName">
+		     </td>
+	     </tr>
+		
+		 <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		 </tr>
+	
+	     <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;한줄평&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	         <input type="text" id="repMain" name="repMain">	         
+	         </td>
+	     </tr> 
+
+	     </table>     
+	
+	    <br>
+	   
+			<div class="modal-footer">
+            	<button id="updatestylecoachrepl" type="button" class="btn btn-primary">수정</button>
+        	</div>
+
+    </div>
+ 	</div>
+
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+
+		 $(function() {
+			 	
+				var repNumber = location.href.split("?")[1].split("=")[1];
+				$('#repNumber').val(repNumber);
+	  		 
+		  		$("#updatestylecoachrepl").on("click",function(){
+		  			
+		  				var REPNO = $("input[name='repNumber']").val();
+		  				var REPNAME = $("input[name='repName']").val();
+		  				var REPMAIN = $("input[name='repMain']").val();
+					
+		  		 	$.ajax({
+								url : "../updatecoachrepl",
+								method : "POST" ,
+								dataType : "json" ,
+								headers : {
+									"Accept" : "application/json",
+									"Content-Type" : "application/json"
+								},
+								
+								data : JSON.stringify({
+									repNumber : REPNO,
+									repName : REPNAME, 
+									repMain : REPMAIN, 
+
+								}),
+									success : function(JSONData , status) {
+
+									location.href='javascript:history.go(-1)';
+								}
+							});
+		  				});
+		  			});
+		</script>
+	</body>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">     	
+</html>

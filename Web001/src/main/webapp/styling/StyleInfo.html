@@ -4,13 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>업체목록</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
     
@@ -21,13 +14,13 @@
 				<div data-role="navbar" data-grid="c">
 					<ul>
 						<li>
-                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
                         </li>
 						<li>
-                            <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                            <a href="../interview/InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
                         </li>
 						<li>
-                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                            <a href="../styling/StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
@@ -36,23 +29,29 @@
 				</div>
                 </div>
     
-    <div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
-    
-    
-    </div>
-   
-	<div class="btn-group btn-group-justified" >
-	<a class="btn btn-default btn-sm" href="..\styling\StyleInfoAdd.html">등록하기</a>
-    </div>
+	    <div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
+	    
+	    </div>
+       
+		<div class="modal-footer">
+			<button id="styleInfoAddBtn" type="button" class="btn btn-primary">등록</button>
+		</div>
 		
     </div>
     
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+
+	
 	$(document).on('click', '.companyLink', function(event) {
 		event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
     	location.href = this.href;
 	});
-    $(document).on('click', '.StyleCoach', function(event) {
+    
+	$(document).on('click', '.StyleCoach', function(event) {
     	event.preventDefault(); // 이걸하지않으면 a태그의 역할을 실행해 버리기 때문에 막아야 함
     	location.href = this.href;
     }); 
@@ -68,7 +67,7 @@
     }); 
 	
     $(function (){
-    	
+    
     	$.ajax({
 			url:"../getcompanyList",
 			dataType:"json",
@@ -76,10 +75,11 @@
 						
 				var list = data.list;
 				
+				
 				var str = "<div class='btn-group btn-group-justified'>"+
 		        "<a class='StyleCoach' href='\StyleCoach.html'><button type='button' class='btn btn-default'>스타일 코칭</button></a>"+
 		        "<a class='StyleInfo' href='\StyleInfo.html'><button type='button' class='btn btn-default'>스타일 정보</button></a>" + 
-		        "<a class='InterviewBehindList' href='\InterviewBehindList.html'><button type='button' class='btn btn-default'>리뷰 및 후기</button></a>" + 
+		        "<a class='StyleReservationList' href='\StyleReservationList.html'><button type='button' class='btn btn-default'>나의 예약 목록</button></a>" + 
 		        "</div><p></p>" + 
 		        "<span style='margin-left:50px; font-size:20px'>업체선택</span>"+ 
 		        "<table class='table' style='text-align:center;'>"+ 
@@ -87,7 +87,6 @@
 		   
 				
 				for(var i=0; i<list.length; i++){
-					
 								
 				  str += "<tr class='ct_list_pop'>"+
     			  		 "<td>"+ 
@@ -106,9 +105,16 @@
 				}   
  	   		
 		    }); 
-    	
+    			    	
+			$('#styleInfoAddBtn').click(function() {
+				location.href = '\StyleInfoAdd.html';
+	
+			});
+    
     	});
-	</script>
-
-</body>
+		</script>
+	</body>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </html>       
