@@ -2,6 +2,7 @@ package com.model2.mvc.service.company;
 
 import java.util.List;
 
+import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Company;
 
 public interface CompanyDao {
@@ -14,17 +15,6 @@ public interface CompanyDao {
 	
 	public void updateCompany(Company company) throws Exception;
 	
-	public void deleteCompany(String companyNumber) throws Exception;
-
-	
-
-
-
-	
-
-	
-
-	
-
+	public int getTotalCount(Search search) throws Exception;
 
 }

@@ -1,5 +1,6 @@
 package com.model2.mvc.web.company;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.*;
@@ -25,6 +26,8 @@ import com.model2.mvc.service.company.impl.CompanyServiceImpl;
 
 import com.model2.mvc.service.domain.Company;
 import com.model2.mvc.service.domain.Member;
+import com.model2.mvc.common.Page;
+import com.model2.mvc.common.Search;
 import com.model2.mvc.service.company.*;
 
 @Controller
@@ -39,12 +42,17 @@ public class CompanyController {
 		System.out.println(this.getClass());	
 	}
 
+	@Value("#{commonProperties['pageUnit']}")
+	int pageUnit;
+	@Value("#{commonProperties['pageSize']}")
+	int pageSize;
+	
 	@RequestMapping(value="/addcompany", method=RequestMethod.POST)
 	public void addCompany(@RequestBody Company company, HttpServletRequest request, HttpSession session) throws Exception {
 
 		//입력한 정보 DB에 저장
 		companyService.addCompany(company);
-		System.out.println("INSERT된 자료 : " +company);
+		System.out.println("INSERT된 자료 : " + company);
 
 	}
 
@@ -52,12 +60,12 @@ public class CompanyController {
 	public void getCompanyList(Model model)throws Exception {
 
 		System.out.println("/getcompanyList");
-
+		
+		//Map<String, List<Company>> map = companyService.getCompanyList();
 		Map<String, Object> map = companyService.getCompanyList();
-
 		System.out.println("리스트 : " + map);
 
-		model.addAttribute("list", map.get("list"));			
+		model.addAttribute("list", map.get("list"));
 	}
 
 	@RequestMapping(value="/getcompany")

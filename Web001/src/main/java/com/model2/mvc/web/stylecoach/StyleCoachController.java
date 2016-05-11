@@ -2,7 +2,6 @@ package com.model2.mvc.web.stylecoach;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +9,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.model2.mvc.service.company.CompanyService;
-import com.model2.mvc.service.member.MemberService;
 import com.model2.mvc.service.stylecoach.StyleCoachService;
 
 import com.model2.mvc.service.domain.*;
@@ -27,21 +22,18 @@ import com.model2.mvc.service.domain.*;
 public class StyleCoachController {
 	
 	@Autowired
-	@Qualifier("memberServiceImpl")
-	private MemberService memberService;
-	
-	@Autowired
 	@Qualifier("stylecoachServiceImpl")
 	private StyleCoachService styleCoachService;
-	
-	@Autowired
-	@Qualifier("companyServiceImpl")
-	private CompanyService companyService;
 	
 	public StyleCoachController(){
 		System.out.println(this.getClass());
 	}
 	
+	@Value("#{commonProperties['pageUnit']}")
+	int pageUnit;
+		
+	@Value("#{commonProperties['pageSize']}")
+	int pageSize;
 		
 	@RequestMapping(value="/addstylecoach", method=RequestMethod.POST)
 	public void addStyleCoach(@RequestBody StyleCoach styleCoach, Model model, HttpSession session) throws Exception {
@@ -55,8 +47,10 @@ public class StyleCoachController {
 	public void getStyleCoachList(Model model)throws Exception {
 		
 		System.out.println("/getstylecoachList");
+				
 		Map<String, Object> map = styleCoachService.getStyleCoachList();
 		System.out.println("리스트 : " + map);
+						
 		model.addAttribute("list", map.get("list"));
 	}
 	
@@ -65,8 +59,8 @@ public class StyleCoachController {
 		System.out.println("/getstylecoach");
 		
 		String userId = styleCoach.getUserId();
-		System.out.println("유저아이디 : " + userId);	
-	
+		System.out.println("유저아이디 : " + userId);
+		
 		//아이디를 기준으로 DB에서 Select 하기
 		StyleCoach stylecoachInfo = styleCoachService.getStyleCoach(userId);
 		System.out.println("자료들 : " + stylecoachInfo);

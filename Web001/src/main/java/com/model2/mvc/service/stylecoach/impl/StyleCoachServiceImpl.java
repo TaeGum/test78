@@ -53,15 +53,10 @@ public class StyleCoachServiceImpl implements StyleCoachService{
 		return stylecoachDao.getStyleCoach(userId);
 	}
 
-
 	@Override
 	public void updateStyleCoach(StyleCoach styleCoach) throws Exception {
 		stylecoachDao.updateStyleCoach(styleCoach);	
-	}
-
-
-	
-	
+	}	
 }
 	
 

@@ -1,6 +1,5 @@
 package com.model2.mvc.service.stylecoach.impl;
 
-import com.model2.mvc.service.domain.Member;
 import com.model2.mvc.service.domain.StyleCoach;
 import com.model2.mvc.service.stylecoach.StyleCoachDao;
 
@@ -27,7 +26,6 @@ public class StyleCoachDaoImpl implements StyleCoachDao {
 		System.out.println(this.getClass());
 	}
 		
-
 	@Override
 	public void addStyleCoach(StyleCoach styleCoach) throws Exception {
 		sqlSession.insert("StyleCoachMapper.addStyleCoach", styleCoach);
@@ -40,7 +38,6 @@ public class StyleCoachDaoImpl implements StyleCoachDao {
 
 	@Override
 	public StyleCoach getStyleCoach(String userId) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("StyleCoachMapper.getStyleCoach", userId);
 	}
 	

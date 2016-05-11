@@ -3,25 +3,24 @@ package com.model2.mvc.service.domain;
 import java.sql.Date;
 
 public class Member {
-   
-   private String userId;
-   private String password;
-   private String userName;
-   private Date Birth;
-   private String address;
-   private int age;
-   private String email;
-   private String tel;
-   
-   
-   public Member(){
-      
-   }
 
-   public String getUserId() {
-      return userId;
-      
-   }
+	
+	private String userId;
+	private String password;
+	private String userName;
+	private Date Birth;
+	private String address;
+	private int age;
+	private String email;
+	private String tel;
+		
+	public Member(){
+		
+	}
+   
+	public String getUserId() {
+		return userId;		
+	}
 
    public void setUserId(String userId) {
       this.userId = userId;
@@ -66,12 +65,16 @@ public class Member {
    public void setAge(int age) {
       this.age = age;
    }
+	
+   public void setTel(String tel) {
+	this.tel = tel;
+   }
 
-   
 
    public String getEmail() {
       return email;
    }
+
 
    public void setEmail(String email) {
       this.email = email;
@@ -81,14 +84,11 @@ public class Member {
       return tel;
    }
 
-   public void setTel(String tel) {
-      this.tel = tel;
-   }
 
-   @Override
-   public String toString() {
-      return "Member [userId=" + userId + ", password=" + password + ", userName=" + userName + ", Birth=" + Birth
-            + ", address=" + address + ", age=" + age + ", email=" + email + ", tel=" + tel + "]";
-   }
-   
+	@Override
+	public String toString() {
+		return "Member [userId=" + userId + ", password=" + password + ", userName=" + userName + ", Birth=" + Birth
+				+ ", address=" + address + ", age=" + age + ", email=" + email + ", tel=" + tel + "]";
+	}
+	
 }

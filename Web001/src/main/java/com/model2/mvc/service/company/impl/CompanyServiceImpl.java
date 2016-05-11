@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.model2.mvc.service.domain.Company;
 import com.model2.mvc.service.company.CompanyService;
+import com.model2.mvc.common.Search;
 import com.model2.mvc.service.company.CompanyDao;
 
 @Service("companyServiceImpl")
@@ -36,7 +37,6 @@ public class CompanyServiceImpl implements CompanyService {
 	
 	@Override
 	public Map<String, Object> getCompanyList() throws Exception {
-		// TODO Auto-generated method stub
 		List<Company> list = companyDao.getCompanyList();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -44,6 +44,16 @@ public class CompanyServiceImpl implements CompanyService {
 		
 		return map;
 	}
+	
+	/*@Override
+	public Map<String, List<Company>> getCompanyList() throws Exception {
+		List<Company> list = companyDao.getCompanyList();
+		
+		Map<String, List<Company>> map = new HashMap<String, List<Company>>();
+		map.put("list", list);
+		
+		return map;	
+	}*/
 	
 	@Override
 	public Company getCompany(int number) throws Exception {
@@ -54,15 +64,4 @@ public class CompanyServiceImpl implements CompanyService {
 	public void updateCompany(Company company) throws Exception {
 		companyDao.updateCompany(company);
 	}
-
-	@Override
-	public void deleteCompany(String companyNumber) throws Exception {
-		companyDao.deleteCompany(companyNumber);
-	}
-
-
-
-
-	
-
 }

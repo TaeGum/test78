@@ -1,8 +1,16 @@
 package com.model2.mvc.service.member.impl;
 
+import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.*;
 
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
 import java.util.*;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,11 +34,65 @@ public class MemberServiceImpl implements MemberService {
 	//public void getMember(Member member) throws Exception{
 		// TODO Auto-generated method stub
 		//memberDao.getMember(member);
+		
+		System.out.println("################### MemberService Imple get member ");
+		
 		return memberDao.getMember(userId);
+		
 	}
 
 	@Override
+	public void addMember(Member member) throws Exception {
+		
+		memberDao.addMember(member);
+		
+	}
+
+	@Override
+	public Member getMember2(Member member) throws Exception {
+		
+		// TODO Auto-generated method stub
+		return memberDao.getMember2(member);
+		
+	}
+
+	@Override
+	public Member getMember3(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDao.getMember3(member);
+	}
+
+	@Override
+	public Member getMember4(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDao.getMember4(member);
+	}
+
+	@Override
+	public Member getMember5(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDao.getMember5(member);
+	}
+
+	@Override
+	public void updateMember(Member member) throws Exception {
+		
+		memberDao.updateMember(member);
+		
+	}
+
+	@Override
+	public void updateMemberPW(Member member) throws Exception {
+		
+		// TODO Auto-generated method stub
+		memberDao.updateMemberPW(member);
+	
+	}
+	
+	
+	@Override
 	public Map<String, Object> getMemberList() throws Exception {
+		
 		// TODO Auto-generated method stub
 		List<Member> list = memberDao.getMemberList();
 		
@@ -38,20 +100,8 @@ public class MemberServiceImpl implements MemberService {
 		map.put("list", list);
 		
 		return map;
-	}
-
-	@Override
-	public boolean checkDuplication(String userId) throws Exception {
-		// TODO Auto-generated method stub
-		boolean result = true;
-		Member m = memberDao.getMember(userId);
 		
-		if(m !=null){
-			result = false;
-			return result;
-		}
-			return result;
-
 	}
+
 
 }

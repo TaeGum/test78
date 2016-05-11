@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.service.domain.Company;
 import com.model2.mvc.service.company.CompanyDao;
+import com.model2.mvc.common.Search;
+
 
 @Repository("companyDaoImpl")
 public class CompanyDaoImpl implements CompanyDao {
@@ -34,7 +36,6 @@ public class CompanyDaoImpl implements CompanyDao {
 	
 	@Override
 	public List<Company> getCompanyList() throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("CompanyMapper.getCompanyList");
 	}
 	
@@ -49,15 +50,9 @@ public class CompanyDaoImpl implements CompanyDao {
 	}
 
 	@Override
-	public void deleteCompany(String companyNumber) throws Exception {
-		sqlSession.delete("CompanyMapper.deleteCompany", companyNumber);
+	public int getTotalCount(Search search) throws Exception {
+		return sqlSession.selectOne("CompanyMapper.getTotalCount", search);
 	}
-
-
-
-
-
-
 
 
 }
