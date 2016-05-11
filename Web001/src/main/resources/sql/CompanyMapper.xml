@@ -51,11 +51,4 @@
 	 	WHERE COMNO = #{companyNumber:VARCHAR}
 	 </update>
 	 
-	 <!-- SQL : SELECT ROW count -->
-	 <select  id="getTotalCount"  parameterType="search" resultType="int">
-	  	SELECT COUNT(*)
-	  	FROM company 
-	  	countTable						
-	 </select>
-
 </mapper>

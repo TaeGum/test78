@@ -25,10 +25,9 @@
 	 </insert>
 	 
 	
-	 <select id="getReservationList" parameterType="String" resultMap="reservationCoachSelectMap">
+	 <select id="getReservationList" resultMap="reservationCoachSelectMap">
 	 	SELECT STYNO, STID, CNAME, RVID, RVNAME, RVDATE, RVTIME, ROWNUM AS row_seq
 	 	FROM styling
-	 	WHERE RVID = #{value}
 	 </select>
 	 
 

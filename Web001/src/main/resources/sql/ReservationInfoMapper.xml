@@ -25,10 +25,9 @@
 	 </insert>
 	 
 	 <!-- select List -->
-	 <select id="getReservationList"  parameterType="String" resultMap="reservationInfoSelectMap">
+	 <select id="getReservationList" resultMap="reservationInfoSelectMap">
 	 	SELECT RVNUMBER, COMNO, COMNAME, RVID, RVNAME, RVDATE, RVTIME, ROWNUM AS row_seq
 	 	FROM companyrv
-	 	WHERE RVID = #{value}
 	 </select>
 	 
 	 <!-- select -->

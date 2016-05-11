@@ -7,29 +7,34 @@
 <mapper namespace="ReplCoachMapper">
 
 	<resultMap id="replcoachSelectMap" type="com.model2.mvc.service.domain.ReplCoach">
-		<result property="userId" 	   column="STID" 		jdbcType="VARCHAR"/>
+		<result property="coachId" 	   column="STID" 		jdbcType="VARCHAR"/>
 		<result property="repName"	   column="REPNAME" 	jdbcType="VARCHAR"/>
 		<result property="repDate" 	   column="REPDATE" 	jdbcType="DATE"/>
 		<result property="repMain" 	   column="REPMAIN" 	jdbcType="VARCHAR"/>
+		<result property="repNumber"   column="REPNO"	    jdbcType="INTEGER"/>
 	</resultMap>
 	
 	<!-- insert -->
 	<insert id="addCoachRepl" parameterType="replcoach">
 	 	INSERT 
-	 	INTO coachrep(STID, REPNAME, REPDATE, REPMAIN)
-	 	VALUES (#{userId:VARCHAR}, #{repName:VARCHAR}, SYSDATE, #{repMain:VARCHAR})
+	 	INTO coachrep(STID, REPNAME, REPDATE, REPMAIN, REPNO)
+	 	VALUES (#{coachId:VARCHAR}, #{repName:VARCHAR}, SYSDATE, #{repMain:VARCHAR}, seq_coachrep_REPNO.nextval)
 	</insert>
 	 
 	<!-- select List -->
-	<select id="getCoachReplList" resultMap="replCoachSelectMap">
-	 	SELECT STID, REPNAME, REPDATE, REPMAIN, ROWNUM AS row_seq
+	<select id="getCoachReplList" resultMap="replcoachSelectMap">
+	 	SELECT STID, REPNAME, REPDATE, REPMAIN, REPNO, ROWNUM AS row_seq
 	 	FROM coachrep
 	</select>
 	
-	<!--
-	<delete id="deleteCoachRepl" parameterType="String">
-		DELETE FROM coachrep
-		WHERE STID = #{value}
-	</delete>
-	-->
+	<!-- update -->
+	<update id="updateCoachRepl" parameterType="replcoach">
+	 	UPDATE coachrep
+	 	<set>
+	 	REPNAME = #{repName:VARCHAR}, 
+	 	REPMAIN = #{repMain:VARCHAR}
+	 	</set>
+	 	WHERE REPNO = #{repNumber:INTEGER}
+	</update>
+
 </mapper>

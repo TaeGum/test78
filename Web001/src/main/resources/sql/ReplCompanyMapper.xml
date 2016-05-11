@@ -11,25 +11,32 @@
 		<result property="repName"		 column="REPNAME" 	 jdbcType="VARCHAR"/>
 		<result property="repDate" 		 column="REPDATE" 	 jdbcType="DATE"/>
 		<result property="repMain" 		 column="REPMAIN" 	 jdbcType="VARCHAR"/>
+		<result property="repNumber"	 column="REPNO"	     jdbcType="INTEGER"/>
 	</resultMap>
 	
 	<!-- insert -->
 	<insert id="addCompanyRepl" parameterType="replcompany">
 	 	INSERT 
-	 	INTO companyrep (COMNO, REPNAME, REPDATE, REPMAIN)
-	 	VALUES (#{COMNO:INTEGER} , #{repName:VARCHAR} , SYSDATE, #{repMain:VARCHAR})
+	 	INTO companyrep (COMNO, REPNAME, REPDATE, REPMAIN, REPNO)
+	 	VALUES (#{companyNumber:INTEGER} , #{repName:VARCHAR} , SYSDATE, #{repMain:VARCHAR}, seq_companyrep_REPNO.nextval)
 	</insert>
 	 
 	<!--  select List -->
 	<select id="getCompanyReplList" resultMap="replcompanySelectMap">
-	 	SELECT COMNO, REPNAME, REPDATE, REPMAIN, ROWNUM AS row_seq
+	 	SELECT COMNO, REPNAME, REPDATE, REPMAIN, REPNO, ROWNUM AS row_seq
 	 	FROM companyrep
 	</select>
 	
-	<!--  
-	<delete id="deleteCompanyRepl" parameterType="int">
-		DELETE FROM companyrep
-		WHERE COMNO = #{value}
-	</delete>
-	-->
+	 <!-- update -->
+	 <update id="updateCompanyRepl" parameterType="replcompany">
+	 	UPDATE companyrep
+	 	<set>
+	 	REPNAME = #{repName:VARCHAR}, 
+	 	REPMAIN = #{repMain:VARCHAR}
+	 	</set>
+	 	WHERE REPNO = #{repNumber:INTEGER}
+	 </update>
+	 
+	 <!-- delete -->
+	 
 </mapper>

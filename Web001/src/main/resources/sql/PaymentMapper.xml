@@ -38,11 +38,5 @@
 		FROM payment 
 		WHERE PNO = #{value}
 	 </select>
-	 
-	 <!-- delete -->
-	 <delete id="deletePayment">
-	 
-	 
-	 </delete>
-	 	 
+		 	 
 </mapper>
