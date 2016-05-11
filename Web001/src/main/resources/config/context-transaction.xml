@@ -53,7 +53,7 @@
 	</tx:advice> -->
 
 	<!-- AOP : pointcut / advisor 설정 -->
-<!-- 	<aop:config>
+	<!-- <aop:config>
 		<aop:pointcut 	id="requiredTx"
 									expression="execution(* com.model2.mvc.service..*ServiceImpl.*(..) )" />
 		<aop:advisor 	advice-ref="txAdvice"  pointcut-ref="requiredTx"  />
