@@ -3,96 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">    
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-
-<script>
-var header_height   = $("div[data-role='header']:visible").outerHeight();
-var footer_height   = $("div[data-role='footer']:visible").outerHeight();
-var content = $("div[data-role='content']:visible");          
-var content_height  = $(window).height() - header_height - footer_height;            
- 
-content_height -= (content.outerHeight() - content.height());   
-$("div[data-role='content']").css("height", content_height);   
-</script>
+<title>멘토목록</title>
 </head>
-<body>
-    
-    
-<div data-role="page" id="Main">
-                <div data-role="header" style="overflow:hidden;" data-position="fixed">
-                    <h1>면접예약</h1>
-                    <a href="#" style="align:right;"><i class="fa fa-cog"></i></a>
-				<div data-role="navbar" data-grid="c">
-					<ul>
-						<li>
-                            <a href="..\afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
-                        </li>
-						<li>
-                            <a href="..\interview\InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
-                        </li>
-						<li>
-                            <a href="..\styling\StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
-                        </li>
-					</ul>
-				</div>
-                </div>
-    <div data-role="content" class="ui-content" style="background-color:#EEEEEE;">
-    
-        <div id="middle" class="carousel slide" data-ride="carousel" align="center"> 
-        <br>
-       	원하는 면접 유형 코칭 예약을 위해 아래 항목에서 선택하세요
-        <div class="carousel-inner">
-            <div class="item active">
-                <a href="..\interview\OneMentorApplication.html">
-                <img src="..\images\1on1.PNG"  style="width:100%" alt="First slide"/></a>
-                <div class="container">
-                    <div class="carousel-caption">
-                        <p> 1:1 실시간 모의면접 </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="item">
-                <a href="..\interview\PeopleMentorApplication.html">
-                <img src="..\images\group.PNG" style="width:100%" alt="First slide"/>
-                </a>
-                <div class="container">
-                    <div class="carousel-caption">
-                        <p> 1:N 실시간 모의면접</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="item">
-                <a href="..\interview\videoSelect.html">
-                <img src="..\images\computer.jpg" style="width:100%" alt="First slide"/>
-                </a>
-                <div class="container">
-                    <div class="carousel-caption">
-                        <p> 가상면접 </p>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        <a class="left carousel-control" href="#middle" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> 
-	<a class="right carousel-control" href="#middle" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> 
-    </div>
-    </div>
-    
-    <div data-role="footer" data-position="fixed">
-        <br>
-    </div>
 
-    </div>
-</body>
+<body>
+	<div data-role="page" id="Main">
+		<div data-role="header" style="overflow: hidden;">
+			<h1>멘토목록</h1>
+			<a href="#" style="align: right;"><i class="fa fa-cog"></i></a>
+			<div data-role="navbar" data-grid="c">
+				<ul>
+					<li><a href="../afterlogin.html"><i
+							class="fa fa-home fa-5x"></i></a></li>
+					<li><a href="../interview/InterView_menu_Selection.html"><i
+							class="fa fa-microphone fa-5x"></i></a></li>
+					<li><a href="../styling/StyleCoach.html"><i
+							class="fa fa-star fa-5x"></i></a></li>
+					<li><a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="main" data-role="main" class="ui-content table-responsive" style="background-color:">
+		
+		</div>
+
+		<div class="modal-footer">
+			<button id="mentoAddBtn" type="button" class="btn btn-primary">등록</button>
+		</div>
+	</div>
+	
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+
+	
+		$(document).on('click', '.mentoLink', function(event) {
+			event.preventDefault(); 
+			location.href = this.href;
+		});
+
+		$(document).on('click', '.StyleCoach', function(event) {
+			event.preventDefault(); 
+			location.href = this.href;
+		});
+
+		$(document).on('click', '.StyleInfo', function(event) {
+			event.preventDefault(); 
+			location.href = this.href;
+		});
+
+		$(document).on('click', '.StyleReservationList', function(event) {
+			event.preventDefault();
+			location.href = this.href;
+		});
+
+		$(function() {
+
+			$.ajax({
+						url : "../getmentoList",
+						dataType : "json",
+						success : function(data) {
+
+							var list = data.list;
+
+							var str = "<div class='btn-group btn-group-justified'>"
+									+ "<a class='StyleCoach' href='\StyleCoach.html'><button type='button' class='btn btn-default'>스타일 코칭</button></a>"
+									+ "<a class='StyleInfo' href='\StyleInfo.html'><button type='button' class='btn btn-default'>스타일 정보</button></a>"
+									+ "<a class='StyleReservationList' href='\StyleReservationList.html'><button type='button' class='btn btn-default'>나의 예약 목록</button></a>"
+									+ "</div><p></p>"
+									+ "<span style='margin-left:50px; font-size:20px'>멘토선택</span>"
+									+ "<table class='table' style='text-align:center;'>"
+									+ "<tbody>";
+
+							for (var i = 0; i < list.length; i++) {
+
+								str += "<tr class='ct_list_pop'>"
+										+ "<td>"
+										+ "<a class='mentoLink' href='\InterviewMentoGet.html?mentoId="
+										+ list[i].mentoId
+										+ "'>"
+										+ "<img src='" + list[i].mentoImage + "'align='middle' width='150px' height='200px'></a></td>"
+										+ "</tr>" + "<tr><td>"
+										+ list[i].mentoName + "</td></tr>";
+							}
+
+							str += "</tbody>" + "</table>";
+
+							var divTag = document.getElementById("main");
+							divTag.innerHTML = str;
+
+						}
+
+					});
+
+			$('#mentoAddBtn').click(function() {
+				location.href = '\InterviewMentoAdd.html';
+
+			});
+
+		});
+		</script>
+	</body>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </html>

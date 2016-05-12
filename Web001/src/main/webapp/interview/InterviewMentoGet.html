@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코치정보</title>
+</head>
+<body>
+
+	<div data-role="page" id="Main">
+		<div data-role="header" style="overflow: hidden;">
+			<h1>공통UI</h1>
+			<a href="#" style="align: right;"><i class="fa fa-cog"></i></a>
+			<div data-role="navbar" data-grid="c">
+					<ul>
+						<li>
+                            <a href="../afterlogin.html"><i class="fa fa-home fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../interview/InterView_menu_Selection.html"><i class="fa fa-microphone fa-5x"></i></a>
+                        </li>
+						<li>
+                            <a href="../styling/StyleCoach.html"><i class="fa fa-star fa-5x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-ellipsis-h fa-5x"></i></a>
+                        </li>
+					</ul>
+			</div>
+		</div>
+
+		<br>
+		
+		<table class="table">
+			 <tbody>
+			 <tr>
+		         <td width="200" class="ct_write">&nbsp;멘토아이디&nbsp;</td>
+		         <td id="info1"></td>
+		     </tr>
+		     
+   			 <tr>
+		         <td width="120" class="ct_write">&nbsp;멘토이름&nbsp;</td>
+		         <td id="info2"></td>
+		     </tr>
+		     
+		     <tr>
+		         <td width="120" class="ct_write">&nbsp;멘토사진&nbsp;</td>
+		         <td><div><img width="120" height="150" id="info3" src=""></div></td> 
+		     </tr>  
+		
+		     <tr>
+		         <td width="120" class="ct_write">&nbsp;약력&nbsp;</td>
+		         <td id="info4"></td>
+		     </tr> 
+	
+			 <tr>
+		         <td width="120" class="ct_write">&nbsp;소개&nbsp;</td>
+		         <td id="info5"></td>
+		     </tr> 
+		
+		     </tbody>
+	     </table> 
+	     
+	    <br>
+    	<div id="main2" data-role="main2" class="ui-content table-responsive" style="background-color:">
+    
+    	</div>
+		
+			<div class="modal-footer">
+				<button id="replmentoBtn" type="button" class="btn btn-primary">한줄평쓰기</button>
+            	<button id="reservationViewBtn" type="button" class="btn btn-primary">동영상 작성</button>
+           	 	<button id="updateViewBtn" type="button" class="btn btn-primary">정보 수정</button>
+        	</div>
+        
+		</div>
+
+
+
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	
+		$(document).on('click', '.ReplUpdate', function(event) {
+			event.preventDefault();
+    		location.href = this.href;
+		});
+			
+		$(function(){
+			
+			var mentoId = location.href.split("?")[1].split("=")[1];
+			
+			
+			$.ajax({
+				url:"../getmentoreplList",
+				dataType:"json",
+				success:function(data){
+							
+					var list = data.list;
+					var str =
+				    "<span style='margin-left:5px; font-size:20px'>회원 한줄평</span>"+ 	
+					"<table class='table'>" + 
+				 	"<thead>" +
+				 	"<th>No</th>" +
+					"<th>회원명</th>" + 
+					"<th>회원 한줄평</th>" + 			      
+					"</thead>"
+			        "<table class='table' style='text-align:center;'>"+ 
+			        "<tbody>";
+			   	       			        	
+					for(var i=0; i<list.length; i++){
+						 //console.log(list[i].mentoId);
+										
+						if(mentoId == list[i].mentoId) {
+							
+					  	str += "<tr class='ct_list_pop'>" +
+					  	 	 "<td>" + list[i].repNumber +"</td>" +
+						 	 "<td>" + list[i].repName +"</td>" + 
+	    			  		 "<td>" + list[i].repMain +"</td>" + 			
+	    				     "<td><a class='ReplUpdate' href='\InterviewMentoReplUpdate.html?="+list[i].repNumber+"'>" +
+	    				   	 "<button type='button' class='btn btn-default'>수정</button></a>" +
+	    				   	 "<tr>";
+						}
+					}
+	        				  
+	        		str += "</tbody>" + 
+					  	  "</table>";
+					  	  
+					var divTag = document.getElementById("main2");
+					divTag.innerHTML = str;
+					  	  
+					}   
+	 	   		
+			    }); 
+					
+		}); 
+		
+		$(function(){
+			
+			var mentoId = location.href.split("?")[1].split("=")[1];
+			
+			$.getJSON("../getmento?mentoId=" + mentoId,
+					
+					function(result) {
+						console.log(result);
+					});
+					
+			$.ajax({
+		         				
+		         url:"../getmento?mentoId=" + mentoId,
+		         dataType:"json",
+		         success:function(data){
+		            
+		        	var mentoId = data.info.mentoId;
+		            var mentoName = data.info.mentoName;
+		            var mentoImage = data.info.mentoImage;
+		            var shortIntro = data.info.shortIntro;
+		            var longIntro = data.info.longIntro;
+		            
+		            $("#info1").html(mentoId);
+					$("#info2").html(mentoName);
+		            $("#info3").attr('src',mentoImage);
+		            $("#info4").html(shortIntro);
+		            $("#info5").html(longIntro);
+		  
+		         }
+		         
+			});
+			
+				$('#replmentoBtn').click(function(){
+					location.href='\InterviewMentoReplAdd.html?mentoId=' + $('#info1').text();
+				
+			  	});
+				
+				$('#updateViewBtn').click(function(){
+					location.href='\InterviewMentoUpdate.html?mentoId=' + $('#info1').text();
+				
+			  	});
+				
+				//$('#reservationViewBtn').click(function(){
+					//location.href='\StyleReservationCoachAdd.html?mentoId=' + $('#info1').text();
+					
+			  //});
+				
+		});		
+		</script>
+	</body>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">	
+</html>
