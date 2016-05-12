@@ -5,16 +5,16 @@ import java.util.Date;
 public class Payment {
 	
 	//Field
-	int paymentNumber;
-	String studentId;
-	int reservationNumber;
-	int interviewNumber;
-	String paymentName;
-	String paymentDate;
-	String paymentCardName;
-	int paymentCardNumber;
-	int paymentCardPassword;
-	int paymentMoney;
+	private int paymentNumber;
+	private String studentId;
+	private int reservationNumber;
+	private int interviewNumber;
+	private String paymentName;
+	private String paymentDate;
+	private String paymentCardName;
+	private int paymentCardNumber;
+	private int paymentCardPassword;
+	private int paymentMoney;
 	
 	//Constructor
 	public Payment() {

@@ -5,11 +5,11 @@ import java.util.Date;
 public class ReplMento {
 	
 	//Field
-	int repNumber;
-	String mentoId;
-	String repName;
-	Date repDate;
-	String repMain;
+	private int repNumber;
+	private String mentoId;
+	private String repName;
+	private Date repDate;
+	private String repMain;
 
 	//Constructor
 	public ReplMento() {

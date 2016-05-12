@@ -3,13 +3,13 @@ package com.model2.mvc.service.domain;
 public class Company {
 	
 		//Field
-		int companyNumber;
-		String companyName;
-		String companyType;
-		String companyAddr;
-		String companyPresentation;
-		String companyPicture;
-		String companyMap;
+		private int companyNumber;
+		private String companyName;
+		private String companyType;
+		private String companyAddr;
+		private String companyPresentation;
+		private String companyPicture;
+		private String companyMap;
 		
 		//Constructor
 		public Company() {

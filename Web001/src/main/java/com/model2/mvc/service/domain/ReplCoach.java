@@ -5,11 +5,11 @@ import java.util.Date;
 public class ReplCoach {
 	
 	//Field
-	String coachId;
-	String repName;
-	Date repDate;
-	String repMain;
-	int repNumber;
+	private String coachId;
+	private String repName;
+	private Date repDate;
+	private String repMain;
+	private int repNumber;
 
 	//Constructor
 	public ReplCoach() {

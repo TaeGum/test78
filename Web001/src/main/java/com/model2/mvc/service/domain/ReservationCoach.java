@@ -3,13 +3,13 @@ package com.model2.mvc.service.domain;
 public class ReservationCoach {
 	
 	//Field
-	int reservationNumber;
-	String userId;
-	String coachName;
-	String reservationId;
-	String reservationName;
-	String reservationDate;
-	String reservationTime;
+	private int reservationNumber;
+	private String userId;
+	private String coachName;
+	private String reservationId;
+	private String reservationName;
+	private String reservationDate;
+	private String reservationTime;
 	
 	//Constructor
 	public ReservationCoach() {
