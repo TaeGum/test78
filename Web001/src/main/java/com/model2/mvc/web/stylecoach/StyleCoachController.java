@@ -36,8 +36,8 @@ public class StyleCoachController {
 	int pageSize;
 		
 	@RequestMapping(value="/addstylecoach", method=RequestMethod.POST)
-	public void addStyleCoach(@RequestBody StyleCoach styleCoach, Model model, HttpSession session) throws Exception {
-				
+	public void addStyleCoach(@RequestBody StyleCoach styleCoach) throws Exception {
+						
 		//입력한 정보 DB에 저장
 		styleCoachService.addStyleCoach(styleCoach);
 		System.out.println("INSERT된 자료 : " + styleCoach);

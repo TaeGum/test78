@@ -10,11 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.model2.mvc.service.stylecoach.StyleCoachService;
-import com.model2.mvc.service.domain.Member;
 import com.model2.mvc.service.domain.StyleCoach;
-import com.model2.mvc.service.member.MemberDao;
-import com.model2.mvc.service.member.MemberService;
 import com.model2.mvc.service.stylecoach.StyleCoachDao;
 
 @Service("stylecoachServiceImpl")
