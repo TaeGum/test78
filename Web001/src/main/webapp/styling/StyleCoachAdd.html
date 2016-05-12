@@ -51,6 +51,17 @@
 		 </tr>
 		 
 		 <tr>
+	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;코치이름&nbsp;&nbsp;&nbsp;</td>
+	         <td>
+	         <input type="text" id="coachName" name="coachName">
+	         </td>
+	     </tr> 
+	
+		 <tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		 </tr>
+		 
+		 <tr>
 	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;업체번호&nbsp;&nbsp;&nbsp;</td>
 	         <td>
 	         <input type="text" id="companyNumber" name="companyNumber">
@@ -72,17 +83,6 @@
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		 </tr>
 	
-	     <tr>
-	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;코치이름&nbsp;&nbsp;&nbsp;</td>
-	         <td>
-	         <input type="text" name="coachName">
-	         </td>
-	     </tr> 
-	
-		 <tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		 </tr>
-		 
 		 <tr>
 	         <td width="104" class="ct_write">&nbsp;&nbsp;&nbsp;코치종류&nbsp;&nbsp;&nbsp;</td>
 	         <td>
@@ -116,6 +116,22 @@
 	<script type = "text/javascript">
 		
   	 $(function() {
+  		 	
+			$.ajax({
+				url : "../logincheck", 
+				method : "POST" ,
+				dataType : "json" ,
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+		
+				success : function(data) {
+					$('#userId').val(data.member.userId);	
+					$('#coachName').val(data.member.userName);
+				}								
+			 
+			});	
   		 	 	
   		 	$("#addstylecoach").on("click", function() {
   			
@@ -125,36 +141,7 @@
   				var CTYPE = $("input[name='coachType']").val();
   				var CPRES = $("input[name='coachPresentation']").val();
   				var COMNO = $("input[name='companyNumber']").val();
-			
-  			$.ajax({
-  					url : "../logincheck", 
-  					method : "POST" ,
-  					dataType : "json" ,
-  					headers : {
-  						"Accept" : "application/json",
-  						"Content-Type" : "application/json"
-  					},
-  			
-  						success : function(data) {
-  							$('#userId').val(data.member.userId);
-  						}								
-  				  });	
-			
-  			$.ajax({
-				url : "../logincheck", 
-				method : "POST" ,
-				dataType : "json" ,
-				headers : {
-					"Accept" : "application/json",
-					"Content-Type" : "application/json"
-				},
-		
-			success : function(data) {
-				
-                	$('userId').val(data.member.userId);
-				}								
-			  });		
-  				
+							
   			$.ajax(
 					{
 						url : "../addstylecoach",
