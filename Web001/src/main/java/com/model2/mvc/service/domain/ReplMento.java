@@ -2,27 +2,35 @@ package com.model2.mvc.service.domain;
 
 import java.util.Date;
 
-public class ReplCoach {
+public class ReplMento {
 	
 	//Field
-	String coachId;
+	int repNumber;
+	String mentoId;
 	String repName;
 	Date repDate;
 	String repMain;
-	int repNumber;
 
 	//Constructor
-	public ReplCoach() {
+	public ReplMento() {
 	
 	}
 
 	//getter and setter
-	public String getCoachId() {
-		return coachId;
+	public int getRepNumber() {
+		return repNumber;
 	}
 
-	public void setCoachId(String coachId) {
-		this.coachId = coachId;
+	public void setRepNumber(int repNumber) {
+		this.repNumber = repNumber;
+	}
+
+	public String getMentoId() {
+		return mentoId;
+	}
+
+	public void setMentoId(String mentoId) {
+		this.mentoId = mentoId;
 	}
 
 	public String getRepName() {
@@ -48,21 +56,13 @@ public class ReplCoach {
 	public void setRepMain(String repMain) {
 		this.repMain = repMain;
 	}
-
-	public int getRepNumber() {
-		return repNumber;
-	}
-
-	public void setRepNumber(int repNumber) {
-		this.repNumber = repNumber;
-	}		
 	
 	//toString
 	@Override
 	public String toString() {
-		return "ReplCoach [coachId=" + coachId + ", repName=" + repName + ", repDate=" + 
-					repDate + ", repMain=" + repMain + ",repNumber=" + repNumber  + "]";
-	}
-
+		return "ReplMento [repNumber=" + repNumber + ", mentoId=" + mentoId + ", repName=" + 
+				repName + ", repDate=" + repDate + ",repMain=" + repMain  + "]";
+	}		
+	
 
 }

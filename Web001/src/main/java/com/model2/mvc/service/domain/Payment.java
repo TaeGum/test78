@@ -8,6 +8,7 @@ public class Payment {
 	int paymentNumber;
 	String studentId;
 	int reservationNumber;
+	int interviewNumber;
 	String paymentName;
 	String paymentDate;
 	String paymentCardName;
@@ -43,6 +44,14 @@ public class Payment {
 
 	public void setReservationNumber(int reservationNumber) {
 		this.reservationNumber = reservationNumber;
+	}
+	
+	public int getInterviewNumber() {
+		return interviewNumber;
+	}
+
+	public void setInterviewNumber(int interviewNumber) {
+		this.interviewNumber = interviewNumber;
 	}
 	
 	public String getPaymentName() {
@@ -95,7 +104,7 @@ public class Payment {
 
 	@Override
 		public String toString() {
-			return "Payment [paymentNumber=" + paymentNumber + ", studentId=" + studentId + ", reservationNumber=" + reservationNumber + ", paymentName=" + paymentName + ", paymentDate=" + paymentDate 
+			return "Payment [paymentNumber=" + paymentNumber + ", studentId=" + studentId + ", reservationNumber=" + reservationNumber + ", interviewNumber=" + interviewNumber + "paymentName=" + paymentName + ", paymentDate=" + paymentDate 
 					+ ", paymentCardName=" + paymentCardName + ", paymentCardNumber=" + paymentCardNumber + ", paymentCardPassword=" + paymentCardPassword + ", paymentMoney=" + paymentMoney +"]";
 		}	
 
