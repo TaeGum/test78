@@ -31,12 +31,6 @@ public class ReservationcoachController {
 		System.out.println(this.getClass());
 	}
 	
-	@Value("#{commonProperties['pageUnit']}")
-	int pageUnit;
-		
-	@Value("#{commonProperties['pageSize']}")
-	int pageSize;
-
 	@RequestMapping(value="/addreservationcoach", method=RequestMethod.POST)
 	public void addReservation(@RequestBody ReservationCoach reservationcoach, HttpSession session) throws Exception {
 		System.out.println("/addreservationcoach");

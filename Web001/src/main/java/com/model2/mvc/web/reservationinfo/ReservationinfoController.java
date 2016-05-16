@@ -26,16 +26,11 @@ public class ReservationinfoController {
 	@Qualifier("reservationInfoServiceImpl")
 	private ReservationInfoService reservationInfoService;
 	
+	//Constructor
 	public ReservationinfoController() {
 		System.out.println(this.getClass());
 	}
 	
-	@Value("#{commonProperties['pageUnit']}")
-	int pageUnit;
-		
-	@Value("#{commonProperties['pageSize']}")
-	int pageSize;
-
 	@RequestMapping(value="/addreservationinfo", method=RequestMethod.POST)
 	public void addReservation(@RequestBody ReservationInfo reservationinfo) throws Exception {
 		System.out.println("/addreservationinfo");

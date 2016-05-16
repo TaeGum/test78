@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.model2.mvc.service.domain.Member;
+import com.model2.mvc.service.domain.PayRec;
 import com.model2.mvc.service.domain.Payment;
 import com.model2.mvc.service.payment.PaymentService;
+import com.model2.mvc.service.payrec.PayRecService;
 
 @Controller
 public class PaymentController {
@@ -32,16 +34,11 @@ public class PaymentController {
 		System.out.println(this.getClass());
 	}
 	
-	@Value("#{commonProperties['pageUnit']}")
-	int pageUnit;
-		
-	@Value("#{commonProperties['pageSize']}")
-	int pageSize;
-
 	@RequestMapping(value="/addpayment", method=RequestMethod.POST)
 	public void addPayment(@RequestBody Payment payment) throws Exception {
 		
 		System.out.println("/addpayment");
+		System.out.println("&&& : " + payment);
 		
 		//입력한 정보 DB에 저장
 		paymentService.addPayment(payment);
@@ -75,16 +72,8 @@ public class PaymentController {
 		//결제일련번호를 기준으로 Select 하기
 		Payment paymentInfo = paymentService.getPayment(payNumber);
 		
-		//날짜 형식 바꾸기
-		String strDate = null;
-		SimpleDateFormat tranSimpleFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date day = tranSimpleFormat.parse(paymentInfo.getPaymentDate());
-		strDate = tranSimpleFormat.format(day);
-		paymentInfo.setPaymentDate(strDate);
-		
 		//Select를 통해 뽑아낸 정보를 info에 담아서 View로 보내기
 		model.addAttribute("info", paymentInfo);
 		
 	}
-	
 }

@@ -21,7 +21,6 @@ import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.*;
 import com.model2.mvc.service.member.*;
-/*
 import com.model2.mvc.service.security.AES256Util;
 import com.model2.mvc.service.security.CryptoUtil;
 import com.model2.mvc.service.security.SecurityUtil;
@@ -29,7 +28,6 @@ import com.model2.mvc.service.security.SecurityUtil2;
 import com.model2.mvc.service.student.*;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
-*/
 
 @Controller
 public class MemberController {
@@ -40,7 +38,7 @@ public class MemberController {
 	
 	@Autowired
 	@Qualifier("studentServiceImpl")
-	//private StudentService studentService;
+	private StudentService studentService;
 	
 	@Value("#{commonProperties['pageUnit']}")
 	int pageUnit;
@@ -62,7 +60,7 @@ public class MemberController {
 						Model model ) throws Exception{
 		
 		//String key = "aes256-test-key!!"; 
-		System.out.println( "/member/login :- POST" );
+		System.out.println("/member/login :- POST");
 		//String encrypt = en.encrypt("test1234");
 		// System.out.println("origin str = "+"test1234");
 		// System.out.println("encrypt str = "+encrypt);
@@ -74,7 +72,7 @@ public class MemberController {
 		//System.out.println("::"+member);
 		
 		//System.out.println("멤버 비번 :"+member.getPassword());
-		System.out.println( "#######  USER ID ******** : "+member.getUserId() );
+		//System.out.println("유저 아이디 : "+member.getUserId());
 		
 		Member dbmember = memberService.getMember( member.getUserId() );
 		
@@ -89,17 +87,17 @@ public class MemberController {
 		//String decText = aes.decrypt( dbmember.getPassword() );
 		//memberService.getMember(member);
 	
-		//String decText = CryptoUtil.decrypt( dbmember.getPassword() );
+		String decText = CryptoUtil.decrypt( dbmember.getPassword() );
 		
-		System.out.println( "controller dbmember : " + dbmember );
-		//System.out.println( "decrypt "+ decText + " member.getPassword() : " + member.getPassword() );
+		System.out.println( "dbmember : " + dbmember );
+		System.out.println( "decrypt "+ decText + " member.getPassword() : " + member.getPassword() );
 		
-		if( dbmember != null && ( ( member.getPassword() ).equals(dbmember.getPassword()) ) )
+		if( dbmember != null && ( ( member.getPassword() ).equals( decText )  ) )
 		{
 			session.setAttribute("member", dbmember);
 			model.addAttribute("member", dbmember);
 			System.out.println("성공");
-			
+		
 		}else{
 			
 			model.addAttribute("member", null);
@@ -162,7 +160,7 @@ public class MemberController {
 		model.addAttribute( "list", map.get("list") );
 	
 	}
-	/*
+	
 	@RequestMapping( value = "/addMember", method =  RequestMethod.POST )
 	public void addUser( @RequestBody Member member , HttpSession session ) throws Exception {
 		
@@ -211,8 +209,7 @@ public class MemberController {
 		model.addAttribute("member", member);
 						
 	}
-	*/
-	/*
+	
 	@RequestMapping( value="/getJsonUserEmailID", method=RequestMethod.POST )
 	public void getJsonUserEmailID( @RequestBody Member member , Model model ) throws Exception {
 		
@@ -237,8 +234,7 @@ public class MemberController {
 		model.addAttribute( "member", dbmember );
 		
 	}
-	*/	
-	/*	
+			
 	@RequestMapping( value="/getJsonUserCellPhoneID", method=RequestMethod.POST )
 	public void getJsonUserCellPhoneID( @RequestBody Member member , Model model ) throws Exception {
 		
@@ -250,8 +246,7 @@ public class MemberController {
 		model.addAttribute("member", dbmember);
 		
 	}
-	*/
-	/*
+	
 	@RequestMapping( value = "/getJsonUserCellPhonePASSWORD" , method=RequestMethod.POST )
 	public void getJsonUserCellPhonePASSWORD( @RequestBody Member member , Model model ) throws Exception {
 		
@@ -264,7 +259,7 @@ public class MemberController {
 		model.addAttribute( "member", dbmember );
 		
 	}
-	*/
+	
 	/*
 	@RequestMapping( value="/listMember" )
 	public void listUser( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) 

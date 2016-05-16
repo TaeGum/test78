@@ -26,6 +26,7 @@ public class ReservationInfoServiceImpl implements ReservationInfoService {
 	
 	//Constructor
 	public ReservationInfoServiceImpl() {
+		
 	}
 
 	@Override
