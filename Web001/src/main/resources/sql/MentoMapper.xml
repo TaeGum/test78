@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MentoMapper">
+
+	<resultMap id="mentoSelectMap" type="com.model2.mvc.service.domain.Mento">
+		<result property="mentoId" 		column="MID" 			jdbcType="VARCHAR"/>
+		<result property="mentoName"	column="MNAME" 			jdbcType="VARCHAR"/>
+		<result property="mentoImage"	column="MIMAGES" 		jdbcType="VARCHAR"/>
+		<result property="shortIntro"	column="SHORTINTRO" 	jdbcType="VARCHAR"/>
+	 	<result property="longIntro"	column="LONGINTRO" 		jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	 <!-- insert -->
+	 <insert id="addMento" parameterType="mento">
+	 	INSERT 
+	 	INTO mento(MID, MNAME, MIMAGES, SHORTINTRO, LONGINTRO)
+		VALUES(#{mentoId:VARCHAR}, #{mentoName:VARCHAR}, #{mentoImage:VARCHAR}, #{shortIntro:VARCHAR}, #{longIntro:VARCHAR})
+	 </insert>	
+	
+	 <!-- select List -->
+	<select id="getMentoList" resultMap="mentoSelectMap">
+	 	SELECT MID, MNAME, MIMAGES, SHORTINTRO, LONGINTRO, ROWNUM AS row_seq
+	 	FROM mento
+	</select>
+	
+	<!-- select --> 
+	<select id="getMento"	parameterType="String" resultMap="mentoSelectMap">
+		SELECT MID, MNAME, MIMAGES, SHORTINTRO, LONGINTRO
+		FROM mento
+		WHERE MID = #{value}
+	</select>
+	 
+	<!-- update -->
+	<update id="updateMento" parameterType="mento">
+	 	UPDATE mento
+	 	<set>
+		MID = #{mentoId:VARCHAR},
+		MNAME = #{mentoName:VARCHAR}, 
+		MIMAGES = #{mentoImage:VARCHAR},
+		SHORTINTRO = #{shortIntro:VARCHAR},
+		LONGINTRO = #{longIntro:VARCHAR}
+		</set>
+	 	WHERE MID = #{mentoId:VARCHAR}
+	</update>
+</mapper>

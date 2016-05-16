@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReplMentoMapper">
+
+	<resultMap id="replmentoSelectMap" type="com.model2.mvc.service.domain.ReplMento">
+		<result property="repNumber"   column="REPNO"	    jdbcType="INTEGER"/>
+		<result property="mentoId" 	   column="MID" 		jdbcType="VARCHAR"/>
+		<result property="repName"	   column="REPNAME" 	jdbcType="VARCHAR"/>
+		<result property="repDate" 	   column="REPDATE" 	jdbcType="DATE"/>
+		<result property="repMain" 	   column="REPMAIN" 	jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- insert -->
+	<insert id="addMentoRepl" parameterType="replmento">
+	 	INSERT 
+	 	INTO mentorep(REPNO, MID, REPNAME, REPDATE, REPMAIN)
+	 	VALUES (seq_coachrep_REPNO.nextval, #{mentoId:VARCHAR}, #{repName:VARCHAR}, SYSDATE, #{repMain:VARCHAR})
+	</insert>
+	 
+	<!-- select List -->
+	<select id="getMentoReplList" resultMap="replmentoSelectMap">
+	 	SELECT REPNO, MID, REPNAME, REPDATE, REPMAIN, ROWNUM AS row_seq
+	 	FROM mentorep
+	</select>
+	
+	<!-- update -->
+	<update id="updateMentoRepl" parameterType="replmento">
+	 	UPDATE mentorep
+	 	<set>
+	 	REPNAME = #{repName:VARCHAR}, 
+	 	REPMAIN = #{repMain:VARCHAR}
+	 	</set>
+	 	WHERE REPNO = #{repNumber:INTEGER}
+	</update>
+
+</mapper>

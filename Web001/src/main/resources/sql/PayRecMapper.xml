@@ -4,12 +4,12 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="PaymentMapper">
+<mapper namespace="PayRecMapper">
 
-	 <resultMap id="paymentSelectMap" type="com.model2.mvc.service.domain.Payment">
+	 <resultMap id="payrecSelectMap" 	type="com.model2.mvc.service.domain.PayRec">
 		<result property="paymentNumber" 		column="PNO" 		jdbcType="INTEGER"/>
-		<result property="reservationNumber" 	column="STYNO" 		jdbcType="INTEGER"/>
 		<result property="studentId"			column="STID" 		jdbcType="VARCHAR"/>
+		<result property="recordNo" 			column="RECNO" 		jdbcType="INTEGER"/>
 		<result property="paymentName" 			column="PNAME" 		jdbcType="VARCHAR"/>
 		<result property="paymentDate" 			column="PDATE" 		jdbcType="DATE"/>
 		<result property="paymentCardName" 		column="PCDNAME" 	jdbcType="VARCHAR"/>
@@ -19,23 +19,23 @@
 	</resultMap>
 
 	 <!-- insert -->
-	 <insert id="addPayment" parameterType="payment">
+	 <insert id="addPayRec" parameterType="payrec">
 		INSERT
-		INTO payment(PNO, STYNO, STID, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, PMONEY)
-		VALUES (seq_payment_PNO.nextval, #{reservationNumber:INTEGER}, #{studentId:VARCHAR}, #{paymentName:VARCHAR}, 
-		SYSDATE, #{paymentCardName:VARCHAR}, #{paymentCardNumber:INTEGER}, #{paymentCardPassword:INTEGER}, 20000)
+		INTO payrec(PNO, STID, RECNO, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, PMONEY)
+		VALUES (seq_payrec_PNO.nextval, #{studentId:VARCHAR}, #{recordNo:INTEGER}, #{paymentName:VARCHAR}, 
+		SYSDATE, #{paymentCardName:VARCHAR}, #{paymentCardNumber:INTEGER}, #{paymentCardPassword:INTEGER}, 30000)
 	 </insert>
 	 
 	 <!-- select List -->
-	 <select id="getPaymentList" resultMap="paymentSelectMap">
-	 	SELECT PNO, STYNO, STID, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, PMONEY, ROWNUM AS row_seq
-	 	FROM payment
+	 <select id="getPayRecList" resultMap="payrecSelectMap">
+	 	SELECT PNO, STID, RECNO, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, PMONEY, ROWNUM AS row_seq
+	 	FROM payrec
 	 </select>
 	 
 	 <!-- select -->
-	 <select id="getPayment" parameterType="int" resultMap="paymentSelectMap">
-		SELECT PNO, STYNO, STID, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, PMONEY
-		FROM payment 
+	 <select id="getPayRec" parameterType="int" resultMap="payrecSelectMap">
+		SELECT PNO, STID, RECNO, PNAME, PDATE, PCDNAME, PCDNUM, PCDPW, PMONEY
+		FROM payrec 
 		WHERE PNO = #{value}
 	 </select>
 		 	 

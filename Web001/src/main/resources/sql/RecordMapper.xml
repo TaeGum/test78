@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="RecordMapper">
+
+	<resultMap id="recordSelectMap" type="com.model2.mvc.service.domain.Record">
+		<result property="recordNo" 	   column="RECNO" 		jdbcType="INTEGER"/>
+		<result property="mentoId"	   	   column="MID" 		jdbcType="VARCHAR"/>
+		<result property="studentId"	   column="STID" 		jdbcType="VARCHAR"/>
+		<result property="studentName" 	   column="STNAME" 		jdbcType="VARCHAR"/>
+		<result property="recordName"      column="RECNAME"	    jdbcType="VARCHAR"/>
+		<result property="recordDate"      column="RECDATE"	    jdbcType="DATE"/>
+		<result property="recordFile"      column="REC"	    	jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	 <!-- insert -->
+	 <insert id="addRecord" parameterType="record">
+		INSERT
+		INTO record(RECNO, MID, STID, STNAME, RECNAME, RECDATE, REC)
+		VALUES (seq_record_RECNO.nextval , #{mentoId:VARCHAR} , #{studentId:VARCHAR} , 
+		#{studentName:VARCHAR} , #{recordName:VARCHAR} , SYSDATE, #{recordFile:VARCHAR})
+	 </insert>
+	 
+	 <!-- select List -->
+	 <select id="getRecordList" resultMap="recordSelectMap">
+	 	SELECT RECNO, MID, STID, STNAME, RECNAME, RECDATE, REC, ROWNUM AS row_seq
+	 	FROM record
+	 </select>
+	 
+	 <!-- select -->
+	 <select id="getRecord" parameterType="int" resultMap="recordSelectMap">
+		SELECT RECNO, MID, STID, STNAME, RECNAME, RECDATE, REC
+		FROM record 
+		WHERE RECNO = #{value}
+	 </select>
+	 	 
+</mapper>
