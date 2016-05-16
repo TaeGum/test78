@@ -34,9 +34,6 @@ public class MemberServiceImpl implements MemberService {
 	//public void getMember(Member member) throws Exception{
 		// TODO Auto-generated method stub
 		//memberDao.getMember(member);
-		
-		System.out.println("################### MemberService Imple get member ");
-		
 		return memberDao.getMember(userId);
 		
 	}

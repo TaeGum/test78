@@ -34,20 +34,9 @@ public class MemberDaoImpl implements MemberDao {
 	
 	@Override
 	public Member getMember(String userId) throws Exception {
+		// TODO Auto-generated method stub
 		
-		System.out.println("Dao Service Imple getMember ########## select One ");
-		
-		//user12라고 콘솔창에 뜸
-		//System.out.println("*****" + userId);
-		
-		//아래의 내용도 마찬가지로 콘솔창에 뜸
-		System.out.println("################22222");
-		//System.out.println( sqlSession.selectOne("MemberMapper.getMember",userId));
-				
-		//여기 윗 부분까지는 자바 콘솔창에 떴습니다, 하지만 아래부터는 작동하지 않습니다
-		//그래서 어제 sqlSession 부분이 잘못되었는지 확인할려고 하지만 하지 못하였습니다. 
 		return (Member) sqlSession.selectOne("MemberMapper.getMember",userId);
-		
 		
 	}
 
